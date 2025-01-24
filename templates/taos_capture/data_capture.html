@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Caopture</title>
+    <script>
+       function pauseCollection() {
+            fetch('{% url "pause_capture" %}')  // 发送请求到 Django 视图
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);  // 显示弹窗
+                    } else {
+                        console.error('Failed to pause data collection');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Data Capture</h1>
+    {% if message  %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Start   Data  Capture</button>
+    </form>
+    <form method="post">
+        <button onclick="pauseCollection()">Pause Data Capture</button>
+    </form>
+</body>
+</html>
