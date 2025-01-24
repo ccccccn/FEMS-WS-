@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "axios": "^1.7.9",
+    "echarts-extension-amap": "^1.12.0",
+    "ws": "^8.18.0"
+  }
+}
