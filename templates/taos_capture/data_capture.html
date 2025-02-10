@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Data Caopture</title>
+    <title>Data Capture</title>
     <script>
        function pauseCollection() {
             fetch('{% url "pause_capture" %}')  // 发送请求到 Django 视图
@@ -25,7 +25,7 @@
     {% endif %}
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Start   Data  Capture</button>
+        <button onclick="" type="submit">Start   Data  Capture</button>
     </form>
     <form method="post">
         <button onclick="pauseCollection()">Pause Data Capture</button>

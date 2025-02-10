@@ -1,0 +1,157 @@
+{
+    "飞轮舱1_PCS_IPM光纤通讯正常数量": {
+        "DB": "24",
+        "Start": "136",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_IPM光纤通讯超时数量": {
+        "DB": "24",
+        "Start": "138",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_IPM运行数量": {
+        "DB": "24",
+        "Start": "140",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_IPM故障数量": {
+        "DB": "24",
+        "Start": "142",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_IPM就绪数量": {
+        "DB": "24",
+        "Start": "144",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_下发IPM控制字": {
+        "DB": "24",
+        "Start": "154",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_IPM1电机反馈功率": {
+        "DB": "24",
+        "Start": "264",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM2电机反馈功率": {
+        "DB": "24",
+        "Start": "266",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM3电机反馈功率": {
+        "DB": "24",
+        "Start": "268",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM4电机反馈功率": {
+        "DB": "24",
+        "Start": "270",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM5电机反馈功率": {
+        "DB": "24",
+        "Start": "272",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM6电机反馈功率": {
+        "DB": "24",
+        "Start": "274",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM7电机反馈功率": {
+        "DB": "24",
+        "Start": "276",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM8电机反馈功率": {
+        "DB": "24",
+        "Start": "278",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM1电机参考功率": {
+        "DB": "24",
+        "Start": "284",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM2电机参考功率": {
+        "DB": "24",
+        "Start": "286",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM3电机参考功率": {
+        "DB": "24",
+        "Start": "288",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM4电机参考功率": {
+        "DB": "24",
+        "Start": "290",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM5电机参考功率": {
+        "DB": "24",
+        "Start": "292",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM6电机参考功率": {
+        "DB": "24",
+        "Start": "294",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM7电机参考功率": {
+        "DB": "24",
+        "Start": "296",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_IPM8电机参考功率": {
+        "DB": "24",
+        "Start": "298",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_1_SOC": {
+        "DB": "24",
+        "Start": "304",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_2_SOC": {
+        "DB": "24",
+        "Start": "306",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_3_SOC": {
+        "DB": "24",
+        "Start": "308",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_4_SOC": {
+        "DB": "24",
+        "Start": "310",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_5_SOC": {
+        "DB": "24",
+        "Start": "312",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_6_SOC": {
+        "DB": "24",
+        "Start": "314",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_7_SOC": {
+        "DB": "24",
+        "Start": "316",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_FW_8_SOC": {
+        "DB": "24",
+        "Start": "318",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_网侧有功功率": {
+        "DB": "24",
+        "Start": "322",
+        "Type": "FLOAT"
+    }
+}

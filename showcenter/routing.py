@@ -12,3 +12,4 @@ from . import consumer
 websocket_urlpatterns = [
     re_path(r'ws/ShowCenter/$', consumer.MyConsumer.as_asgi()),
 ]
+print("匹配结束")

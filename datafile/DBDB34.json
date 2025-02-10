@@ -1,0 +1,232 @@
+{
+    "飞轮舱1_EMS_SYS_State": {
+        "DB": "34",
+        "Start": "0.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_Breaker_ON": {
+        "DB": "34",
+        "Start": "1.7",
+        "Type": "BIT"
+    },
+    "飞轮舱1_EMS_SYS_Mode": {
+        "DB": "34",
+        "Start": "4.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_EMS_SYS_Rated_Power": {
+        "DB": "34",
+        "Start": "8.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_SYS_AVA_POWER_Cha": {
+        "DB": "34",
+        "Start": "10.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_SYS_AVA_POWER_DISCha": {
+        "DB": "34",
+        "Start": "12.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_SYS_SOC": {
+        "DB": "34",
+        "Start": "16.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_系统SOC": {
+        "DB": "34",
+        "Start": "16.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_FAULT_CLASS": {
+        "DB": "34",
+        "Start": "22.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_FW_Runing_NUM": {
+        "DB": "34",
+        "Start": "28.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_SYS_COMMU_STATE2": {
+        "DB": "34",
+        "Start": "32.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_SYS_COMMU_STATE1": {
+        "DB": "34",
+        "Start": "32.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_SYS_Fire_STATE": {
+        "DB": "34",
+        "Start": "36.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_SYS_EQ_STATE": {
+        "DB": "34",
+        "Start": "38.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_F_WORD_2": {
+        "DB": "34",
+        "Start": "48.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_F_WORD_3": {
+        "DB": "34",
+        "Start": "50.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_F_WORD_4": {
+        "DB": "34",
+        "Start": "52.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_F_WORD_5": {
+        "DB": "34",
+        "Start": "54.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_F_WORD_7": {
+        "DB": "34",
+        "Start": "58.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_F_WORD_9": {
+        "DB": "34",
+        "Start": "62.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_I_F_ENABLE": {
+        "DB": "34",
+        "Start": "74.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_EMS_Total_charging": {
+        "DB": "34",
+        "Start": "96.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_EMS_Total_discharge": {
+        "DB": "34",
+        "Start": "100.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Total_command_charging": {
+        "DB": "34",
+        "Start": "104.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_总指令充电量": {
+        "DB": "34",
+        "Start": "104.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_PCS_总指令放电量": {
+        "DB": "34",
+        "Start": "108.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_EMS_Total_command_discharging": {
+        "DB": "34",
+        "Start": "108.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Hourly_instruction_charging": {
+        "DB": "34",
+        "Start": "112.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Hourly_instruction_discharging": {
+        "DB": "34",
+        "Start": "116.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Hourly_charging": {
+        "DB": "34",
+        "Start": "120.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Hourly_discharging": {
+        "DB": "34",
+        "Start": "124.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Total_plant_electricity": {
+        "DB": "34",
+        "Start": "128.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_总厂用电量": {
+        "DB": "34",
+        "Start": "128.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_EMS_Total_hourly_consumption": {
+        "DB": "34",
+        "Start": "132.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_EMS_Flywheel_chamber_temperature": {
+        "DB": "34",
+        "Start": "136.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Flywheel_chamber_humidity": {
+        "DB": "34",
+        "Start": "138.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Control_room_temperature": {
+        "DB": "34",
+        "Start": "140.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Control_room_humidity": {
+        "DB": "34",
+        "Start": "142.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_1": {
+        "DB": "34",
+        "Start": "144.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_2": {
+        "DB": "34",
+        "Start": "146.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_3": {
+        "DB": "34",
+        "Start": "148.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_4": {
+        "DB": "34",
+        "Start": "150.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_5": {
+        "DB": "34",
+        "Start": "152.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_6": {
+        "DB": "34",
+        "Start": "154.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_7": {
+        "DB": "34",
+        "Start": "156.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_FW_STATE_8": {
+        "DB": "34",
+        "Start": "158.0",
+        "Type": "USHORT"
+    }
+}

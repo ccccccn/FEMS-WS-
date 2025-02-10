@@ -10,11 +10,9 @@
 from django.urls import path
 from . import views
 from rest_framework.routers import SimpleRouter
-from .views import MyModelListCreate
 
 router = SimpleRouter()
 
-router.register('messages', MyModelListCreate, basename='messages')
 
 urlpatterns = router.urls
 urlpatterns = [

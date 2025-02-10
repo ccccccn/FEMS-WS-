@@ -2,7 +2,7 @@ import asyncio
 import json
 import logging
 import random
-import signal
+import signals
 import sys
 import threading
 import time
@@ -34,35 +34,27 @@ class ShowcenterConfig(AppConfig):
 
     def ready(self):
         logger.info("ShowCenterConfig Ready!")
+        # import showcenter.signals
         self.initial_threadpool()
-
-    #方法一所对初始化异步操作
-    # def initial_threadpool(self):
-    #     loop = asyncio.get_event_loop()
-    #     loop.create_task(self.run_scheduled_tasks())
-    #     logger.info("Thread pool initialized and tasks submitted.")
-
+#
+#     #方法一所对初始化异步操作
+#     # def initial_threadpool(self):
+#     #     loop = asyncio.get_event_loop()
+#     #     loop.create_task(self.run_scheduled_tasks())
+#     #     logger.info("Thread pool initialized and tasks submitted.")
+#
     ##方法二所对初始化异步操作：
     def initial_threadpool(self):
-        scheduler = AsyncIOScheduler()
-        scheduler.add_job(self.scheduled_task, 'interval', seconds=1)
-        scheduler.start()
-        logger.info("Thread pool initialized and tasks submitted.")
+        print("仅借用启动一下")
+        # scheduler = AsyncIOScheduler()
+        # scheduler.add_job(self.scheduled_task, 'interval', seconds=1)
+        # scheduler.start()
+        # logger.info("Thread pool initialized and tasks submitted.")
 
-
-    def run_showcenter_task(self):
-        """直接启动的任务"""
-        logger.info("Running initial task...")
-        try:
-            # 在这里实现直接启动的任务逻辑
-            logger.info("Starting showcenter direct_task...")
-        except Exception as e:
-            logger.error(f"Error in initial task: {e}")
-
-        pass
 
 # 方法二使用apscheduler 支持异步操作和停止主线程操作
     async def scheduled_task(self):
+        print("借用启动一下")
         send_to_redis_channel("show_center")
         try:
             await asyncio.sleep(0.001)

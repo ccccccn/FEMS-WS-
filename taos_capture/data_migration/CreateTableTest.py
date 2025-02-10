@@ -27,7 +27,6 @@ def get_connection(localhost, username, password):
 # TODO:创建数据库
 def create_db(db):
     # conn = get_connection("localhost", "root", "root")
-    print("!!!")
     conn = taos.connect(
         localhost="localhost",
         user="root",

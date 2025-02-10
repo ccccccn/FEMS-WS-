@@ -12,6 +12,30 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os.path
 from pathlib import Path
 
+## 数据分析配置
+INF = 1000
+MYSQL_CONFIG = {
+    'host': '192.168.101.144',
+    'username': 'root',
+    'password': 'wkfl.777',
+    'port': 3306
+}
+INTER_DIR = {"健康": [[(-1.8, 1.8), (-1.8, 1.8), (-1.1, 1.1), (-1.1, 1.1), (-1.5, 2.9)],
+                      [(0, 2), (0, 2), (0, 1.5), (0, 1.5), (0, 0.5)],
+                      [(0, 3.2), (0, 3.2), (0, 3.2), (0, 3.2), (0, 0.5)]],  # 积分电流，同步震动半径，同步电流的健康区间
+             "预警": [[(1.8, INF), (1.8, INF), (1.8, INF), (1.8, INF), (2.9, INF)],
+                      [(2.0, 2.9), (2.0, 2.9), (1.5, 2.9), (1.5, 2.9), (0.5, 2.9)],
+                      [(3.2, 4), (3.2, 4), (3.2, 4), (3.2, 4), (0.5, 1)]],
+             # 积分电流，同步震动半径，同步电流的预警区间
+             "故障": [[(3.2, INF), (3.2, INF), (3.2, INF), (3.2, INF), (3.2, INF)],
+                      [(2.9, INF), (2.9, INF), (2.9, INF), (2.9, INF), (2.9, INF)],
+                      [(4, INF), (4, INF), (4, INF), (4, INF), (1, INF)]]}  # 积分电流，同步震动半径，同步电流的故障区间
+
+# 统计分析历史数据
+# TODO:修改状态与名称
+STATUS = ['健康', '预警', '故障']
+TAGS = ['积分电流', '震动半径', '同步电流']
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,6 +49,13 @@ SECRET_KEY = "django-insecure-a1r5fwn#6wf6mwkwdgn*h*cp9xo-5dpi90ta2w%2r(vrty)u%s
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.102.31', '192.168.102.75']
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379"
+    }
+}
 
 # redis配置
 CHANNEL_LAYERS = {
@@ -45,9 +76,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "taos_capture",
-    'channels',
     "showcenter.apps.ShowcenterConfig",
+    "taos_capture.apps.TaosCaptureConfig",
+    'channels',
     "corsheaders",
 ]
 # Celery 设置

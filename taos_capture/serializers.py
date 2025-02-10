@@ -6,10 +6,3 @@
  @SoftWare: PyCharm
 """
 
-from rest_framework import serializers
-from .models import WeiboHotPointSearch
-
-class MyModelSerializer(serializers.ModelSerializer):
-    class Mete:
-        model = WeiboHotPointSearch
-        fields = '__all__'

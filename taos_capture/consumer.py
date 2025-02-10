@@ -34,7 +34,7 @@ def notify_clients_of_reconnect():
 class MyConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         try :
-            self.groups = 'show_center'
+            self.groups = 'show_center_data'
             # 如果 channel_layer 为 None，则不应该调用 group_add
             if self.channel_layer is not None and self.channel_name is not None:
                 await self.channel_layer.group_add(self.groups, self.channel_name)
