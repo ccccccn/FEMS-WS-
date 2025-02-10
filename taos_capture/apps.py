@@ -1,13 +1,19 @@
 import asyncio
 import logging
+import random
 from asyncio import CancelledError
 from venv import logger
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from django.apps import AppConfig
+from snap7 import Client
 
-from taos_capture.views import data_capture_main
+from taos_capture.views import data_capture_main, is_connect, plc_is_connect
+from .shared_data import update_is_connected, is_connected_data
+
 logger = logging.getLogger(__name__)
+from .views import collect_plcs
+
 
 class TaosCaptureConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
@@ -21,6 +27,10 @@ class TaosCaptureConfig(AppConfig):
     def ready(self):
         print("DataCaptureConfig ready!")
         self.initial_threadpool()
+        scheduler = AsyncIOScheduler()
+        scheduler.add_job(update_is_connected_periodically, 'interval', seconds=1)
+        scheduler.start()
+        print("开始监听plc连接状态!")
 
     # 方法一所对初始化异步操作
     # def initial_threadpool(self):
@@ -50,6 +60,7 @@ class TaosCaptureConfig(AppConfig):
         #                   max_instances=1)
         # scheduler.start()
         # logger.info("Thread pool initialized and tasks submitted.")
+
     ##方法二所对初始化异步操作：
 
     # 方法二使用apscheduler 支持异步操作和停止主线程操作
@@ -61,4 +72,14 @@ class TaosCaptureConfig(AppConfig):
             logger.error(f"用户停止了操作")
             pass
 
+    """
+    定时心跳机制：定时轮询plc连接状态，消耗更少的资源
+    """
 
+
+async def update_is_connected_periodically(collect_plcs):
+    for plc in collect_plcs:
+        plc = Client()
+        if plc.get_connected():
+            is_connected_data[collect_plcs['ip'].split('.')[-1] - 1] = 1
+    await update_is_connected(is_connect)

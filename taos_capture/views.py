@@ -25,33 +25,8 @@ from sortedcontainers import SortedList
 
 from showcenter.views import send_to_redis_channel
 from taosPro.utils import get_data, file_data, JsonCache
+from .shared_data import is_connected_data, cache, FLC_NUM, collect_plcs
 
-folder_path = "D:\\pycahrm\\taosPro\\datafile"
-# breakpoint()
-if not os.path.exists(folder_path):
-    raise FileNotFoundError(f"指定的文件夹路径不存在：{folder_path}")
-# folder_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "工具类", "FEMSjson文件")
-cache = JsonCache()
-cache.load_from_dir(folder_path)
-# TODO：修改飞轮舱数量
-FLC_NUM = 50
-
-db, start, lengths = [], [], []
-for file_path in os.listdir(folder_path):
-    file_path = os.path.join(folder_path, file_path)
-    data = file_data(file_path)
-    db.append(data['DB'])
-    start.append(data['starts'])
-    lengths.append(data['lengths'])
-
-base_config = {
-    'rack': 0, 'slot': 1,
-    'dbs': db, 'starts': start, 'lengths': lengths
-}
-
-ip_addresses = ['192.168.110.{}'.format(i) for i in range(1, FLC_NUM + 1)]  # 示例PLC IP地址
-collect_plcs = [{'ip': ip, **base_config} for ip in ip_addresses]
-CONNECT_CNT = 0
 
 def home(request):
     return render(request, 'index.html')
@@ -71,22 +46,6 @@ def pause_data_collection(request):
     global collecting
     collecting = False
     return JsonResponse({'message': 'Data collection has been paused.'})
-
-
-# 设置线程池和锁
-lock = threading.Lock()
-lockk = threading.Lock()  # 将 asyncio.Lock 改为 threading.Lock
-
-# soc_bins = np.linspace(-1, 1, 5)
-# frequency_bins = np.linspace(-1, 1, 5)
-# duration_bins = np.linspace(-1, 1, 5)
-soc_value = np.zeros(FLC_NUM)
-frequency_value = np.zeros(FLC_NUM)
-duration_value = np.zeros(FLC_NUM)
-soc_hist = np.zeros(4)
-frequency_hist = np.zeros(4)
-duration_hist = np.zeros(4)
-change_idx = np.zeros(FLC_NUM)
 
 
 def calculate_dis(value_name, Intervel):
@@ -139,7 +98,7 @@ def parse_data(plc_ip, data, db):
 # PLC数据采集任务
 def read_plc_data(plc_ip, dbs, start, lengths):
     # breakpoint()
-    global s_soc_hist, s_frequency_hist, s_duration_hist,change_idx
+    global s_soc_hist, s_frequency_hist, s_duration_hist, change_idx
     try:
         ## 真实数据 一次性获取所有db下的值，顺序执行
         # data = plc.db_read(db, 0, length)
@@ -149,15 +108,17 @@ def read_plc_data(plc_ip, dbs, start, lengths):
             # breakpoint()
             s_soc_hist, s_frequency_hist, s_duration_hist = parse_data(plc_ip, random_data, db)
             # print(type(s_soc_hist), type(frequency_hist), type(duration_hist))
-        change_idx[int(plc_ip.split('.')[-1])-1] = 1
+        change_idx[int(plc_ip.split('.')[-1]) - 1] = 1
         try:
-            if np.all(change_idx == 1):
+            print(f"当前连接状态为：{is_connect},修改状态为：{change_idx}\n", end=' ')
+            if np.all(is_connected_data & change_idx.astype(bool) == is_connected_data):
                 send_to_redis_channel("show_center", FLC_NUM,
-                                  s_soc_hist, s_frequency_hist, s_duration_hist)
+                                      s_soc_hist, s_frequency_hist, s_duration_hist)
                 logging.info(f"Data sent to channel show_center")
+                print("匹配成功，并发送数据")
                 change_idx = np.zeros(FLC_NUM)
         except Exception as e:
-            print(f"{type(e)}:{e}")
+            print(f"{type(e)}here:{e}")
         # print(f"DB{db}块获取到数据:{datetime.now()}")
     except Exception as e:
         print(f"读取PLC数据错误：{e}")
@@ -178,34 +139,34 @@ def get_plc_data(plc_ip, plc_rack, plc_slot, dbs, starts, lengths, executor):
     if plc.get_connected():
         print(f"PLC {plc_ip} 连接成功")
 
-    # 将 DB 块分成两部分
-    dbs_plc = dbs[:5]  # 前 5 个 DB 块由 plc 处理
-    starts_plc = starts[:5]
-    lengths_plc = lengths[:5]
+        # 将 DB 块分成两部分
+        dbs_plc = dbs[:5]  # 前 5 个 DB 块由 plc 处理
+        starts_plc = starts[:5]
+        lengths_plc = lengths[:5]
 
-    dbs_plc1 = dbs[5:]  # 后 6 个 DB 块由 plc1 处理
-    starts_plc1 = starts[5:]
-    lengths_plc1 = lengths[5:]
+        dbs_plc1 = dbs[5:]  # 后 6 个 DB 块由 plc1 处理
+        starts_plc1 = starts[5:]
+        lengths_plc1 = lengths[5:]
 
-    # 使用线程池执行读取任务
-    futures = []
-    Start_time = datetime.now()
-    # 使用 plc 处理前 5 个 DB 块
-    for db, start, length in zip(dbs_plc, starts_plc, lengths_plc):
-        future = executor.submit(read_plc_data, plc, db, start, length)
-        futures.append(future)
+        # 使用线程池执行读取任务
+        futures = []
+        Start_time = datetime.now()
+        # 使用 plc 处理前 5 个 DB 块
+        for db, start, length in zip(dbs_plc, starts_plc, lengths_plc):
+            future = executor.submit(read_plc_data, plc, db, start, length)
+            futures.append(future)
 
-    # 使用 plc1 处理后 6 个 DB 块
-    for db, start, length in zip(dbs_plc1, starts_plc1, lengths_plc1):
-        future = executor.submit(read_plc_data, plc1, db, start, length)
-        futures.append(future)
+        # 使用 plc1 处理后 6 个 DB 块
+        for db, start, length in zip(dbs_plc1, starts_plc1, lengths_plc1):
+            future = executor.submit(read_plc_data, plc1, db, start, length)
+            futures.append(future)
 
-    # 等待所有任务完成
-    for future in as_completed(futures):
-        future.result()  # 等待每个任务的结果，触发异常时会被捕获
+        # 等待所有任务完成
+        for future in as_completed(futures):
+            future.result()  # 等待每个任务的结果，触发异常时会被捕获
 
-    end_time = datetime.now()
-    print(f"PLC{plc_ip}本次采集所用：{end_time - Start_time}\n", end='')
+        end_time = datetime.now()
+        print(f"PLC{plc_ip}本次采集所用：{end_time - Start_time}\n", end='')
 
 
 # 外部线程负责管理每个PLC设备
@@ -213,12 +174,12 @@ def plc_thread(plc_ip, rack, slot, dbs, starts, lengths):
     # 每个外部线程负责不断地进行数据采集
     while True:
         Start_time = datetime.now()
-        print(f"PLC {plc_ip} 数据采集开始于：{Start_time}\n", end='')
+        # print(f"PLC {plc_ip} 数据采集开始于：{Start_time}\n", end='')
         read_plc_data(plc_ip, dbs, starts, lengths)
         # get_plc_data(plc_ip, rack, slot, dbs, starts, lengths, executor)
         end_time = datetime.now()
-        print(f"PLC {plc_ip} 数据采集完成,完成时间为：{end_time}\n", end='')
-        # print(f"PLC {plc_ip} 本次循环所用时间：{end_time - Start_time}\n", end='')
+        # print(f"PLC {plc_ip} 数据采集完成,完成时间为：{end_time}\n", end='')
+        print(f"PLC {plc_ip} 本次循环所用时间：{end_time - Start_time}\n", end='')
         sleep(1)
 
 
@@ -245,6 +206,20 @@ async def run_data_collection(plcs):
         # 等待所有外部线程完成
         for thread in threads:
             thread.join()
+
+
+async def plc_is_connect(plcs):
+    global is_connect
+    for plc in plcs:
+        is_connect[int(plc['ip'].split("_")[-1]) - 1] = random.randint(0, 2)
+        # plc = Client()
+        # plc.connect(plc["ip"], plc["rack"], plc['slot'])
+        # if plc.get_connected():
+        #     is_connect[int(plc['ip'].split("_")[-1]) - 1] = 1
+        # else:
+        #     is_connect[int(plc['ip'].split("_")[-1]) - 1] = 0
+        await asyncio.sleep(1)
+    pass
 
 
 async def data_capture_main():
