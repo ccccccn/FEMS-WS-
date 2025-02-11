@@ -22,7 +22,7 @@ if not os.path.exists(folder_path):
 cache = JsonCache()
 cache.load_from_dir(folder_path)
 # TODO：修改飞轮舱数量
-FLC_NUM = 2
+FLC_NUM = 20
 
 db, start, lengths = [], [], []
 for file_path in os.listdir(folder_path):
@@ -58,15 +58,5 @@ duration_hist = np.zeros(4)
 change_idx = np.zeros(FLC_NUM)
 is_connect = np.random.randint(0, 2, size=FLC_NUM)
 
-is_connected_data = np.zeros(FLC_NUM)
-is_connected_lock = threading.Lock
 
-async def update_is_connected(new_data):
-    with is_connected_lock:
-        global is_connected_data
-        is_connected_data = new_data
-        await asyncio.sleep(1)
 
-def get_is_connected():
-    with is_connected_lock:
-        return is_connected_data

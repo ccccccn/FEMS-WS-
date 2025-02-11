@@ -23,9 +23,11 @@ from django.http import JsonResponse
 from snap7.client import Client
 from sortedcontainers import SortedList
 
+from .models import plc_connection_status
 from showcenter.views import send_to_redis_channel
 from taosPro.utils import get_data, file_data, JsonCache
-from .shared_data import is_connected_data, cache, FLC_NUM, collect_plcs
+from .shared_data import cache, FLC_NUM, collect_plcs, soc_value, frequency_value, duration_value, \
+    soc_hist, frequency_hist, duration_hist, change_idx
 
 
 def home(request):
@@ -54,9 +56,11 @@ def calculate_dis(value_name, Intervel):
     return JsonResponse(hist_json, safe=False)
 
 
+lock = threading.Lock()
 # 数据解析示例
 def parse_data(plc_ip, data, db):
-    global soc_value, frequency_value, duration_value, soc_hist, frequency_hist, duration_hist
+    # global soc_value, frequency_value, duration_value, soc_hist, frequency_hist, duration_hist
+    global soc_hist, frequency_hist, duration_hist
     flc_num = str(plc_ip.split('.')[-1])
     # print(f"当前解析ip为{plc_ip},飞轮舱号为{flc_num}\n", end='')
     # 解析并处理数据
@@ -110,19 +114,26 @@ def read_plc_data(plc_ip, dbs, start, lengths):
             # print(type(s_soc_hist), type(frequency_hist), type(duration_hist))
         change_idx[int(plc_ip.split('.')[-1]) - 1] = 1
         try:
-            print(f"当前连接状态为：{is_connect},修改状态为：{change_idx}\n", end=' ')
-            if np.all(is_connected_data & change_idx.astype(bool) == is_connected_data):
-                send_to_redis_channel("show_center", FLC_NUM,
-                                      s_soc_hist, s_frequency_hist, s_duration_hist)
-                logging.info(f"Data sent to channel show_center")
-                print("匹配成功，并发送数据")
-                change_idx = np.zeros(FLC_NUM)
+            if np.any(plc_connection_status.connected):
+                lock.acquire()
+                try:
+                    if np.all(plc_connection_status.connected.astype(bool) & change_idx.astype(
+                            bool) == plc_connection_status.connected):
+                        send_to_redis_channel("show_center", FLC_NUM,
+                                              s_soc_hist, s_frequency_hist, s_duration_hist)
+                        logging.info(f"Data sent to channel show_center")
+                        print(f"匹配成功，并发送数据,当前发送时间为{datetime.now()}")
+                        change_idx = np.zeros(FLC_NUM)
+                finally:
+                    lock.release()
         except Exception as e:
-            print(f"{type(e)}here:{e}")
-        # print(f"DB{db}块获取到数据:{datetime.now()}")
+                print(f"{type(e)}here:{e}")
+            # print(f"DB{db}块获取到数据:{datetime.now()}")
     except Exception as e:
         print(f"读取PLC数据错误：{e}")
         return None
+
+
 
 
 # 采集每个PLC数据
@@ -179,8 +190,8 @@ def plc_thread(plc_ip, rack, slot, dbs, starts, lengths):
         # get_plc_data(plc_ip, rack, slot, dbs, starts, lengths, executor)
         end_time = datetime.now()
         # print(f"PLC {plc_ip} 数据采集完成,完成时间为：{end_time}\n", end='')
-        print(f"PLC {plc_ip} 本次循环所用时间：{end_time - Start_time}\n", end='')
-        sleep(1)
+        # print(f"PLC {plc_ip} 本次循环所用时间：{end_time - Start_time}\n", end='')
+        sleep(0.5)
 
 
 # 多线程执行数据采集
@@ -188,7 +199,7 @@ async def run_data_collection(plcs):
     # 创建外部线程池
     CONNECT_CNT = 0
     loop = asyncio.get_running_loop()
-    with ThreadPoolExecutor(max_workers=FLC_NUM) as executor:  # 外部线程池，最大同时处理5个PLC
+    with ThreadPoolExecutor(max_workers=FLC_NUM+1) as executor:  # 外部线程池，最大同时处理5个PLC
         threads = []
 
         for plc in plcs:
@@ -199,7 +210,7 @@ async def run_data_collection(plcs):
             # plc_thread_instance = threading.Thread(target=plc_thread, args=(
             #     plc['ip'], plc['rack'], plc['slot'], plc['dbs'], plc['starts'], plc['lengths'], executor))
             threads.append(thread)
-            await asyncio.sleep(0.1)
+            await asyncio.sleep(0.01)
         await asyncio.gather(*threads)
         # plc_thread_instance.start()
 
