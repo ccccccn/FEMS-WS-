@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
+    "echarts-extension-amap": "^1.12.0"
+  }
+}

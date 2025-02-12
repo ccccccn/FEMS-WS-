@@ -1,0 +1,39 @@
+{
+  "name": "fems_web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^5.5.1",
+    "@dataview/datav-vue3": "^0.0.0-test.1672506674342",
+    "ant-design-vue": "^4.0.0-rc.6",
+    "antd": "^5.20.6",
+    "antd-style": "^3.6.3",
+    "axios": "^1.7.7",
+    "core-js": "^3.8.3",
+    "echarts": "^5.5.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0",
+    "xterm": "^5.3.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "sass": "^1.83.0",
+    "sass-loader": "^16.0.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
+}
