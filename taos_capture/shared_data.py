@@ -14,7 +14,7 @@ import numpy as np
 from taosPro.utils import JsonCache, file_data
 
 
-folder_path = "D:\\pycahrm\\taosPro\\datafile"
+folder_path = "D:\\pycahrm\\taosPro\\datafile\\FLC_ALL_DATA"
 # breakpoint()
 if not os.path.exists(folder_path):
     raise FileNotFoundError(f"指定的文件夹路径不存在：{folder_path}")

@@ -7,8 +7,10 @@
 """
 import asyncio
 import json
+import re
 import time
 from random import random
+from urllib.parse import parse_qs
 from venv import logger
 
 import aioredis
@@ -19,6 +21,7 @@ from channels.layers import get_channel_layer
 from channels_redis.core import RedisChannelLayer
 
 from taosPro import settings
+
 TIMEOUT = 1
 
 
@@ -26,22 +29,27 @@ def notify_clients_of_reconnect():
     channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
         "show_center",  # 替换为你的 group name
-        {
-            "type": "send_reconnect_message",
-        }
     )
+
 
 class MyConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        try :
-            self.groups = 'show_center'
+        try:
+            param_qs = parse_qs(self.scope['query_string'].decode('utf-8'))
+            self.groups = param_qs.get('group', ['default_group'])[0]
+            # 验证组名是否符合要求
+            if not self.is_valid_group_name(self.groups):
+                raise ValueError("Invalid group name")
+
+            self.group_name = self.groups
+            print(f"Group Name: {self.group_name}")
             # 如果 channel_layer 为 None，则不应该调用 group_add
             if self.channel_layer is not None and self.channel_name is not None:
                 await self.channel_layer.group_add(self.groups, self.channel_name)
                 print(f"Channel Layer: {self.channel_layer}")
                 print(f"Channel Name: {self.channel_name}")
                 await self.accept()
-                await asyncio.create_task(self.listen_to_redis())
+                await asyncio.create_task(self.listen_to_redis(self.groups))
             else:
                 # 如果 channel_layer 为 None，则进行调试输出
                 print("Error: channel_layer or channel_name is None")
@@ -49,6 +57,9 @@ class MyConsumer(AsyncWebsocketConsumer):
         except Exception as e:
             logger.info("Ws: connect error: {}".format(e))
             pass
+    def is_valid_group_name(self, group_name):
+        # 验证组名是否符合 Channels 的要求
+        return re.match(r'^[a-zA-Z0-9_.-]{1,100}$', group_name) is not None
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
@@ -113,11 +124,10 @@ class MyConsumer(AsyncWebsocketConsumer):
     async def send_data_to_client(self, data):
         await self.send(text_data=json.dumps(data))
 
-
-    async def listen_to_redis(self):
+    async def listen_to_redis(self, channel):
         redis = await aioredis.from_url("redis://localhost")
         pubsub = redis.pubsub()
-        await pubsub.subscribe('show_center')
+        await pubsub.subscribe(channel)
 
         try:
             async for message in pubsub.listen():

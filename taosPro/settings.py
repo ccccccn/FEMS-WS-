@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     "taos_capture.apps.TaosCaptureConfig",
     'channels',
     "corsheaders",
+    "data_transport",
 ]
 # Celery 设置
 CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis 地址
