@@ -1,3 +1,4 @@
+import redis
 from django.shortcuts import render
 
 # Create your views here.
@@ -25,36 +26,65 @@ from snap7.client import Client
 from sortedcontainers import SortedList
 
 from data_transport.data_share import cache, collect_plcs
+from data_transport.models import PLCConnectStatu
 from taos_capture.models import plc_connection_status
 from showcenter.views import send_to_redis_channel
 from taosPro.utils import get_data, file_data, JsonCache
 
-
 lock = threading.Lock()
+
+
 # 数据解析示例
 def parse_data(plc_ip, data, db):
-    # global soc_value, frequency_value, duration_value, soc_hist, frequency_hist, duration_hist
-    global soc_hist, frequency_hist, duration_hist
     flc_num = str(plc_ip.split('.')[-1])
-    # print(f"当前解析ip为{plc_ip},飞轮舱号为{flc_num}\n", end='')
+    # print(f"当前解析ip为{plc_ip},飞轮{flc_num}-{int(flc_num) + 14}\n", end='')
     # 解析并处理数据
-    data_dir = {}
-    cache_data = cache.cache.get(f"DBDB{db}")
-    for key in cache_data:
-        cache_adata = cache_data[key]
-        value = round(get_data(cache_adata, data), 3)
-        data_dir[key] = value
-            # print(f"当前{flc_num}dur:{duration_value}\n", end='')
-        # print(f"{key}:{value}")
-    # print(f"当前DB块数据为：{data_dir}")
-    # breakpoint()
-    return soc_hist, frequency_hist, duration_hist
-    # data_dir_json = json.dumps(data_dir)
-    print(f"当前{flc_num}DB{db}块解析结束时间为：{datetime.now()}\n", end='')
+
+    data_list = []
+    final_dir = {}
+    cache_data = cache.cache.get(f"DB{db}")  ## data_dir
+    for idx, chunk in enumerate(chunk_dict(cache_data, 4), start=1):
+        value_list = []
+        data_dir = {"time": str(datetime.now())}
+        fl_num = idx
+        for key, value in chunk.items():
+            cache_adata = cache_data[key]
+            if cache_adata['Type'] == 'FLOAT':
+                value = round(get_data(cache_adata, data), 3)
+            else:
+                value = get_data(cache_adata, data)
+            # fl_num = int(key.split('_')[0][-1])
+            if fl_num not in data_dir:
+                data_dir[fl_num] = {}
+            value_list.append(value)
+        data_dir[fl_num] = value_list
+        data_list.append(data_dir)
+    for data_dir in data_list:
+        final_dir.update(data_dir)
+    print("final_dir", final_dir)
+    return final_dir
 
 
-def IPadData_send():
-    pass
+redis = redis.StrictRedis(host='localhost', port=6379, db=2, socket_keepalive=-1)
+
+
+def ipad_data_send(ipad_data):
+    try:
+        print(f"当前IPad_Data:{ipad_data},当前时间为：{datetime.now()}")
+        if isinstance(ipad_data, dict):
+            ipad_data_json = json.dumps(ipad_data,ensure_ascii=False)
+        print("ipad_data类型", ipad_data_json)
+        redis.publish("ipad_data", ipad_data_json)
+    except Exception as e:
+        print(f"Error sending data to Redis channel: {e}")
+
+
+def chunk_dict(data, chunk_size=None):
+    keys = list(data.keys())
+    for i in range(0, len(keys), chunk_size):
+        chunk = {key: data[key] for key in keys[i:chunk_size + i]}
+        yield chunk
+
 
 # PLC数据采集任务
 def read_plc_data(plc_ip, dbs, start, lengths, change_idx=None):
@@ -66,29 +96,14 @@ def read_plc_data(plc_ip, dbs, start, lengths, change_idx=None):
         for db, length in zip(dbs, lengths):
             random_data = bytearray(random.randint(0, 100) for _ in range(length))
             # breakpoint()
-            s_soc_hist, s_frequency_hist, s_duration_hist = parse_data(plc_ip, random_data, db)
-            # print(type(s_soc_hist), type(frequency_hist), type(duration_hist))
-        change_idx[int(plc_ip.split('.')[-1]) - 1] = 1
-        try:
-            if np.any(plc_connection_status.connected):
-                lock.acquire()
-                try:
-                    if np.all(plc_connection_status.connected.astype(bool) & change_idx.astype(
-                            bool) == plc_connection_status.connected):
-                        IPadData_send()
-                        logging.info(f"Data sent to channel show_center")
-                        print(f"匹配成功，并发送数据,当前发送时间为{datetime.now()}")
-                        change_idx = np.zeros(9)
-                finally:
-                    lock.release()
-        except Exception as e:
-                print(f"{type(e)}here:{e}")
-            # print(f"DB{db}块获取到数据:{datetime.now()}")
+            IPad_data = parse_data(plc_ip, random_data, db)
+            # IPad_data = json.dumps(IPad_data, ensure_ascii=False).encode('utf-8')
+
+            ipad_data_send(IPad_data)
+            print("成功发送至ipad_data")
     except Exception as e:
         print(f"读取PLC数据错误：{e}")
         return None
-
-
 
 
 # 采集每个PLC数据
@@ -146,7 +161,7 @@ def plc_thread(plc_ip, rack, slot, dbs, starts, lengths):
         end_time = datetime.now()
         # print(f"PLC {plc_ip} 数据采集完成,完成时间为：{end_time}\n", end='')
         # print(f"PLC {plc_ip} 本次循环所用时间：{end_time - Start_time}\n", end='')
-        sleep(0.5)
+        sleep(0.1)
 
 
 # 多线程执行数据采集
@@ -194,5 +209,3 @@ async def data_capture_main():
         await run_data_collection(collect_plcs)
     except KeyboardInterrupt:
         print("采集任务已终止")
-
-# if __name__ == '__main__':
