@@ -72,9 +72,10 @@ def ipad_data_send(ipad_data):
     try:
         print(f"当前IPad_Data:{ipad_data},当前时间为：{datetime.now()}")
         if isinstance(ipad_data, dict):
-            ipad_data_json = json.dumps(ipad_data,ensure_ascii=False)
+            ipad_data_json = json.dumps(ipad_data, ensure_ascii=False)
         print("ipad_data类型", ipad_data_json)
         redis.publish("ipad_data", ipad_data_json)
+        sleep(2)
     except Exception as e:
         print(f"Error sending data to Redis channel: {e}")
 
