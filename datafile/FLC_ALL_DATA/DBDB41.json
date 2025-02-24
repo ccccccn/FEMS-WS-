@@ -1,0 +1,2522 @@
+{
+    "飞轮舱1_MBC_1_状态位1UInt": {
+        "DB": "41",
+        "Start": "2",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_状态位2UInt": {
+        "DB": "41",
+        "Start": "6",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_主要状态位": {
+        "DB": "41",
+        "Start": "8",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "58",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "62",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "66",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "70",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "74",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "86",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "90",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "94",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "98",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "102",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "114",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "118",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "122",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "126",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "130",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "142",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "146",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "150",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "154",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "158",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "170",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "174",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "178",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "182",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "186",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "198",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "202",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "206",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "210",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "214",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "226",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "230",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "234",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "238",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "242",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_高速跌落计数": {
+        "DB": "41",
+        "Start": "254",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_低速跌落计数": {
+        "DB": "41",
+        "Start": "256",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_间歇接触计数": {
+        "DB": "41",
+        "Start": "258",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_高速跌落转速": {
+        "DB": "41",
+        "Start": "260",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_1_低速跌落转速": {
+        "DB": "41",
+        "Start": "264",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_1_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "268",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_1_故障字1_告警": {
+        "DB": "41",
+        "Start": "272",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_振动告警": {
+        "DB": "41",
+        "Start": "274",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_旋转告警": {
+        "DB": "41",
+        "Start": "276",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_温度告警": {
+        "DB": "41",
+        "Start": "278",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_硬件告警": {
+        "DB": "41",
+        "Start": "280",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_故障字2_故障": {
+        "DB": "41",
+        "Start": "282",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_振动故障UInt": {
+        "DB": "41",
+        "Start": "286",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "290",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_机械故障_UInt": {
+        "DB": "41",
+        "Start": "294",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_温度故障_UInt": {
+        "DB": "41",
+        "Start": "298",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "302",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "306",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "310",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_校准故障_UInt": {
+        "DB": "41",
+        "Start": "314",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_1_Y_X1": {
+        "DB": "41",
+        "Start": "324",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_Y_Y1": {
+        "DB": "41",
+        "Start": "328",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_Y_X2": {
+        "DB": "41",
+        "Start": "332",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_Y_Y2": {
+        "DB": "41",
+        "Start": "336",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_Y_Z": {
+        "DB": "41",
+        "Start": "340",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_状态位1UInt": {
+        "DB": "41",
+        "Start": "530",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_状态位2UInt": {
+        "DB": "41",
+        "Start": "534",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_主要状态位": {
+        "DB": "41",
+        "Start": "536",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "586",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "590",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "594",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "598",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "602",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "614",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "618",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "622",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "626",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "630",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "642",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "646",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "650",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "654",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "658",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "670",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "674",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "678",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "682",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "686",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "698",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "702",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "706",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "710",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "714",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "726",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "730",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "734",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "738",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "742",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "754",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "758",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "762",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "766",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "770",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_高速跌落计数": {
+        "DB": "41",
+        "Start": "782",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_低速跌落计数": {
+        "DB": "41",
+        "Start": "784",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_间歇接触计数": {
+        "DB": "41",
+        "Start": "786",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_高速跌落转速": {
+        "DB": "41",
+        "Start": "788",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_2_低速跌落转速": {
+        "DB": "41",
+        "Start": "792",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_2_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "796",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_2_故障字1_告警": {
+        "DB": "41",
+        "Start": "800",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_振动告警": {
+        "DB": "41",
+        "Start": "802",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_旋转告警": {
+        "DB": "41",
+        "Start": "804",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_温度告警": {
+        "DB": "41",
+        "Start": "806",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_硬件告警": {
+        "DB": "41",
+        "Start": "808",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_故障字2_故障": {
+        "DB": "41",
+        "Start": "810",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_振动故障UInt": {
+        "DB": "41",
+        "Start": "814",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "818",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_机械故障_UInt": {
+        "DB": "41",
+        "Start": "822",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_温度故障_UInt": {
+        "DB": "41",
+        "Start": "826",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "830",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "834",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "838",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_校准故障_UInt": {
+        "DB": "41",
+        "Start": "842",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_2_Y_X1": {
+        "DB": "41",
+        "Start": "852",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_Y_Y1": {
+        "DB": "41",
+        "Start": "856",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_Y_X2": {
+        "DB": "41",
+        "Start": "860",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_Y_Y2": {
+        "DB": "41",
+        "Start": "864",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_Y_Z": {
+        "DB": "41",
+        "Start": "868",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_状态位1UInt": {
+        "DB": "41",
+        "Start": "1058",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_状态位2UInt": {
+        "DB": "41",
+        "Start": "1062",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_主要状态位": {
+        "DB": "41",
+        "Start": "1064",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1114",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1118",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1122",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1126",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1130",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1142",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1146",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1150",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1154",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1158",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1170",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1174",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1178",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1182",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1186",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1198",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1202",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1206",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1210",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1214",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1226",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1230",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1234",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1238",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1242",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1254",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1258",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1262",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1266",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1270",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1282",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1286",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1290",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1294",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1298",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_高速跌落计数": {
+        "DB": "41",
+        "Start": "1310",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_低速跌落计数": {
+        "DB": "41",
+        "Start": "1312",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_间歇接触计数": {
+        "DB": "41",
+        "Start": "1314",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_高速跌落转速": {
+        "DB": "41",
+        "Start": "1316",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_3_低速跌落转速": {
+        "DB": "41",
+        "Start": "1320",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_3_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "1324",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_3_故障字1_告警": {
+        "DB": "41",
+        "Start": "1328",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_振动告警": {
+        "DB": "41",
+        "Start": "1330",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_旋转告警": {
+        "DB": "41",
+        "Start": "1332",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_温度告警": {
+        "DB": "41",
+        "Start": "1334",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_硬件告警": {
+        "DB": "41",
+        "Start": "1336",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_故障字2_故障": {
+        "DB": "41",
+        "Start": "1338",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_振动故障UInt": {
+        "DB": "41",
+        "Start": "1342",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "1346",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_机械故障_UInt": {
+        "DB": "41",
+        "Start": "1350",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_温度故障_UInt": {
+        "DB": "41",
+        "Start": "1354",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "1358",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "1362",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "1366",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_校准故障_UInt": {
+        "DB": "41",
+        "Start": "1370",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_3_Y_X1": {
+        "DB": "41",
+        "Start": "1380",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_Y_Y1": {
+        "DB": "41",
+        "Start": "1384",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_Y_X2": {
+        "DB": "41",
+        "Start": "1388",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_Y_Y2": {
+        "DB": "41",
+        "Start": "1392",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_Y_Z": {
+        "DB": "41",
+        "Start": "1396",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_状态位1UInt": {
+        "DB": "41",
+        "Start": "1586",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_状态位2UInt": {
+        "DB": "41",
+        "Start": "1590",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_主要状态位": {
+        "DB": "41",
+        "Start": "1592",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1642",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1646",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1650",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1654",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1658",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1670",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1674",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1678",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1682",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1686",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1698",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1702",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1706",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1710",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1714",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1726",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1730",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1734",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1738",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1742",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1754",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1758",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1762",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1766",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1770",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1782",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1786",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1790",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1794",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1798",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "1810",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "1814",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "1818",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "1822",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "1826",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_高速跌落计数": {
+        "DB": "41",
+        "Start": "1838",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_低速跌落计数": {
+        "DB": "41",
+        "Start": "1840",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_间歇接触计数": {
+        "DB": "41",
+        "Start": "1842",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_高速跌落转速": {
+        "DB": "41",
+        "Start": "1844",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_4_低速跌落转速": {
+        "DB": "41",
+        "Start": "1848",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_4_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "1852",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_4_故障字1_告警": {
+        "DB": "41",
+        "Start": "1856",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_振动告警": {
+        "DB": "41",
+        "Start": "1858",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_旋转告警": {
+        "DB": "41",
+        "Start": "1860",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_温度告警": {
+        "DB": "41",
+        "Start": "1862",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_硬件告警": {
+        "DB": "41",
+        "Start": "1864",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_故障字2_故障": {
+        "DB": "41",
+        "Start": "1866",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_振动故障UInt": {
+        "DB": "41",
+        "Start": "1870",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "1874",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_机械故障_UInt": {
+        "DB": "41",
+        "Start": "1878",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_温度故障_UInt": {
+        "DB": "41",
+        "Start": "1882",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "1886",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "1890",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "1894",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_校准故障_UInt": {
+        "DB": "41",
+        "Start": "1898",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_4_Y_X1": {
+        "DB": "41",
+        "Start": "1908",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_Y_Y1": {
+        "DB": "41",
+        "Start": "1912",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_Y_X2": {
+        "DB": "41",
+        "Start": "1916",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_Y_Y2": {
+        "DB": "41",
+        "Start": "1920",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_Y_Z": {
+        "DB": "41",
+        "Start": "1924",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_状态位1UInt": {
+        "DB": "41",
+        "Start": "2114",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_状态位2UInt": {
+        "DB": "41",
+        "Start": "2118",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_主要状态位": {
+        "DB": "41",
+        "Start": "2120",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2170",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2174",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2178",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2182",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2186",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2198",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2202",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2206",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2210",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2214",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2226",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2230",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2234",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2238",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2242",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2254",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2258",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2262",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2266",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2270",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2282",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2286",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2290",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2294",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2298",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2310",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2314",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2318",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2322",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2326",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2338",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2342",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2346",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2350",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2354",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_高速跌落计数": {
+        "DB": "41",
+        "Start": "2366",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_低速跌落计数": {
+        "DB": "41",
+        "Start": "2368",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_间歇接触计数": {
+        "DB": "41",
+        "Start": "2370",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_高速跌落转速": {
+        "DB": "41",
+        "Start": "2372",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_5_低速跌落转速": {
+        "DB": "41",
+        "Start": "2376",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_5_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "2380",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_5_故障字1_告警": {
+        "DB": "41",
+        "Start": "2384",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_振动告警": {
+        "DB": "41",
+        "Start": "2386",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_旋转告警": {
+        "DB": "41",
+        "Start": "2388",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_温度告警": {
+        "DB": "41",
+        "Start": "2390",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_硬件告警": {
+        "DB": "41",
+        "Start": "2392",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_故障字2_故障": {
+        "DB": "41",
+        "Start": "2394",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_振动故障UInt": {
+        "DB": "41",
+        "Start": "2398",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "2402",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_机械故障_UInt": {
+        "DB": "41",
+        "Start": "2406",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_温度故障_UInt": {
+        "DB": "41",
+        "Start": "2410",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "2414",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "2418",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "2422",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_校准故障_UInt": {
+        "DB": "41",
+        "Start": "2426",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_5_Y_X1": {
+        "DB": "41",
+        "Start": "2436",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_Y_Y1": {
+        "DB": "41",
+        "Start": "2440",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_Y_X2": {
+        "DB": "41",
+        "Start": "2444",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_Y_Y2": {
+        "DB": "41",
+        "Start": "2448",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_Y_Z": {
+        "DB": "41",
+        "Start": "2452",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_状态位1UInt": {
+        "DB": "41",
+        "Start": "2642",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_状态位2UInt": {
+        "DB": "41",
+        "Start": "2646",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_主要状态位": {
+        "DB": "41",
+        "Start": "2648",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2698",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2702",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2706",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2710",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2714",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2726",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2730",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2734",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2738",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2742",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2754",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2758",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2762",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2766",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2770",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2782",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2786",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2790",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2794",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2798",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2810",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2814",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2818",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2822",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2826",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2838",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2842",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2846",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2850",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2854",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "2866",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "2870",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "2874",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "2878",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "2882",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_高速跌落计数": {
+        "DB": "41",
+        "Start": "2894",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_低速跌落计数": {
+        "DB": "41",
+        "Start": "2896",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_间歇接触计数": {
+        "DB": "41",
+        "Start": "2898",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_高速跌落转速": {
+        "DB": "41",
+        "Start": "2900",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_6_低速跌落转速": {
+        "DB": "41",
+        "Start": "2904",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_6_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "2908",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_6_故障字1_告警": {
+        "DB": "41",
+        "Start": "2912",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_振动告警": {
+        "DB": "41",
+        "Start": "2914",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_旋转告警": {
+        "DB": "41",
+        "Start": "2916",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_温度告警": {
+        "DB": "41",
+        "Start": "2918",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_硬件告警": {
+        "DB": "41",
+        "Start": "2920",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_故障字2_故障": {
+        "DB": "41",
+        "Start": "2922",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_振动故障UInt": {
+        "DB": "41",
+        "Start": "2926",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "2930",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_机械故障_UInt": {
+        "DB": "41",
+        "Start": "2934",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_温度故障_UInt": {
+        "DB": "41",
+        "Start": "2938",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "2942",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "2946",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "2950",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_校准故障_UInt": {
+        "DB": "41",
+        "Start": "2954",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_6_Y_X1": {
+        "DB": "41",
+        "Start": "2964",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_Y_Y1": {
+        "DB": "41",
+        "Start": "2968",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_Y_X2": {
+        "DB": "41",
+        "Start": "2972",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_Y_Y2": {
+        "DB": "41",
+        "Start": "2976",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_Y_Z": {
+        "DB": "41",
+        "Start": "2980",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_状态位1UInt": {
+        "DB": "41",
+        "Start": "3170",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_状态位2UInt": {
+        "DB": "41",
+        "Start": "3174",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_主要状态位": {
+        "DB": "41",
+        "Start": "3176",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3226",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3230",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3234",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3238",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3242",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3254",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3258",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3262",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3266",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3270",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3282",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3286",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3290",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3294",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3298",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3310",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3314",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3318",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3322",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3326",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3338",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3342",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3346",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3350",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3354",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3366",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3370",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3374",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3378",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3382",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3394",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3398",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3402",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3406",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3410",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_高速跌落计数": {
+        "DB": "41",
+        "Start": "3422",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_低速跌落计数": {
+        "DB": "41",
+        "Start": "3424",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_间歇接触计数": {
+        "DB": "41",
+        "Start": "3426",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_高速跌落转速": {
+        "DB": "41",
+        "Start": "3428",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_7_低速跌落转速": {
+        "DB": "41",
+        "Start": "3432",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_7_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "3436",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_7_故障字1_告警": {
+        "DB": "41",
+        "Start": "3440",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_振动告警": {
+        "DB": "41",
+        "Start": "3442",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_旋转告警": {
+        "DB": "41",
+        "Start": "3444",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_温度告警": {
+        "DB": "41",
+        "Start": "3446",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_硬件告警": {
+        "DB": "41",
+        "Start": "3448",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_故障字2_故障": {
+        "DB": "41",
+        "Start": "3450",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_振动故障UInt": {
+        "DB": "41",
+        "Start": "3454",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "3458",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_机械故障_UInt": {
+        "DB": "41",
+        "Start": "3462",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_温度故障_UInt": {
+        "DB": "41",
+        "Start": "3466",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "3470",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "3474",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "3478",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_校准故障_UInt": {
+        "DB": "41",
+        "Start": "3482",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_7_Y_X1": {
+        "DB": "41",
+        "Start": "3492",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_Y_Y1": {
+        "DB": "41",
+        "Start": "3496",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_Y_X2": {
+        "DB": "41",
+        "Start": "3500",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_Y_Y2": {
+        "DB": "41",
+        "Start": "3504",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_Y_Z": {
+        "DB": "41",
+        "Start": "3508",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_状态位1UInt": {
+        "DB": "41",
+        "Start": "3698",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_状态位2UInt": {
+        "DB": "41",
+        "Start": "3702",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_主要状态位": {
+        "DB": "41",
+        "Start": "3704",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_1_积分电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3754",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_1_积分电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3758",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_1_积分电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3762",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_1_积分电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3766",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_1_积分电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3770",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_2_同步震动半径x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3782",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_2_同步震动半径x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3786",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_2_同步震动半径x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3790",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_2_同步震动半径x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3794",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_2_同步震动半径x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3798",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_3_同步电流x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3810",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_3_同步电流x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3814",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_3_同步电流x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3818",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_3_同步电流x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3822",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_3_同步电流x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3826",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_4_同步震动半径_对消x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3838",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_4_同步震动半径_对消x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3842",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_4_同步震动半径_对消x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3846",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_4_同步震动半径_对消x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3850",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_4_同步震动半径_对消x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3854",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3866",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3870",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3874",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3878",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3882",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步电流_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3894",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步电流_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3898",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步电流_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3902",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步电流_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3906",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步电流_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3910",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_对消_相位x1y1x2y2z_1": {
+        "DB": "41",
+        "Start": "3922",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_对消_相位x1y1x2y2z_2": {
+        "DB": "41",
+        "Start": "3926",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_对消_相位x1y1x2y2z_3": {
+        "DB": "41",
+        "Start": "3930",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_对消_相位x1y1x2y2z_4": {
+        "DB": "41",
+        "Start": "3934",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_同步震动半径_对消_相位x1y1x2y2z_5": {
+        "DB": "41",
+        "Start": "3938",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_高速跌落计数": {
+        "DB": "41",
+        "Start": "3950",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_低速跌落计数": {
+        "DB": "41",
+        "Start": "3952",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_间歇接触计数": {
+        "DB": "41",
+        "Start": "3954",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_高速跌落转速": {
+        "DB": "41",
+        "Start": "3956",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_8_低速跌落转速": {
+        "DB": "41",
+        "Start": "3960",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_8_间歇接触时间Sec": {
+        "DB": "41",
+        "Start": "3964",
+        "Type": "LONG"
+    },
+    "飞轮舱1_MBC_8_故障字1_告警": {
+        "DB": "41",
+        "Start": "3968",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_振动告警": {
+        "DB": "41",
+        "Start": "3970",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_旋转告警": {
+        "DB": "41",
+        "Start": "3972",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_温度告警": {
+        "DB": "41",
+        "Start": "3974",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_硬件告警": {
+        "DB": "41",
+        "Start": "3976",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_故障字2_故障": {
+        "DB": "41",
+        "Start": "3978",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_振动故障UInt": {
+        "DB": "41",
+        "Start": "3982",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_旋转故障_UInt": {
+        "DB": "41",
+        "Start": "3986",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_机械故障_UInt": {
+        "DB": "41",
+        "Start": "3990",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_温度故障_UInt": {
+        "DB": "41",
+        "Start": "3994",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_放大器故障_UInt": {
+        "DB": "41",
+        "Start": "3998",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_硬件故障_UInt": {
+        "DB": "41",
+        "Start": "4002",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_DSP配置故障_UInt": {
+        "DB": "41",
+        "Start": "4006",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_校准故障_UInt": {
+        "DB": "41",
+        "Start": "4010",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_MBC_8_Y_X1": {
+        "DB": "41",
+        "Start": "4020",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_Y_Y1": {
+        "DB": "41",
+        "Start": "4024",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_Y_X2": {
+        "DB": "41",
+        "Start": "4028",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_Y_Y2": {
+        "DB": "41",
+        "Start": "4032",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_Y_Z": {
+        "DB": "41",
+        "Start": "4036",
+        "Type": "FLOAT"
+    }
+}

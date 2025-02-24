@@ -1,0 +1,1042 @@
+{
+    "飞轮舱1_IPM_2_1_通信心跳信号": {
+        "DB": "12",
+        "Start": "0.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_输出电流": {
+        "DB": "12",
+        "Start": "2.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_1_电机转速": {
+        "DB": "12",
+        "Start": "6.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_IPM3_motor_speed": {
+        "DB": "12",
+        "Start": "6.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_1_输出功率": {
+        "DB": "12",
+        "Start": "8.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_1_输出频率": {
+        "DB": "12",
+        "Start": "10.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_1_DC_V": {
+        "DB": "12",
+        "Start": "12.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_1_IGBT_TE": {
+        "DB": "12",
+        "Start": "14.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_1_累计运行时间": {
+        "DB": "12",
+        "Start": "18.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_1_单次运行时间": {
+        "DB": "12",
+        "Start": "22.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_1_功率损耗": {
+        "DB": "12",
+        "Start": "26.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_IPM_2_1_Event_W0H": {
+        "DB": "12",
+        "Start": "30.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_Event_W0L": {
+        "DB": "12",
+        "Start": "32.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_Event_W1H": {
+        "DB": "12",
+        "Start": "34.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_Event_W1L": {
+        "DB": "12",
+        "Start": "36.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_WARNING_W0H": {
+        "DB": "12",
+        "Start": "38.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_WARNING_W0L": {
+        "DB": "12",
+        "Start": "40.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_WARNING_W1H": {
+        "DB": "12",
+        "Start": "42.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_WARNING_W1L": {
+        "DB": "12",
+        "Start": "44.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_WARNING_W2H": {
+        "DB": "12",
+        "Start": "46.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_WARNING_W2L": {
+        "DB": "12",
+        "Start": "48.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W0H": {
+        "DB": "12",
+        "Start": "50.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W0L": {
+        "DB": "12",
+        "Start": "52.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W1H": {
+        "DB": "12",
+        "Start": "54.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W1L": {
+        "DB": "12",
+        "Start": "56.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W2H": {
+        "DB": "12",
+        "Start": "58.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W2L": {
+        "DB": "12",
+        "Start": "60.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W3H": {
+        "DB": "12",
+        "Start": "62.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W3L": {
+        "DB": "12",
+        "Start": "64.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W4H": {
+        "DB": "12",
+        "Start": "66.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W4L": {
+        "DB": "12",
+        "Start": "68.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W5H": {
+        "DB": "12",
+        "Start": "70.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W5L": {
+        "DB": "12",
+        "Start": "72.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W6H": {
+        "DB": "12",
+        "Start": "74.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_FA_W6L": {
+        "DB": "12",
+        "Start": "76.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_SOC": {
+        "DB": "12",
+        "Start": "78.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_1_就绪": {
+        "DB": "12",
+        "Start": "82.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_报警": {
+        "DB": "12",
+        "Start": "82.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_故障": {
+        "DB": "12",
+        "Start": "82.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_运行": {
+        "DB": "12",
+        "Start": "82.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_飞轮速度保持模式": {
+        "DB": "12",
+        "Start": "83.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_飞轮就绪": {
+        "DB": "12",
+        "Start": "84.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_飞轮放电": {
+        "DB": "12",
+        "Start": "84.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_飞轮充电": {
+        "DB": "12",
+        "Start": "84.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_飞轮启动": {
+        "DB": "12",
+        "Start": "84.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_功率闭环控制模式": {
+        "DB": "12",
+        "Start": "86.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_充放电速度保持模式速度值": {
+        "DB": "12",
+        "Start": "88.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_1_通讯状态": {
+        "DB": "12",
+        "Start": "90.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_启动": {
+        "DB": "12",
+        "Start": "92.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_停止": {
+        "DB": "12",
+        "Start": "92.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_急停": {
+        "DB": "12",
+        "Start": "92.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_故障复位": {
+        "DB": "12",
+        "Start": "92.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_1_SET_Module": {
+        "DB": "12",
+        "Start": "94.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_RPM_SET": {
+        "DB": "12",
+        "Start": "96.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_POWER_SET": {
+        "DB": "12",
+        "Start": "98.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_1_充放电速度保持模式": {
+        "DB": "12",
+        "Start": "100.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_误帧率_分钟": {
+        "DB": "12",
+        "Start": "102.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_1_SPARE10": {
+        "DB": "12",
+        "Start": "104.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_通信心跳信号": {
+        "DB": "12",
+        "Start": "106.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_输出电流": {
+        "DB": "12",
+        "Start": "108.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_2_电机转速": {
+        "DB": "12",
+        "Start": "112.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_IPM4_motor_speed": {
+        "DB": "12",
+        "Start": "112.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_2_输出功率": {
+        "DB": "12",
+        "Start": "114.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_2_输出频率": {
+        "DB": "12",
+        "Start": "116.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_2_DC_V": {
+        "DB": "12",
+        "Start": "118.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_2_IGBT_TE": {
+        "DB": "12",
+        "Start": "120.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_2_累计运行时间": {
+        "DB": "12",
+        "Start": "124.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_2_单次运行时间": {
+        "DB": "12",
+        "Start": "128.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_2_功率损耗": {
+        "DB": "12",
+        "Start": "132.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_IPM_2_2_Event_W0H": {
+        "DB": "12",
+        "Start": "136.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_Event_W0L": {
+        "DB": "12",
+        "Start": "138.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_Event_W1H": {
+        "DB": "12",
+        "Start": "140.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_Event_W1L": {
+        "DB": "12",
+        "Start": "142.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_WARNING_W0H": {
+        "DB": "12",
+        "Start": "144.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_WARNING_W0L": {
+        "DB": "12",
+        "Start": "146.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_WARNING_W1H": {
+        "DB": "12",
+        "Start": "148.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_WARNING_W1L": {
+        "DB": "12",
+        "Start": "150.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_WARNING_W2H": {
+        "DB": "12",
+        "Start": "152.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_WARNING_W2L": {
+        "DB": "12",
+        "Start": "154.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W0H": {
+        "DB": "12",
+        "Start": "156.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W0L": {
+        "DB": "12",
+        "Start": "158.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W1H": {
+        "DB": "12",
+        "Start": "160.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W1L": {
+        "DB": "12",
+        "Start": "162.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W2H": {
+        "DB": "12",
+        "Start": "164.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W2L": {
+        "DB": "12",
+        "Start": "166.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W3H": {
+        "DB": "12",
+        "Start": "168.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W3L": {
+        "DB": "12",
+        "Start": "170.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W4H": {
+        "DB": "12",
+        "Start": "172.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W4L": {
+        "DB": "12",
+        "Start": "174.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W5H": {
+        "DB": "12",
+        "Start": "176.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W5L": {
+        "DB": "12",
+        "Start": "178.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W6H": {
+        "DB": "12",
+        "Start": "180.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_FA_W6L": {
+        "DB": "12",
+        "Start": "182.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_SOC": {
+        "DB": "12",
+        "Start": "184.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_IPM_2_2_就绪": {
+        "DB": "12",
+        "Start": "188.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_报警": {
+        "DB": "12",
+        "Start": "188.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_故障": {
+        "DB": "12",
+        "Start": "188.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_运行": {
+        "DB": "12",
+        "Start": "188.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_飞轮速度保持模式": {
+        "DB": "12",
+        "Start": "189.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_飞轮就绪": {
+        "DB": "12",
+        "Start": "190.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_飞轮放电": {
+        "DB": "12",
+        "Start": "190.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_飞轮充电": {
+        "DB": "12",
+        "Start": "190.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_飞轮启动": {
+        "DB": "12",
+        "Start": "190.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_功率闭环控制模式": {
+        "DB": "12",
+        "Start": "192.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_充放电速度保持模式速度值": {
+        "DB": "12",
+        "Start": "194.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_2_通讯状态": {
+        "DB": "12",
+        "Start": "196.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_启动": {
+        "DB": "12",
+        "Start": "198.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_停止": {
+        "DB": "12",
+        "Start": "198.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_急停": {
+        "DB": "12",
+        "Start": "198.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_故障复位": {
+        "DB": "12",
+        "Start": "198.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_IPM_2_2_SET_Module": {
+        "DB": "12",
+        "Start": "200.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_RPM_SET": {
+        "DB": "12",
+        "Start": "202.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_POWER_SET": {
+        "DB": "12",
+        "Start": "204.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_IPM_2_2_充放电速度保持模式": {
+        "DB": "12",
+        "Start": "206.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_误帧率_分钟": {
+        "DB": "12",
+        "Start": "208.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_IPM_2_2_SPARE10": {
+        "DB": "12",
+        "Start": "210.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_3_磁悬浮控制器状态": {
+        "DB": "12",
+        "Start": "212.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_磁悬浮控制器转速": {
+        "DB": "12",
+        "Start": "212.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_转子超速": {
+        "DB": "12",
+        "Start": "212.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_循环次数超限": {
+        "DB": "12",
+        "Start": "212.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_人工制动": {
+        "DB": "12",
+        "Start": "212.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_电流累计": {
+        "DB": "12",
+        "Start": "214.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_冗余电源报警": {
+        "DB": "12",
+        "Start": "214.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_抽真空": {
+        "DB": "12",
+        "Start": "216.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_柜体环境过温": {
+        "DB": "12",
+        "Start": "216.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_柜内过温": {
+        "DB": "12",
+        "Start": "216.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_风扇1报警": {
+        "DB": "12",
+        "Start": "218.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_风扇2报警": {
+        "DB": "12",
+        "Start": "218.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_风扇3报警": {
+        "DB": "12",
+        "Start": "218.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_风扇4报警": {
+        "DB": "12",
+        "Start": "218.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_真空度": {
+        "DB": "12",
+        "Start": "218.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_柜体环境过温": {
+        "DB": "12",
+        "Start": "218.5",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_循环次数": {
+        "DB": "12",
+        "Start": "218.6",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_风扇5报警": {
+        "DB": "12",
+        "Start": "218.7",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_风扇6报警": {
+        "DB": "12",
+        "Start": "219.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_柜内过温": {
+        "DB": "12",
+        "Start": "219.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_临界功率报警": {
+        "DB": "12",
+        "Start": "219.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_风扇故障": {
+        "DB": "12",
+        "Start": "219.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_WARNING_磁悬浮控制器告警": {
+        "DB": "12",
+        "Start": "219.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_控制室_TE": {
+        "DB": "12",
+        "Start": "220.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_3_飞轮室_TE": {
+        "DB": "12",
+        "Start": "224.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_3_飞轮_TE": {
+        "DB": "12",
+        "Start": "228.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_3_真空度": {
+        "DB": "12",
+        "Start": "232.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_3_飞轮转速": {
+        "DB": "12",
+        "Start": "236.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_FW_3_飞轮循环计数": {
+        "DB": "12",
+        "Start": "238.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_FW_3_冗余电源": {
+        "DB": "12",
+        "Start": "242.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_3_就绪": {
+        "DB": "12",
+        "Start": "246.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_放电": {
+        "DB": "12",
+        "Start": "246.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_充电": {
+        "DB": "12",
+        "Start": "246.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_故障": {
+        "DB": "12",
+        "Start": "246.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_告警": {
+        "DB": "12",
+        "Start": "246.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_启动": {
+        "DB": "12",
+        "Start": "246.5",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_停机": {
+        "DB": "12",
+        "Start": "246.6",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_飞轮编号": {
+        "DB": "12",
+        "Start": "248.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_FW_3_MBC编号": {
+        "DB": "12",
+        "Start": "252.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_FW_3_风扇启动标志": {
+        "DB": "12",
+        "Start": "256.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_3_风扇继电器输出标志": {
+        "DB": "12",
+        "Start": "258.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_3_飞轮报警继电器输出2标志": {
+        "DB": "12",
+        "Start": "260.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_3_飞轮故障继电器输出标志": {
+        "DB": "12",
+        "Start": "262.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_3_通讯状态": {
+        "DB": "12",
+        "Start": "264.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_3_误帧率_分钟": {
+        "DB": "12",
+        "Start": "266.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_3_FW_Speed_Display": {
+        "DB": "12",
+        "Start": "268.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_4_磁悬浮控制器状态": {
+        "DB": "12",
+        "Start": "284.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_磁悬浮控制器转速": {
+        "DB": "12",
+        "Start": "284.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_转子超速": {
+        "DB": "12",
+        "Start": "284.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_循环次数超限": {
+        "DB": "12",
+        "Start": "284.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_人工制动": {
+        "DB": "12",
+        "Start": "284.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_电流累计": {
+        "DB": "12",
+        "Start": "286.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_冗余电源报警": {
+        "DB": "12",
+        "Start": "286.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_抽真空": {
+        "DB": "12",
+        "Start": "288.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_柜体环境过温": {
+        "DB": "12",
+        "Start": "288.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_柜内过温": {
+        "DB": "12",
+        "Start": "288.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_风扇1报警": {
+        "DB": "12",
+        "Start": "290.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_风扇2报警": {
+        "DB": "12",
+        "Start": "290.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_风扇3报警": {
+        "DB": "12",
+        "Start": "290.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_风扇4报警": {
+        "DB": "12",
+        "Start": "290.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_真空度": {
+        "DB": "12",
+        "Start": "290.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_柜体环境过温": {
+        "DB": "12",
+        "Start": "290.5",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_循环次数": {
+        "DB": "12",
+        "Start": "290.6",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_风扇5报警": {
+        "DB": "12",
+        "Start": "290.7",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_风扇6报警": {
+        "DB": "12",
+        "Start": "291.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_柜内过温": {
+        "DB": "12",
+        "Start": "291.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_临界功率报警": {
+        "DB": "12",
+        "Start": "291.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_风扇故障": {
+        "DB": "12",
+        "Start": "291.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_WARNING_磁悬浮控制器告警": {
+        "DB": "12",
+        "Start": "291.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_控制室_TE": {
+        "DB": "12",
+        "Start": "292.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_4_飞轮室_TE": {
+        "DB": "12",
+        "Start": "296.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_4_飞轮_TE": {
+        "DB": "12",
+        "Start": "300.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_4_真空度": {
+        "DB": "12",
+        "Start": "304.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_4_飞轮转速": {
+        "DB": "12",
+        "Start": "308.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_FW_4_飞轮循环计数": {
+        "DB": "12",
+        "Start": "310.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_FW_4_冗余电源": {
+        "DB": "12",
+        "Start": "314.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_FW_4_就绪": {
+        "DB": "12",
+        "Start": "318.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_放电": {
+        "DB": "12",
+        "Start": "318.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_充电": {
+        "DB": "12",
+        "Start": "318.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_故障": {
+        "DB": "12",
+        "Start": "318.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_告警": {
+        "DB": "12",
+        "Start": "318.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_启动": {
+        "DB": "12",
+        "Start": "318.5",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_停机": {
+        "DB": "12",
+        "Start": "318.6",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_飞轮编号": {
+        "DB": "12",
+        "Start": "320.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_FW_4_MBC编号": {
+        "DB": "12",
+        "Start": "324.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_FW_4_风扇启动标志": {
+        "DB": "12",
+        "Start": "328.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_4_风扇继电器输出标志": {
+        "DB": "12",
+        "Start": "330.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_4_飞轮报警继电器输出2标志": {
+        "DB": "12",
+        "Start": "332.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_4_飞轮故障继电器输出标志": {
+        "DB": "12",
+        "Start": "334.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_4_通讯状态": {
+        "DB": "12",
+        "Start": "336.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_4_误帧率_分钟": {
+        "DB": "12",
+        "Start": "338.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_4_FW_Speed_Display": {
+        "DB": "12",
+        "Start": "340.0",
+        "Type": "FLOAT"
+    }
+}

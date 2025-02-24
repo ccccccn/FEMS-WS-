@@ -1,0 +1,4322 @@
+{
+    "飞轮舱1_MBC_1_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "32.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "36.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "40.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "44.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "48.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "60.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "64.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "68.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "72.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "76.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "88.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "92.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "96.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "100.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "104.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "116.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "120.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "124.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "128.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "132.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "144.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "148.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "152.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "156.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "160.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "172.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "176.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "180.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "184.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "188.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "200.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "204.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "208.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "212.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "216.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "228.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "232.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "236.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "240.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "244.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "256.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "260.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "264.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "268.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "272.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "284.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "288.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "292.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "296.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "300.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "312.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "316.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "320.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "324.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "328.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "340.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "344.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "348.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "352.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "356.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "368.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "372.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "376.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "380.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "384.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "396.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "400.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "404.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "408.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "412.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "424.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "428.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "432.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "436.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "440.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "452.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "456.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "460.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "464.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "468.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "480.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "484.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "488.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "492.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "496.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "508.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "512.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "516.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "520.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "524.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "536.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "540.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "544.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "548.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "552.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "564.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "568.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "572.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "576.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "580.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_1_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "592.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_1_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "592.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_1_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "592.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_1_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "592.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_1_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "594.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_1_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "594.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_1_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "594.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_1_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "594.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "596.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "600.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "604.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "608.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "612.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "624.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "628.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "632.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "636.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "640.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "652.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "656.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "660.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "664.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "668.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "680.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "684.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "688.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "692.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "696.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "708.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "712.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "716.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "720.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "724.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "736.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "740.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "744.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "748.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "752.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "764.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "768.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "772.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "776.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "780.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "792.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "796.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "800.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "804.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "808.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "820.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "824.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "828.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "832.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "836.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "848.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "852.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "856.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "860.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "864.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "876.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "880.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "884.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "888.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "892.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "904.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "908.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "912.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "916.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "920.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "932.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "936.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "940.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "944.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "948.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "960.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "964.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "968.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "972.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "976.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "988.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "992.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "996.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "1000.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "1004.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "1016.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "1020.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "1024.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "1028.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "1032.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "1044.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "1048.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "1052.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "1056.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "1060.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "1072.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "1076.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "1080.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "1084.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "1088.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "1100.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "1104.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "1108.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "1112.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "1116.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "1128.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "1132.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "1136.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "1140.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "1144.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_2_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "1156.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "1156.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "1156.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "1156.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "1158.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "1158.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "1158.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_2_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "1158.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "1160.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "1164.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "1168.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "1172.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "1176.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "1188.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "1192.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "1196.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "1200.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "1204.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "1216.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "1220.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "1224.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "1228.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "1232.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "1244.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "1248.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "1252.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "1256.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "1260.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "1272.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "1276.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "1280.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "1284.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "1288.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "1300.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "1304.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "1308.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "1312.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "1316.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "1328.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "1332.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "1336.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "1340.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "1344.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "1356.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "1360.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "1364.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "1368.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "1372.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "1384.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "1388.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "1392.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "1396.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "1400.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "1412.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "1416.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "1420.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "1424.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "1428.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "1440.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "1444.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "1448.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "1452.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "1456.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "1468.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "1472.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "1476.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "1480.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "1484.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "1496.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "1500.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "1504.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "1508.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "1512.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "1524.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "1528.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "1532.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "1536.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "1540.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "1552.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "1556.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "1560.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "1564.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "1568.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "1580.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "1584.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "1588.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "1592.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "1596.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "1608.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "1612.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "1616.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "1620.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "1624.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "1636.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "1640.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "1644.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "1648.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "1652.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "1664.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "1668.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "1672.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "1676.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "1680.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "1692.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "1696.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "1700.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "1704.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "1708.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_3_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "1720.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "1720.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "1720.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "1720.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "1722.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "1722.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "1722.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_3_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "1722.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "1724.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "1728.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "1732.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "1736.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "1740.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "1752.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "1756.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "1760.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "1764.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "1768.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "1780.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "1784.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "1788.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "1792.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "1796.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "1808.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "1812.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "1816.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "1820.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "1824.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "1836.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "1840.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "1844.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "1848.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "1852.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "1864.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "1868.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "1872.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "1876.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "1880.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "1892.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "1896.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "1900.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "1904.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "1908.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "1920.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "1924.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "1928.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "1932.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "1936.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "1948.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "1952.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "1956.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "1960.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "1964.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "1976.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "1980.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "1984.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "1988.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "1992.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "2004.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2008.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "2012.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "2016.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "2020.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "2032.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "2036.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "2040.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "2044.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "2048.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "2060.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "2064.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "2068.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "2072.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "2076.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "2088.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "2092.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "2096.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "2100.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "2104.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "2116.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "2120.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "2124.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "2128.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "2132.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "2144.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2148.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "2152.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "2156.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "2160.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "2172.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "2176.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "2180.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "2184.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "2188.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "2200.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "2204.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "2208.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "2212.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "2216.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "2228.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "2232.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "2236.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "2240.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "2244.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "2256.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "2260.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "2264.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "2268.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "2272.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_4_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "2284.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "2284.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "2284.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "2284.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "2286.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "2286.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "2286.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_4_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "2286.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "2288.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2292.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "2296.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "2300.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "2304.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "2316.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "2320.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "2324.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "2328.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "2332.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "2344.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "2348.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "2352.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "2356.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "2360.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "2372.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "2376.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "2380.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "2384.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "2388.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "2400.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "2404.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "2408.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "2412.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "2416.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "2428.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2432.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "2436.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "2440.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "2444.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "2456.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "2460.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "2464.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "2468.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "2472.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "2484.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "2488.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "2492.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "2496.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "2500.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "2512.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "2516.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "2520.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "2524.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "2528.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "2540.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "2544.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "2548.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "2552.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "2556.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "2568.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2572.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "2576.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "2580.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "2584.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "2596.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "2600.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "2604.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "2608.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "2612.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "2624.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "2628.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "2632.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "2636.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "2640.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "2652.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "2656.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "2660.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "2664.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "2668.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "2680.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "2684.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "2688.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "2692.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "2696.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "2708.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2712.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "2716.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "2720.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "2724.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "2736.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "2740.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "2744.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "2748.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "2752.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "2764.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "2768.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "2772.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "2776.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "2780.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "2792.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "2796.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "2800.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "2804.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "2808.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "2820.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "2824.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "2828.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "2832.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "2836.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_5_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "2848.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "2848.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "2848.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "2848.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "2850.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "2850.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "2850.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_5_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "2850.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "2852.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2856.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "2860.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "2864.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "2868.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "2880.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "2884.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "2888.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "2892.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "2896.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "2908.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "2912.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "2916.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "2920.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "2924.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "2936.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "2940.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "2944.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "2948.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "2952.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "2964.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "2968.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "2972.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "2976.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "2980.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "2992.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "2996.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "3000.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3004.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "3008.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "3020.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "3024.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "3028.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "3032.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "3036.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "3048.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "3052.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "3056.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "3060.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "3064.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "3076.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "3080.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "3084.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "3088.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "3092.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "3104.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "3108.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "3112.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "3116.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "3120.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "3132.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "3136.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "3140.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3144.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "3148.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "3160.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "3164.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "3168.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "3172.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "3176.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "3188.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "3192.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "3196.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "3200.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "3204.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "3216.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "3220.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "3224.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "3228.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "3232.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "3244.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "3248.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "3252.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "3256.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "3260.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "3272.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "3276.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "3280.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3284.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "3288.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "3300.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "3304.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "3308.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "3312.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "3316.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "3328.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "3332.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "3336.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "3340.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "3344.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "3356.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "3360.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "3364.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "3368.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "3372.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "3384.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "3388.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "3392.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "3396.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "3400.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_6_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "3412.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "3412.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "3412.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "3412.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "3414.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "3414.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "3414.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_6_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "3414.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "3416.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "3420.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "3424.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3428.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "3432.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "3444.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "3448.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "3452.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "3456.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "3460.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "3472.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "3476.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "3480.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "3484.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "3488.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "3500.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "3504.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "3508.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "3512.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "3516.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "3528.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "3532.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "3536.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "3540.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "3544.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "3556.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "3560.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "3564.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3568.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "3572.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "3584.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "3588.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "3592.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "3596.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "3600.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "3612.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "3616.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "3620.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "3624.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "3628.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "3640.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "3644.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "3648.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "3652.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "3656.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "3668.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "3672.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "3676.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "3680.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "3684.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "3696.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "3700.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "3704.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3708.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "3712.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "3724.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "3728.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "3732.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "3736.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "3740.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "3752.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "3756.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "3760.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "3764.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "3768.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "3780.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "3784.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "3788.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "3792.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "3796.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "3808.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "3812.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "3816.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "3820.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "3824.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "3836.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "3840.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "3844.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3848.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "3852.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "3864.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "3868.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "3872.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "3876.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "3880.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "3892.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "3896.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "3900.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "3904.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "3908.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "3920.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "3924.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "3928.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "3932.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "3936.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "3948.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "3952.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "3956.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "3960.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "3964.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_7_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "3976.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "3976.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "3976.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "3976.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "3978.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "3978.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "3978.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_7_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "3978.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_RECORD_积分电流_X1": {
+        "DB": "42",
+        "Start": "3980.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_积分电流_Y1": {
+        "DB": "42",
+        "Start": "3984.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_积分电流_X2": {
+        "DB": "42",
+        "Start": "3988.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_积分电流_Y2": {
+        "DB": "42",
+        "Start": "3992.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_积分电流_Z": {
+        "DB": "42",
+        "Start": "3996.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_震动半径_X1": {
+        "DB": "42",
+        "Start": "4008.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_震动半径_Y1": {
+        "DB": "42",
+        "Start": "4012.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_震动半径_X2": {
+        "DB": "42",
+        "Start": "4016.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_震动半径_Y2": {
+        "DB": "42",
+        "Start": "4020.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_震动半径_Z": {
+        "DB": "42",
+        "Start": "4024.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_同步电流_X1": {
+        "DB": "42",
+        "Start": "4036.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_同步电流_Y1": {
+        "DB": "42",
+        "Start": "4040.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_同步电流_X2": {
+        "DB": "42",
+        "Start": "4044.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_同步电流_Y2": {
+        "DB": "42",
+        "Start": "4048.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_同步电流_Z": {
+        "DB": "42",
+        "Start": "4052.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_对消_X1": {
+        "DB": "42",
+        "Start": "4064.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_对消_Y1": {
+        "DB": "42",
+        "Start": "4068.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_对消_X2": {
+        "DB": "42",
+        "Start": "4072.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_对消_Y2": {
+        "DB": "42",
+        "Start": "4076.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_对消_Z": {
+        "DB": "42",
+        "Start": "4080.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_相位_X1": {
+        "DB": "42",
+        "Start": "4092.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_相位_Y1": {
+        "DB": "42",
+        "Start": "4096.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_相位_X2": {
+        "DB": "42",
+        "Start": "4100.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_相位_Y2": {
+        "DB": "42",
+        "Start": "4104.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_相位_Z": {
+        "DB": "42",
+        "Start": "4108.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_积分电流_X1": {
+        "DB": "42",
+        "Start": "4120.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_积分电流_Y1": {
+        "DB": "42",
+        "Start": "4124.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_积分电流_X2": {
+        "DB": "42",
+        "Start": "4128.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_积分电流_Y2": {
+        "DB": "42",
+        "Start": "4132.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_积分电流_Z": {
+        "DB": "42",
+        "Start": "4136.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_震动半径_X1": {
+        "DB": "42",
+        "Start": "4148.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_震动半径_Y1": {
+        "DB": "42",
+        "Start": "4152.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_震动半径_X2": {
+        "DB": "42",
+        "Start": "4156.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_震动半径_Y2": {
+        "DB": "42",
+        "Start": "4160.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_震动半径_Z": {
+        "DB": "42",
+        "Start": "4164.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_同步电流_X1": {
+        "DB": "42",
+        "Start": "4176.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_同步电流_Y1": {
+        "DB": "42",
+        "Start": "4180.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_同步电流_X2": {
+        "DB": "42",
+        "Start": "4184.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_同步电流_Y2": {
+        "DB": "42",
+        "Start": "4188.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_同步电流_Z": {
+        "DB": "42",
+        "Start": "4192.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_对消_X1": {
+        "DB": "42",
+        "Start": "4204.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_对消_Y1": {
+        "DB": "42",
+        "Start": "4208.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_对消_X2": {
+        "DB": "42",
+        "Start": "4212.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_对消_Y2": {
+        "DB": "42",
+        "Start": "4216.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_对消_Z": {
+        "DB": "42",
+        "Start": "4220.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_相位_X1": {
+        "DB": "42",
+        "Start": "4232.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_相位_Y1": {
+        "DB": "42",
+        "Start": "4236.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_相位_X2": {
+        "DB": "42",
+        "Start": "4240.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_相位_Y2": {
+        "DB": "42",
+        "Start": "4244.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Final_相位_Z": {
+        "DB": "42",
+        "Start": "4248.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_积分电流_X1": {
+        "DB": "42",
+        "Start": "4260.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_积分电流_Y1": {
+        "DB": "42",
+        "Start": "4264.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_积分电流_X2": {
+        "DB": "42",
+        "Start": "4268.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_积分电流_Y2": {
+        "DB": "42",
+        "Start": "4272.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_积分电流_Z": {
+        "DB": "42",
+        "Start": "4276.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_震动半径_X1": {
+        "DB": "42",
+        "Start": "4288.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_震动半径_Y1": {
+        "DB": "42",
+        "Start": "4292.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_震动半径_X2": {
+        "DB": "42",
+        "Start": "4296.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_震动半径_Y2": {
+        "DB": "42",
+        "Start": "4300.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_震动半径_Z": {
+        "DB": "42",
+        "Start": "4304.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_同步电流_X1": {
+        "DB": "42",
+        "Start": "4316.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_同步电流_Y1": {
+        "DB": "42",
+        "Start": "4320.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_同步电流_X2": {
+        "DB": "42",
+        "Start": "4324.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_同步电流_Y2": {
+        "DB": "42",
+        "Start": "4328.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_同步电流_Z": {
+        "DB": "42",
+        "Start": "4332.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_对消_X1": {
+        "DB": "42",
+        "Start": "4344.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_对消_Y1": {
+        "DB": "42",
+        "Start": "4348.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_对消_X2": {
+        "DB": "42",
+        "Start": "4352.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_对消_Y2": {
+        "DB": "42",
+        "Start": "4356.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_对消_Z": {
+        "DB": "42",
+        "Start": "4360.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_相位_X1": {
+        "DB": "42",
+        "Start": "4372.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_相位_Y1": {
+        "DB": "42",
+        "Start": "4376.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_相位_X2": {
+        "DB": "42",
+        "Start": "4380.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_相位_Y2": {
+        "DB": "42",
+        "Start": "4384.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Container_相位_Z": {
+        "DB": "42",
+        "Start": "4388.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_积分电流_X1": {
+        "DB": "42",
+        "Start": "4400.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_积分电流_Y1": {
+        "DB": "42",
+        "Start": "4404.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_积分电流_X2": {
+        "DB": "42",
+        "Start": "4408.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_积分电流_Y2": {
+        "DB": "42",
+        "Start": "4412.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_积分电流_Z": {
+        "DB": "42",
+        "Start": "4416.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_震动半径_X1": {
+        "DB": "42",
+        "Start": "4428.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_震动半径_Y1": {
+        "DB": "42",
+        "Start": "4432.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_震动半径_X2": {
+        "DB": "42",
+        "Start": "4436.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_震动半径_Y2": {
+        "DB": "42",
+        "Start": "4440.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_震动半径_Z": {
+        "DB": "42",
+        "Start": "4444.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_同步电流_X1": {
+        "DB": "42",
+        "Start": "4456.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_同步电流_Y1": {
+        "DB": "42",
+        "Start": "4460.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_同步电流_X2": {
+        "DB": "42",
+        "Start": "4464.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_同步电流_Y2": {
+        "DB": "42",
+        "Start": "4468.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_同步电流_Z": {
+        "DB": "42",
+        "Start": "4472.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_对消_X1": {
+        "DB": "42",
+        "Start": "4484.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_对消_Y1": {
+        "DB": "42",
+        "Start": "4488.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_对消_X2": {
+        "DB": "42",
+        "Start": "4492.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_对消_Y2": {
+        "DB": "42",
+        "Start": "4496.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_对消_Z": {
+        "DB": "42",
+        "Start": "4500.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_相位_X1": {
+        "DB": "42",
+        "Start": "4512.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_相位_Y1": {
+        "DB": "42",
+        "Start": "4516.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_相位_X2": {
+        "DB": "42",
+        "Start": "4520.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_相位_Y2": {
+        "DB": "42",
+        "Start": "4524.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_RECORD_Locale_相位_Z": {
+        "DB": "42",
+        "Start": "4528.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_MBC_8_MAX_RE_MAX": {
+        "DB": "42",
+        "Start": "4540.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_MAX_RE_Final": {
+        "DB": "42",
+        "Start": "4540.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_MAX_RE_Container": {
+        "DB": "42",
+        "Start": "4540.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_MAX_RE_Locale": {
+        "DB": "42",
+        "Start": "4540.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_MAX_CL_MAX": {
+        "DB": "42",
+        "Start": "4542.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_MAX_CL_Final": {
+        "DB": "42",
+        "Start": "4542.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_MAX_CL_Container": {
+        "DB": "42",
+        "Start": "4542.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_MBC_8_MAX_CL_Locale": {
+        "DB": "42",
+        "Start": "4542.3",
+        "Type": "BIT"
+    }
+}

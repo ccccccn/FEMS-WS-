@@ -1,0 +1,312 @@
+{
+    "飞轮舱1_PCS_状态_就绪": {
+        "DB": "5",
+        "Start": "124.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_PCS_状态_报警": {
+        "DB": "5",
+        "Start": "124.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_PCS_状态_故障": {
+        "DB": "5",
+        "Start": "124.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_PCS_状态_运行": {
+        "DB": "5",
+        "Start": "124.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_PCS_状态_转速到达标志": {
+        "DB": "5",
+        "Start": "124.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_PCS_状态_当前运行方向": {
+        "DB": "5",
+        "Start": "124.5",
+        "Type": "BIT"
+    },
+    "飞轮舱1_PCS_状态_主从模式": {
+        "DB": "5",
+        "Start": "124.6",
+        "Type": "BIT"
+    },
+    "飞轮舱1_EMS_Grid_frequency": {
+        "DB": "5",
+        "Start": "126.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_电网频率": {
+        "DB": "5",
+        "Start": "126.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_EMS_DC_voltage": {
+        "DB": "5",
+        "Start": "130.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_直流电压": {
+        "DB": "5",
+        "Start": "130.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_直流电流": {
+        "DB": "5",
+        "Start": "134.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_A相功率模块温度": {
+        "DB": "5",
+        "Start": "138.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_B相功率模块温度": {
+        "DB": "5",
+        "Start": "142.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_C相功率模块温度": {
+        "DB": "5",
+        "Start": "146.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_主控DSP版本": {
+        "DB": "5",
+        "Start": "150.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_电网线电压VAB": {
+        "DB": "5",
+        "Start": "150.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_主控FPGA版本": {
+        "DB": "5",
+        "Start": "150.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_EMS_Grid_line_voltage_VAB": {
+        "DB": "5",
+        "Start": "150.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_电网线电压VBC": {
+        "DB": "5",
+        "Start": "152.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_EMS_Grid_line_voltage_VBC": {
+        "DB": "5",
+        "Start": "152.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_电网线电压VCA": {
+        "DB": "5",
+        "Start": "154.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_EMS_Grid_line_voltage_VCA": {
+        "DB": "5",
+        "Start": "154.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_电网A相电流": {
+        "DB": "5",
+        "Start": "156.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_EMS_Grid_phase_A_current": {
+        "DB": "5",
+        "Start": "156.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_EMS_Grid_phase_B_current": {
+        "DB": "5",
+        "Start": "160.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_电网B相电流": {
+        "DB": "5",
+        "Start": "160.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_EMS_Grid_phase_C_current": {
+        "DB": "5",
+        "Start": "164.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_电网C相电流": {
+        "DB": "5",
+        "Start": "164.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_输出视在功率": {
+        "DB": "5",
+        "Start": "168.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Output_apparent_power": {
+        "DB": "5",
+        "Start": "168.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_输出有功功率": {
+        "DB": "5",
+        "Start": "170.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Output_active_power": {
+        "DB": "5",
+        "Start": "170.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_输出无功功率": {
+        "DB": "5",
+        "Start": "172.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Output_reactive_power": {
+        "DB": "5",
+        "Start": "172.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_EMS_Power_factor": {
+        "DB": "5",
+        "Start": "174.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_功率因数": {
+        "DB": "5",
+        "Start": "174.0",
+        "Type": "FLOAT"
+    },
+    "飞轮舱1_PCS_总直流功率": {
+        "DB": "5",
+        "Start": "178.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_PCS_总充电量": {
+        "DB": "5",
+        "Start": "184.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_PCS_总放电量": {
+        "DB": "5",
+        "Start": "188.0",
+        "Type": "LONG"
+    },
+    "飞轮舱1_PCS_PCS报警字0高字节": {
+        "DB": "5",
+        "Start": "192.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS报警字0低字节": {
+        "DB": "5",
+        "Start": "194.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS报警字1高字节": {
+        "DB": "5",
+        "Start": "196.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS报警字1低字节": {
+        "DB": "5",
+        "Start": "198.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS报警字2高字节": {
+        "DB": "5",
+        "Start": "200.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS报警字2低字节": {
+        "DB": "5",
+        "Start": "202.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字0高字节": {
+        "DB": "5",
+        "Start": "204.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字0低字节": {
+        "DB": "5",
+        "Start": "206.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字1高字节": {
+        "DB": "5",
+        "Start": "208.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字1低字节": {
+        "DB": "5",
+        "Start": "210.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字2高字节": {
+        "DB": "5",
+        "Start": "212.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字2低字节": {
+        "DB": "5",
+        "Start": "214.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字3高字节": {
+        "DB": "5",
+        "Start": "216.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字3低字节": {
+        "DB": "5",
+        "Start": "218.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字4高字节": {
+        "DB": "5",
+        "Start": "220.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字4低字节": {
+        "DB": "5",
+        "Start": "222.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字5高字节": {
+        "DB": "5",
+        "Start": "224.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字5低字节": {
+        "DB": "5",
+        "Start": "226.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障字6高字节": {
+        "DB": "5",
+        "Start": "228.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_PCS故障_汇总": {
+        "DB": "5",
+        "Start": "230.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_PCS_通讯状态": {
+        "DB": "5",
+        "Start": "248.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_PCS_误帧率_分钟": {
+        "DB": "5",
+        "Start": "250.0",
+        "Type": "USHORT"
+    }
+}

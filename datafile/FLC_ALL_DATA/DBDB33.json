@@ -1,0 +1,37 @@
+{
+    "飞轮舱1_STH_1_1": {
+        "DB": "33",
+        "Start": "72.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_STH_1_2": {
+        "DB": "33",
+        "Start": "74.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_STH_2_1": {
+        "DB": "33",
+        "Start": "76.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_STH_2_2": {
+        "DB": "33",
+        "Start": "78.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_COMMU_STATE_0": {
+        "DB": "33",
+        "Start": "80.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_COMMU_STATE_1": {
+        "DB": "33",
+        "Start": "80.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_COMMU_STATE_2": {
+        "DB": "33",
+        "Start": "80.2",
+        "Type": "BIT"
+    }
+}
