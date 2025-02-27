@@ -13,8 +13,7 @@ from snap7 import Client
 from taos_capture.views import data_capture_main, plc_is_connect
 from .capture_utils import check_plc_connected_loop
 from .shared_data import FLC_NUM
-
-logger = logging.getLogger(__name__)
+from showcenter.apps import logger
 # from .views import collect_plcs
 is_connected_data = np.zeros(FLC_NUM)
 
@@ -28,7 +27,10 @@ class TaosCaptureConfig(AppConfig):
         print("DataCaptureConfig __init__ called!")  # 添加调试信息
 
     def ready(self):
-        print("DataCaptureConfig ready!")
+        print("预加载本地数据词典")
+        from . import shared_data
+        shared_data.init_data()
+        logger.info("DataCaptureConfig ready!")
         self.initial_threadpool()
         thread = threading.Thread(target=check_plc_connected_loop)
         thread.daemon = True
@@ -38,7 +40,6 @@ class TaosCaptureConfig(AppConfig):
 
 
     def initial_threadpool(self):
-        print("启动启动启动")
         loop = asyncio.get_event_loop()
         loop.create_task(self.data_capture_main())
         logger.info("数据采集程序已经启动！")
@@ -48,6 +49,7 @@ class TaosCaptureConfig(AppConfig):
             # 假设 data_capture_main 函数已经在 views 文件中实现
             from .views import data_capture_main as view_data_capture_main
             await view_data_capture_main()
+
             await asyncio.sleep(0.01)  # 确保任务完成
         except asyncio.CancelledError as e:
             logger.error(f"用户停止了操作")

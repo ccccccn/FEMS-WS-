@@ -53,7 +53,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.102.31', '192.168.102.75']
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379"
+        "LOCATION": "redis://127.0.0.1:6379/1"
     }
 }
 
@@ -62,7 +62,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],  # Redis服务器地址和端口
+            "hosts": [('127.0.0.1', 6379, 1)],  # Redis服务器地址和端口
         },
     },
 }
@@ -76,21 +76,36 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    'mqttserver',
     "showcenter.apps.ShowcenterConfig",
     "taos_capture.apps.TaosCaptureConfig",
     'channels',
     "corsheaders",
     "data_transport",
+
 ]
 # Celery 设置
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis 地址
+CELERY_BROKER_URL = 'redis://localhost:6379/1'  # Redis 地址
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # 存储任务结果的 Redis 地址
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'  # 存储任务结果的 Redis 地址
+CELERY_RESULT_EXPIRES = 10 # 存储任务结果的过期时间
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+CELERY_TASK_PUBLISH_RETRY_POLICY = {
+    'max_retries': 2,
+    'interval_start': 0.01,  # 10ms首次重试
+    'interval_step': 0.03     # 指数退火
+}
+CELERY_BEAT_SCHEDULE = {
+    'run-every-15-seconds': {
+        'task': 'taosPro.periodic_task',
+        'schedule': 10.0,
+    }
+}
 
 # 可选：Celery的时区设置
 CELERY_TIMEZONE = 'Asia/Shanghai'
-
+# CELERY_ALWAYS_EAGER = True
 # 控制台logger设置
 LOGGING = {
     "version": 1,

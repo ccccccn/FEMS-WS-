@@ -25,7 +25,8 @@ def check_plc_connected(plcs):
 def check_plc_connected_loop():
     global plc_connection_status
     while True:
-        print("running....")
+        # print("running...."）
         is_connected_status = check_plc_connected(collect_plcs)
         plc_connection_status.connected = is_connected_status
+        # print('is_connected_status:', plc_connection_status.connected)
         time.sleep(5)

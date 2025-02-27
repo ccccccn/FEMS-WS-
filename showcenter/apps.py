@@ -45,7 +45,7 @@ class ShowcenterConfig(AppConfig):
 #
     ##方法二所对初始化异步操作：
     def initial_threadpool(self):
-        print("仅借用启动一下")
+        pass
         # scheduler = AsyncIOScheduler()
         # scheduler.add_job(self.scheduled_task, 'interval', seconds=1)
         # scheduler.start()

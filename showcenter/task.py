@@ -7,8 +7,8 @@
 """
 from venv import logger
 
-from celery import Celery, shared_task
-from celery.schedules import crontab
+from common.celery import Celery, shared_task
+from common.celery import crontab
 
 app = Celery('showcenter')
 

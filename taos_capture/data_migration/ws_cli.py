@@ -5,15 +5,6 @@
  @DateTime: 2025-01-21 9:18
  @SoftWare: PyCharm
 """
-import asyncio
-import time
-import random
-
-import websockets
-import json
-
-from celery.schedules import schedule
-
 
 # async def send_data():
 #     uri = "ws://192.168.102.75:8044/ws/ShowCenter"

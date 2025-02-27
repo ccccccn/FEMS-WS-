@@ -61,7 +61,7 @@ def parse_data(plc_ip, data, db):
         data_list.append(data_dir)
     for data_dir in data_list:
         final_dir.update(data_dir)
-    print("final_dir", final_dir)
+    # print("final_dir", final_dir)
     return final_dir
 
 
@@ -70,10 +70,10 @@ redis = redis.StrictRedis(host='localhost', port=6379, db=2, socket_keepalive=-1
 
 def ipad_data_send(ipad_data):
     try:
-        print(f"当前IPad_Data:{ipad_data},当前时间为：{datetime.now()}")
+        # print(f"当前IPad_Data:{ipad_data},当前时间为：{datetime.now()}")
         if isinstance(ipad_data, dict):
             ipad_data_json = json.dumps(ipad_data, ensure_ascii=False)
-        print("ipad_data类型", ipad_data_json)
+        # print("ipad_data类型", ipad_data_json)
         redis.publish("ipad_data", ipad_data_json)
         sleep(2)
     except Exception as e:
@@ -101,7 +101,8 @@ def read_plc_data(plc_ip, dbs, start, lengths, change_idx=None):
             # IPad_data = json.dumps(IPad_data, ensure_ascii=False).encode('utf-8')
 
             ipad_data_send(IPad_data)
-            print("成功发送至ipad_data")
+            # logging.info("Sending data to Ipad_data")
+            # print("成功发送至ipad_data")
     except Exception as e:
         print(f"读取PLC数据错误：{e}")
         return None
