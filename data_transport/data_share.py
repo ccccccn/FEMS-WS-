@@ -36,5 +36,5 @@ base_config = {
     'dbs': db, 'starts': start, 'lengths': lengths
 }
 # TODO:修改飞轮舱ip
-ip_addresses = ['192.168.110.1']  # 示例PLC IP地址
+ip_addresses = ['192.168.110.']  # 示例PLC IP地址
 collect_plcs = [{'ip': ip, **base_config} for ip in ip_addresses]

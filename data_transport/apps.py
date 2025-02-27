@@ -4,19 +4,20 @@ from django.apps import AppConfig
 
 import logging
 
+from showcenter.apps import logger
+
 
 class DataTransportConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "data_transport"
 
     def ready(self):
-        logging.info("IPad Starting...")
+        logger.info("IPad Starting...")
         loop = asyncio.get_event_loop()
         loop.create_task(self.run())
 
     async def run(self):
         try:
-            print("IPad Starting...")
             from data_transport.views import data_capture_main as DT
             await DT()
             await asyncio.sleep(0.01)
