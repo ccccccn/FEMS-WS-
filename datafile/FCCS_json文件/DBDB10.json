@@ -1,0 +1,22 @@
+{
+    "Total_Device_Charged_Capacity_总充电量": {
+        "DB": "10",
+        "Start": "0",
+        "Type": "USHORT"
+    },
+    "Total_Device_DisCharged_Capacity_总放电量": {
+        "DB": "10",
+        "Start": "4",
+        "Type": "USHORT"
+    },
+    "Daily_Device_Charged_Capacity_日充电量": {
+        "DB": "10",
+        "Start": "100",
+        "Type": "USHORT"
+    },
+    "Daily_Device_DisCharged_Capacity_日放电量": {
+        "DB": "10",
+        "Start": "104",
+        "Type": "USHORT"
+    }
+}

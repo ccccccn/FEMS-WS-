@@ -1,0 +1,402 @@
+{
+    "循环充放_POWER_PUT": {
+        "DB": "22",
+        "Start": "136",
+        "Type": "SHORT"
+    },
+    "循环充放_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "178",
+        "Type": "USHORT"
+    },
+    "循环充放_能量": {
+        "DB": "22",
+        "Start": "180",
+        "Type": "USHORT"
+    },
+    "循环充放_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "196",
+        "Type": "USHORT"
+    },
+    "循环充放_POWER_PUT1": {
+        "DB": "22",
+        "Start": "202",
+        "Type": "SHORT"
+    },
+    "循环充放_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "244",
+        "Type": "USHORT"
+    },
+    "循环充放_能量1": {
+        "DB": "22",
+        "Start": "246",
+        "Type": "USHORT"
+    },
+    "循环充放_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "262",
+        "Type": "USHORT"
+    },
+    "循环充放2_POWER_PUT": {
+        "DB": "22",
+        "Start": "268",
+        "Type": "SHORT"
+    },
+    "循环充放2_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "310",
+        "Type": "USHORT"
+    },
+    "循环充放2_能量": {
+        "DB": "22",
+        "Start": "312",
+        "Type": "USHORT"
+    },
+    "循环充放2_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "328",
+        "Type": "USHORT"
+    },
+    "循环充放2_POWER_PUT1": {
+        "DB": "22",
+        "Start": "334",
+        "Type": "SHORT"
+    },
+    "循环充放2_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "376",
+        "Type": "USHORT"
+    },
+    "循环充放2_能量1": {
+        "DB": "22",
+        "Start": "378",
+        "Type": "USHORT"
+    },
+    "循环充放2_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "394",
+        "Type": "USHORT"
+    },
+    "循环充放3_POWER_PUT": {
+        "DB": "22",
+        "Start": "400",
+        "Type": "SHORT"
+    },
+    "循环充放3_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "442",
+        "Type": "USHORT"
+    },
+    "循环充放3_能量": {
+        "DB": "22",
+        "Start": "444",
+        "Type": "USHORT"
+    },
+    "循环充放3_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "460",
+        "Type": "USHORT"
+    },
+    "循环充放3_POWER_PUT1": {
+        "DB": "22",
+        "Start": "466",
+        "Type": "SHORT"
+    },
+    "循环充放3_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "508",
+        "Type": "USHORT"
+    },
+    "循环充放3_能量1": {
+        "DB": "22",
+        "Start": "510",
+        "Type": "USHORT"
+    },
+    "循环充放3_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "526",
+        "Type": "USHORT"
+    },
+    "循环充放4_POWER_PUT": {
+        "DB": "22",
+        "Start": "532",
+        "Type": "SHORT"
+    },
+    "循环充放4_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "574",
+        "Type": "USHORT"
+    },
+    "循环充放4_能量": {
+        "DB": "22",
+        "Start": "576",
+        "Type": "USHORT"
+    },
+    "循环充放4_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "592",
+        "Type": "USHORT"
+    },
+    "循环充放4_POWER_PUT1": {
+        "DB": "22",
+        "Start": "598",
+        "Type": "SHORT"
+    },
+    "循环充放4_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "640",
+        "Type": "USHORT"
+    },
+    "循环充放4_能量1": {
+        "DB": "22",
+        "Start": "642",
+        "Type": "USHORT"
+    },
+    "循环充放4_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "658",
+        "Type": "USHORT"
+    },
+    "循环充放5_POWER_PUT": {
+        "DB": "22",
+        "Start": "664",
+        "Type": "SHORT"
+    },
+    "循环充放5_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "706",
+        "Type": "USHORT"
+    },
+    "循环充放5_能量": {
+        "DB": "22",
+        "Start": "708",
+        "Type": "USHORT"
+    },
+    "循环充放5_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "724",
+        "Type": "USHORT"
+    },
+    "循环充放5_POWER_PUT1": {
+        "DB": "22",
+        "Start": "730",
+        "Type": "SHORT"
+    },
+    "循环充放5_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "772",
+        "Type": "USHORT"
+    },
+    "循环充放5_能量1": {
+        "DB": "22",
+        "Start": "774",
+        "Type": "USHORT"
+    },
+    "循环充放5_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "790",
+        "Type": "USHORT"
+    },
+    "循环充放6_POWER_PUT": {
+        "DB": "22",
+        "Start": "796",
+        "Type": "SHORT"
+    },
+    "循环充放6_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "838",
+        "Type": "USHORT"
+    },
+    "循环充放6_能量": {
+        "DB": "22",
+        "Start": "840",
+        "Type": "USHORT"
+    },
+    "循环充放6_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "856",
+        "Type": "USHORT"
+    },
+    "循环充放6_POWER_PUT1": {
+        "DB": "22",
+        "Start": "862",
+        "Type": "SHORT"
+    },
+    "循环充放6_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "904",
+        "Type": "USHORT"
+    },
+    "循环充放6_能量1": {
+        "DB": "22",
+        "Start": "906",
+        "Type": "USHORT"
+    },
+    "循环充放6_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "922",
+        "Type": "USHORT"
+    },
+    "循环充放7_POWER_PUT": {
+        "DB": "22",
+        "Start": "928",
+        "Type": "SHORT"
+    },
+    "循环充放7_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "970",
+        "Type": "USHORT"
+    },
+    "循环充放7_能量": {
+        "DB": "22",
+        "Start": "972",
+        "Type": "USHORT"
+    },
+    "循环充放7_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "988",
+        "Type": "USHORT"
+    },
+    "循环充放7_POWER_PUT1": {
+        "DB": "22",
+        "Start": "994",
+        "Type": "SHORT"
+    },
+    "循环充放7_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "1036",
+        "Type": "USHORT"
+    },
+    "循环充放7_能量1": {
+        "DB": "22",
+        "Start": "1038",
+        "Type": "USHORT"
+    },
+    "循环充放7_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "1054",
+        "Type": "USHORT"
+    },
+    "循环充放8_POWER_PUT": {
+        "DB": "22",
+        "Start": "1060",
+        "Type": "SHORT"
+    },
+    "循环充放8_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "1102",
+        "Type": "USHORT"
+    },
+    "循环充放8_能量": {
+        "DB": "22",
+        "Start": "1104",
+        "Type": "USHORT"
+    },
+    "循环充放8_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "1120",
+        "Type": "USHORT"
+    },
+    "循环充放8_POWER_PUT1": {
+        "DB": "22",
+        "Start": "1126",
+        "Type": "SHORT"
+    },
+    "循环充放8_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "1168",
+        "Type": "USHORT"
+    },
+    "循环充放8_能量1": {
+        "DB": "22",
+        "Start": "1170",
+        "Type": "USHORT"
+    },
+    "循环充放8_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "1186",
+        "Type": "USHORT"
+    },
+    "循环充放9_POWER_PUT": {
+        "DB": "22",
+        "Start": "1192",
+        "Type": "SHORT"
+    },
+    "循环充放9_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "1234",
+        "Type": "USHORT"
+    },
+    "循环充放9_能量": {
+        "DB": "22",
+        "Start": "1236",
+        "Type": "USHORT"
+    },
+    "循环充放9_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "1252",
+        "Type": "USHORT"
+    },
+    "循环充放9_POWER_PUT1": {
+        "DB": "22",
+        "Start": "1258",
+        "Type": "SHORT"
+    },
+    "循环充放9_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "1300",
+        "Type": "USHORT"
+    },
+    "循环充放9_能量1": {
+        "DB": "22",
+        "Start": "1302",
+        "Type": "USHORT"
+    },
+    "循环充放9_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "1318",
+        "Type": "USHORT"
+    },
+    "循环充放10_POWER_PUT": {
+        "DB": "22",
+        "Start": "1324",
+        "Type": "SHORT"
+    },
+    "循环充放10_SYS_RT_Active_POWER": {
+        "DB": "22",
+        "Start": "1366",
+        "Type": "USHORT"
+    },
+    "循环充放10_能量": {
+        "DB": "22",
+        "Start": "1368",
+        "Type": "USHORT"
+    },
+    "循环充放10_CYC_Groop_1_1": {
+        "DB": "22",
+        "Start": "1384",
+        "Type": "USHORT"
+    },
+    "循环充放10_POWER_PUT1": {
+        "DB": "22",
+        "Start": "1390",
+        "Type": "SHORT"
+    },
+    "循环充放10_SYS_RT_Active_POWER1": {
+        "DB": "22",
+        "Start": "1432",
+        "Type": "USHORT"
+    },
+    "循环充放10_能量1": {
+        "DB": "22",
+        "Start": "1434",
+        "Type": "USHORT"
+    },
+    "循环充放10_CYC_Groop_1_2": {
+        "DB": "22",
+        "Start": "1450",
+        "Type": "USHORT"
+    }
+}

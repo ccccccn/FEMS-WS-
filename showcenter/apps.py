@@ -45,19 +45,20 @@ class ShowcenterConfig(AppConfig):
 #
     ##方法二所对初始化异步操作：
     def initial_threadpool(self):
-        pass
-        # scheduler = AsyncIOScheduler()
-        # scheduler.add_job(self.scheduled_task, 'interval', seconds=1)
-        # scheduler.start()
-        # logger.info("Thread pool initialized and tasks submitted.")
+        scheduler = AsyncIOScheduler()
+        scheduler.add_job(self.scheduled_task, 'interval', seconds=1)
+        scheduler.start()
+
 
 
 # 方法二使用apscheduler 支持异步操作和停止主线程操作
     async def scheduled_task(self):
-        print("借用启动一下")
-        send_to_redis_channel("show_center")
         try:
-            await asyncio.sleep(0.001)
-        except CancelledError as e:
-            logger.error(f"用户停止了操作")
-            pass
+            send_to_redis_channel("show_center")
+            try:
+                await asyncio.sleep(0.001)
+            except CancelledError as e:
+                logger.error(f"用户停止了操作")
+                pass
+        except Exception as e:
+            logger.error(f"中心数据展示失败{e}")

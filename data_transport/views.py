@@ -22,6 +22,9 @@ from datetime import datetime
 
 import numpy as np
 from django.http import JsonResponse
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.views.decorators.http import require_http_methods
 from snap7.client import Client
 from sortedcontainers import SortedList
 
@@ -32,7 +35,20 @@ from showcenter.views import send_to_redis_channel
 from taosPro.utils import get_data, file_data, JsonCache
 
 lock = threading.Lock()
+redis_BigCreen = redis.StrictRedis("localhost", 6379, 3, decode_responses=True, charset='utf-8', encoding='utf-8')
 
+
+class IpadDataView(View):
+    @method_decorator(require_http_methods(["GET"]))
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request,*args,**kwargs)
+
+    def get(self,requst,*args,**kwargs):
+        data = redis_BigCreen.get('bigscreen')
+        if data is not None:
+            return JsonResponse(json.loads(data))
+        else:
+            return JsonResponse({'error':'No data avaliable'},status=404)
 
 # 数据解析示例
 def parse_data(plc_ip, data, db):
@@ -43,7 +59,7 @@ def parse_data(plc_ip, data, db):
     data_list = []
     final_dir = {}
     cache_data = cache.cache.get(f"DB{db}")  ## data_dir
-    for idx, chunk in enumerate(chunk_dict(cache_data, 4), start=1):
+    for idx, chunk in enumerate(chunk_dict(cache_data, 9), start=1):
         value_list = []
         data_dir = {"time": str(datetime.now())}
         fl_num = idx
@@ -89,15 +105,37 @@ def chunk_dict(data, chunk_size=None):
 
 # PLC数据采集任务
 def read_plc_data(plc_ip, dbs, start, lengths, change_idx=None):
+    IPad_data = {f"time:{datetime.now()}"}
+    """
+    MBC编号：string
+    设备编号：string
+    飞轮型号：string
+    电压等级：float(0-220)
+    真空度：float(0-30)
+    温度:float(0-60)
+    转速：int(14000-29000)
+    测试状态：bool
+    设备状态：bool
+    """
     # breakpoint()
     try:
+        for i in range(2):
+            ipad_list = [f"MBC{i}",f"De{i}",f"FW_{i}"]
+            ipad_list.append(round(random.uniform(0.0,220.0),2))
+            ipad_list.append(round(random.uniform(0.0,30.0),2))
+            ipad_list.append(round(random.uniform(0.0,60.0),2))
+            ipad_list.append(random.randint(14000,29000))
+            ipad_list.append(random.choice([True,False]))
+
         ## 真实数据 一次性获取所有db下的值，顺序执行
         # data = plc.db_read(db, 0, length)
         ## 模拟测试数据
         for db, length in zip(dbs, lengths):
+            IPad_data =
             random_data = bytearray(random.randint(0, 100) for _ in range(length))
             # breakpoint()
             IPad_data = parse_data(plc_ip, random_data, db)
+            redis_BigCreen.set('bigscreen', json.dumps(IPad_data,ensure_ascii=False).encode('utf-8'))
             # IPad_data = json.dumps(IPad_data, ensure_ascii=False).encode('utf-8')
 
             ipad_data_send(IPad_data)
@@ -157,19 +195,17 @@ def plc_thread(plc_ip, rack, slot, dbs, starts, lengths):
     # 每个外部线程负责不断地进行数据采集
     while True:
         Start_time = datetime.now()
-        # print(f"PLC {plc_ip} 数据采集开始于：{Start_time}\n", end='')
         read_plc_data(plc_ip, dbs, starts, lengths)
         # get_plc_data(plc_ip, rack, slot, dbs, starts, lengths, executor)
         end_time = datetime.now()
         # print(f"PLC {plc_ip} 数据采集完成,完成时间为：{end_time}\n", end='')
-        # print(f"PLC {plc_ip} 本次循环所用时间：{end_time - Start_time}\n", end='')
+        print(f"PLC {plc_ip} 本次循环所用时间：{end_time - Start_time}\n", end='')
         sleep(0.1)
 
 
 # 多线程执行数据采集
 async def run_data_collection(plcs):
     # 创建外部线程池
-    CONNECT_CNT = 0
     loop = asyncio.get_running_loop()
     with ThreadPoolExecutor(max_workers=7) as executor:  # 外部线程池，最大同时处理5个PLC
         threads = []
@@ -185,10 +221,6 @@ async def run_data_collection(plcs):
             await asyncio.sleep(0.01)
         await asyncio.gather(*threads)
         # plc_thread_instance.start()
-
-        # 等待所有外部线程完成
-        for thread in threads:
-            thread.join()
 
 
 async def plc_is_connect(plcs):

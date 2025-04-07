@@ -16,8 +16,8 @@ router = SimpleRouter()
 
 urlpatterns = router.urls
 urlpatterns = [
-    path("index", views.index, name='index'),
-    path("", views.home, name='home'),
-    path("data_capture/", views.DataCapturePage, name='data_capture'),
-    path("pause_capture/", views.pause_data_collection, name='pause_capture')
+    # path("index", views.index, name='index'),
+    # path("", views.home, name='home'),
+    # path("data_capture/", views.DataCapturePage, name='data_capture'),
+    # path("pause_capture/", views.pause_data_collection, name='pause_capture')
 ]

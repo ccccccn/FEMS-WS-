@@ -28,6 +28,7 @@ class TaosCaptureConfig(AppConfig):
 
     def ready(self):
         print("预加载本地数据词典")
+        # 使用redis预加载缓存
         from . import shared_data
         shared_data.init_data()
         logger.info("DataCaptureConfig ready!")
@@ -54,7 +55,7 @@ class TaosCaptureConfig(AppConfig):
         except asyncio.CancelledError as e:
             logger.error(f"用户停止了操作")
         except Exception as e:
-            logger.error(f"数据采集主函数出错：{e}")
+            logger.error(f"数据采集主函数出错：{e}",exc_info=True)
         # loop = asyncio.get_event_loop()
         # asyncio.set_event_loop(loop)
         # scheduler = AsyncIOScheduler()
