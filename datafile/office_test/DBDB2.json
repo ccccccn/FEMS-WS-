@@ -1,0 +1,637 @@
+{
+    "停止": {
+        "DB": "2",
+        "Start": "0.0",
+        "Type": "BIT"
+    },
+    "充电使能": {
+        "DB": "2",
+        "Start": "0.1",
+        "Type": "BIT"
+    },
+    "启动": {
+        "DB": "2",
+        "Start": "0.2",
+        "Type": "BIT"
+    },
+    "复位": {
+        "DB": "2",
+        "Start": "0.3",
+        "Type": "BIT"
+    },
+    "控制使能": {
+        "DB": "2",
+        "Start": "0.4",
+        "Type": "BIT"
+    },
+    "放电使能": {
+        "DB": "2",
+        "Start": "0.5",
+        "Type": "BIT"
+    },
+    "硬件急停": {
+        "DB": "2",
+        "Start": "0.6",
+        "Type": "BIT"
+    },
+    "软件急停": {
+        "DB": "2",
+        "Start": "0.7",
+        "Type": "BIT"
+    },
+    "飞轮状态字_存在告警": {
+        "DB": "2",
+        "Start": "1.0",
+        "Type": "BIT"
+    },
+    "飞轮状态字_存在故障": {
+        "DB": "2",
+        "Start": "1.1",
+        "Type": "BIT"
+    },
+    "飞轮状态字_报警系统过载": {
+        "DB": "2",
+        "Start": "1.2",
+        "Type": "BIT"
+    },
+    "飞轮状态字_断路器合闸状态": {
+        "DB": "2",
+        "Start": "1.3",
+        "Type": "BIT"
+    },
+    "飞轮状态字_硬件急停生效": {
+        "DB": "2",
+        "Start": "1.4",
+        "Type": "BIT"
+    },
+    "飞轮状态字_系统SOC恢复预设值过程中": {
+        "DB": "2",
+        "Start": "1.5",
+        "Type": "BIT"
+    },
+    "飞轮状态字_系统充电": {
+        "DB": "2",
+        "Start": "1.6",
+        "Type": "BIT"
+    },
+    "飞轮状态字_系统启动中": {
+        "DB": "2",
+        "Start": "1.7",
+        "Type": "BIT"
+    },
+    "飞轮状态字_系统就绪": {
+        "DB": "2",
+        "Start": "2.0",
+        "Type": "BIT"
+    },
+    "飞轮状态字_系统放电": {
+        "DB": "2",
+        "Start": "2.1",
+        "Type": "BIT"
+    },
+    "飞轮状态字_系统热态状态": {
+        "DB": "2",
+        "Start": "2.2",
+        "Type": "BIT"
+    },
+    "飞轮状态字_系统运行": {
+        "DB": "2",
+        "Start": "2.3",
+        "Type": "BIT"
+    },
+    "飞轮状态字_软件急停生效": {
+        "DB": "2",
+        "Start": "2.4",
+        "Type": "BIT"
+    },
+    "飞轮状态字_飞轮旋转": {
+        "DB": "2",
+        "Start": "2.5",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FA_1C_一级报警": {
+        "DB": "2",
+        "Start": "2.6",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FA_2C_二级报警": {
+        "DB": "2",
+        "Start": "2.7",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FA_3C_三级报警": {
+        "DB": "2",
+        "Start": "3.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FA_4C_四级报警": {
+        "DB": "2",
+        "Start": "3.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_H_E_STOP": {
+        "DB": "2",
+        "Start": "3.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_SYS_Fire_Alarm": {
+        "DB": "2",
+        "Start": "3.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "2",
+        "Start": "3.4",
+        "Type": "BIT"
+    },
+    "飞轮舱1_S_E_STOP": {
+        "DB": "2",
+        "Start": "3.5",
+        "Type": "BIT"
+    },
+    "FCCS_RT_Action_POWER": {
+        "DB": "2",
+        "Start": "4.0",
+        "Type": "FLOAT"
+    },
+    "场站功率输入": {
+        "DB": "2",
+        "Start": "8.0",
+        "Type": "FLOAT"
+    },
+    "电网频率": {
+        "DB": "2",
+        "Start": "12.0",
+        "Type": "FLOAT"
+    },
+    "系统功率因数": {
+        "DB": "2",
+        "Start": "16.0",
+        "Type": "FLOAT"
+    },
+    "系统可用充电功率": {
+        "DB": "2",
+        "Start": "20.0",
+        "Type": "FLOAT"
+    },
+    "系统可用放电功率": {
+        "DB": "2",
+        "Start": "24.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能充电总无功": {
+        "DB": "2",
+        "Start": "28.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能充电总有功": {
+        "DB": "2",
+        "Start": "32.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能当前无功总出力": {
+        "DB": "2",
+        "Start": "36.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能当日总充电量": {
+        "DB": "2",
+        "Start": "40.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能当日总放电量": {
+        "DB": "2",
+        "Start": "44.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能总充电量": {
+        "DB": "2",
+        "Start": "48.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能总放电量": {
+        "DB": "2",
+        "Start": "52.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能总有功功率实际值": {
+        "DB": "2",
+        "Start": "56.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能放电总无功": {
+        "DB": "2",
+        "Start": "60.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能放电总有功": {
+        "DB": "2",
+        "Start": "64.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能最大有功功率充电可用时间": {
+        "DB": "2",
+        "Start": "68.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区储能最大有功功率放电可用时间": {
+        "DB": "2",
+        "Start": "72.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区可用储能变流器总数": {
+        "DB": "2",
+        "Start": "76.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区可用总SOC上限": {
+        "DB": "2",
+        "Start": "80.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区可用总SOC下限": {
+        "DB": "2",
+        "Start": "84.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区实际SOC": {
+        "DB": "2",
+        "Start": "88.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区实际SOC对应的总容量": {
+        "DB": "2",
+        "Start": "92.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区最大充电功率允许值": {
+        "DB": "2",
+        "Start": "96.0",
+        "Type": "FLOAT"
+    },
+    "飞轮区最大放电功率允许值": {
+        "DB": "2",
+        "Start": "100.0",
+        "Type": "FLOAT"
+    },
+    "飞轮指令": {
+        "DB": "2",
+        "Start": "104.0",
+        "Type": "FLOAT"
+    },
+    "功率给定": {
+        "DB": "2",
+        "Start": "108.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_POWER_PUT_功率给定": {
+        "DB": "2",
+        "Start": "110.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "2",
+        "Start": "112.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_SYS_AVA_POWER_DISCha_最大放电功率": {
+        "DB": "2",
+        "Start": "114.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "2",
+        "Start": "116.0",
+        "Type": "SHORT"
+    },
+    "Daily_Device_Charged_Capacity_日充电量": {
+        "DB": "2",
+        "Start": "118.0",
+        "Type": "USHORT"
+    },
+    "Daily_Device_DisCharged_Capacity_日放电量": {
+        "DB": "2",
+        "Start": "120.0",
+        "Type": "USHORT"
+    },
+    "FCCS_SOC": {
+        "DB": "2",
+        "Start": "122.0",
+        "Type": "USHORT"
+    },
+    "Total_Device_Charged_Capacity_总充电量": {
+        "DB": "2",
+        "Start": "124.0",
+        "Type": "USHORT"
+    },
+    "Total_Device_DisCharged_Capacity_总放电量": {
+        "DB": "2",
+        "Start": "126.0",
+        "Type": "USHORT"
+    },
+    "YC_系统实时无功功率低": {
+        "DB": "2",
+        "Start": "128.0",
+        "Type": "USHORT"
+    },
+    "YC_系统实时无功功率高": {
+        "DB": "2",
+        "Start": "130.0",
+        "Type": "USHORT"
+    },
+    "YC_系统实时有功功率低": {
+        "DB": "2",
+        "Start": "132.0",
+        "Type": "USHORT"
+    },
+    "YC_系统实时有功功率高": {
+        "DB": "2",
+        "Start": "134.0",
+        "Type": "USHORT"
+    },
+    "YC_系统模式": {
+        "DB": "2",
+        "Start": "136.0",
+        "Type": "USHORT"
+    },
+    "YC_系统状态字": {
+        "DB": "2",
+        "Start": "138.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮SOC": {
+        "DB": "2",
+        "Start": "140.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮储能系统就绪数量": {
+        "DB": "2",
+        "Start": "142.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮储能系统运行数量": {
+        "DB": "2",
+        "Start": "144.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮可用充电电里低": {
+        "DB": "2",
+        "Start": "146.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮可用充电电量高": {
+        "DB": "2",
+        "Start": "148.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮可用放电电量低": {
+        "DB": "2",
+        "Start": "150.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮可用放电电量高": {
+        "DB": "2",
+        "Start": "152.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮最大允许充电功率低": {
+        "DB": "2",
+        "Start": "154.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮最大允许充电功率高": {
+        "DB": "2",
+        "Start": "156.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮最大允许放电功率低": {
+        "DB": "2",
+        "Start": "158.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮最大允许放电功率高": {
+        "DB": "2",
+        "Start": "160.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮额定功率低": {
+        "DB": "2",
+        "Start": "162.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮额定功率高": {
+        "DB": "2",
+        "Start": "164.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮额定电里低": {
+        "DB": "2",
+        "Start": "166.0",
+        "Type": "USHORT"
+    },
+    "YC_飞轮额定电量高": {
+        "DB": "2",
+        "Start": "168.0",
+        "Type": "USHORT"
+    },
+    "当前控制模式": {
+        "DB": "2",
+        "Start": "170.0",
+        "Type": "USHORT"
+    },
+    "测试模式": {
+        "DB": "2",
+        "Start": "172.0",
+        "Type": "USHORT"
+    },
+    "电池SOC": {
+        "DB": "2",
+        "Start": "174.0",
+        "Type": "USHORT"
+    },
+    "电池储能系统就绪数量": {
+        "DB": "2",
+        "Start": "176.0",
+        "Type": "USHORT"
+    },
+    "电池储能系统运行数量": {
+        "DB": "2",
+        "Start": "178.0",
+        "Type": "USHORT"
+    },
+    "电池可用充电电量低": {
+        "DB": "2",
+        "Start": "180.0",
+        "Type": "USHORT"
+    },
+    "电池可用充电电量高": {
+        "DB": "2",
+        "Start": "182.0",
+        "Type": "USHORT"
+    },
+    "电池可用放电电量低": {
+        "DB": "2",
+        "Start": "184.0",
+        "Type": "USHORT"
+    },
+    "电池可用放电电量高": {
+        "DB": "2",
+        "Start": "186.0",
+        "Type": "USHORT"
+    },
+    "电池最大允许充电功率低": {
+        "DB": "2",
+        "Start": "188.0",
+        "Type": "USHORT"
+    },
+    "电池最大允许充电功率高": {
+        "DB": "2",
+        "Start": "190.0",
+        "Type": "USHORT"
+    },
+    "电池最大允许放电功率低": {
+        "DB": "2",
+        "Start": "192.0",
+        "Type": "USHORT"
+    },
+    "电池最大允许放电功率高": {
+        "DB": "2",
+        "Start": "194.0",
+        "Type": "USHORT"
+    },
+    "电池额定功率低": {
+        "DB": "2",
+        "Start": "196.0",
+        "Type": "USHORT"
+    },
+    "电池额定功率高": {
+        "DB": "2",
+        "Start": "198.0",
+        "Type": "USHORT"
+    },
+    "电池额定电量低": {
+        "DB": "2",
+        "Start": "200.0",
+        "Type": "USHORT"
+    },
+    "电池额定电量高": {
+        "DB": "2",
+        "Start": "202.0",
+        "Type": "USHORT"
+    },
+    "系统实时无功功率低": {
+        "DB": "2",
+        "Start": "204.0",
+        "Type": "USHORT"
+    },
+    "系统实时无功功率高": {
+        "DB": "2",
+        "Start": "206.0",
+        "Type": "USHORT"
+    },
+    "系统实时有功功率低": {
+        "DB": "2",
+        "Start": "208.0",
+        "Type": "USHORT"
+    },
+    "系统实时有功功率高": {
+        "DB": "2",
+        "Start": "210.0",
+        "Type": "USHORT"
+    },
+    "系统模式": {
+        "DB": "2",
+        "Start": "212.0",
+        "Type": "USHORT"
+    },
+    "集装箱站号": {
+        "DB": "2",
+        "Start": "214.0",
+        "Type": "USHORT"
+    },
+    "飞轮SOC": {
+        "DB": "2",
+        "Start": "216.0",
+        "Type": "USHORT"
+    },
+    "飞轮储能系统就绪数量": {
+        "DB": "2",
+        "Start": "218.0",
+        "Type": "USHORT"
+    },
+    "飞轮储能系统运行数量": {
+        "DB": "2",
+        "Start": "220.0",
+        "Type": "USHORT"
+    },
+    "飞轮区储能运行状态": {
+        "DB": "2",
+        "Start": "222.0",
+        "Type": "USHORT"
+    },
+    "飞轮可用充电电量低": {
+        "DB": "2",
+        "Start": "224.0",
+        "Type": "USHORT"
+    },
+    "飞轮可用充电电量高": {
+        "DB": "2",
+        "Start": "226.0",
+        "Type": "USHORT"
+    },
+    "飞轮可用放电电量低": {
+        "DB": "2",
+        "Start": "228.0",
+        "Type": "USHORT"
+    },
+    "飞轮可用放电电量高": {
+        "DB": "2",
+        "Start": "230.0",
+        "Type": "USHORT"
+    },
+    "飞轮最大允许充电功率低": {
+        "DB": "2",
+        "Start": "232.0",
+        "Type": "USHORT"
+    },
+    "飞轮最大允许充电功率高": {
+        "DB": "2",
+        "Start": "234.0",
+        "Type": "USHORT"
+    },
+    "飞轮最大允许放电功率低": {
+        "DB": "2",
+        "Start": "236.0",
+        "Type": "USHORT"
+    },
+    "飞轮最大允许放电功率高": {
+        "DB": "2",
+        "Start": "238.0",
+        "Type": "USHORT"
+    },
+    "飞轮状态字": {
+        "DB": "2",
+        "Start": "240.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "2",
+        "Start": "242.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "2",
+        "Start": "244.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_SYS_Model_系统模式": {
+        "DB": "2",
+        "Start": "246.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_SYS_SOC_系统SOC": {
+        "DB": "2",
+        "Start": "248.0",
+        "Type": "USHORT"
+    }
+}

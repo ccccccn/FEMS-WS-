@@ -19,7 +19,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'taosPro.settings')
 application = ProtocolTypeRouter({
     "http": get_asgi_application(),
     "websocket": AuthMiddlewareStack(
-        URLRouter(routing.websocket_urlpatterns)
+        URLRouter(routing.websocket_urlpatterns,)
     ),
 })
 

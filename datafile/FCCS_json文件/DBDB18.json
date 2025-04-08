@@ -1,0 +1,1602 @@
+{
+    "飞轮舱1_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "196.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_H_E_STOP": {
+        "DB": "18",
+        "Start": "289.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_S_E_STOP": {
+        "DB": "18",
+        "Start": "289.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "292.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "298.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "300.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "302.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱1_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "304.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "308.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "310.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "310.1",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "310.2",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "310.3",
+        "Type": "BIT"
+    },
+    "飞轮舱1_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "316.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱1_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "324.0",
+        "Type": "BIT"
+    },
+    "飞轮舱1_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "324.2",
+        "Type": "BIT"
+    },
+    "飞轮舱2_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "388.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱2_H_E_STOP": {
+        "DB": "18",
+        "Start": "481.2",
+        "Type": "BIT"
+    },
+    "飞轮舱2_S_E_STOP": {
+        "DB": "18",
+        "Start": "481.3",
+        "Type": "BIT"
+    },
+    "飞轮舱2_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "484.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱2_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "490.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱2_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "492.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱2_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "494.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱2_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "496.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱2_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "500.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱2_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "502.0",
+        "Type": "BIT"
+    },
+    "飞轮舱2_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "502.1",
+        "Type": "BIT"
+    },
+    "飞轮舱2_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "502.2",
+        "Type": "BIT"
+    },
+    "飞轮舱2_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "502.3",
+        "Type": "BIT"
+    },
+    "飞轮舱2_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "508.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱2_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "516.0",
+        "Type": "BIT"
+    },
+    "飞轮舱2_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "516.2",
+        "Type": "BIT"
+    },
+    "飞轮舱3_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "580.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱3_H_E_STOP": {
+        "DB": "18",
+        "Start": "673.2",
+        "Type": "BIT"
+    },
+    "飞轮舱3_S_E_STOP": {
+        "DB": "18",
+        "Start": "673.3",
+        "Type": "BIT"
+    },
+    "飞轮舱3_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "676.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱3_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "682.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱3_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "684.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱3_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "684.2",
+        "Type": "BIT"
+    },
+    "飞轮舱3_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "684.3",
+        "Type": "BIT"
+    },
+    "飞轮舱3_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "686.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱3_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "688.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱3_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "692.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱3_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "694.0",
+        "Type": "BIT"
+    },
+    "飞轮舱3_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "694.1",
+        "Type": "BIT"
+    },
+    "飞轮舱3_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "700.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱3_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "708.0",
+        "Type": "BIT"
+    },
+    "飞轮舱3_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "708.2",
+        "Type": "BIT"
+    },
+    "飞轮舱4_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "772.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱4_H_E_STOP": {
+        "DB": "18",
+        "Start": "865.2",
+        "Type": "BIT"
+    },
+    "飞轮舱4_S_E_STOP": {
+        "DB": "18",
+        "Start": "865.3",
+        "Type": "BIT"
+    },
+    "飞轮舱4_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "868.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱4_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "874.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱4_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "876.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱4_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "878.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱4_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "880.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱4_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "884.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱4_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "886.0",
+        "Type": "BIT"
+    },
+    "飞轮舱4_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "886.1",
+        "Type": "BIT"
+    },
+    "飞轮舱4_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "886.2",
+        "Type": "BIT"
+    },
+    "飞轮舱4_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "886.3",
+        "Type": "BIT"
+    },
+    "飞轮舱4_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "892.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱4_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "900.0",
+        "Type": "BIT"
+    },
+    "飞轮舱4_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "900.2",
+        "Type": "BIT"
+    },
+    "飞轮舱5_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "964.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱5_H_E_STOP": {
+        "DB": "18",
+        "Start": "1057.2",
+        "Type": "BIT"
+    },
+    "飞轮舱5_S_E_STOP": {
+        "DB": "18",
+        "Start": "1057.3",
+        "Type": "BIT"
+    },
+    "飞轮舱5_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "1060.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱5_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "1066.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱5_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "1068.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱5_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "1070.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱5_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "1072.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱5_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "1076.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱5_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "1078.0",
+        "Type": "BIT"
+    },
+    "飞轮舱5_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "1078.1",
+        "Type": "BIT"
+    },
+    "飞轮舱5_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "1078.2",
+        "Type": "BIT"
+    },
+    "飞轮舱5_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "1078.3",
+        "Type": "BIT"
+    },
+    "飞轮舱5_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "1084.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱5_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "1092.0",
+        "Type": "BIT"
+    },
+    "飞轮舱5_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "1092.2",
+        "Type": "BIT"
+    },
+    "飞轮舱6_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "1156.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱6_H_E_STOP": {
+        "DB": "18",
+        "Start": "1249.2",
+        "Type": "BIT"
+    },
+    "飞轮舱6_S_E_STOP": {
+        "DB": "18",
+        "Start": "1249.3",
+        "Type": "BIT"
+    },
+    "飞轮舱6_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "1252.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱6_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "1258.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱6_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "1260.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱6_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "1262.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱6_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "1264.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱6_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "1268.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱6_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "1270.0",
+        "Type": "BIT"
+    },
+    "飞轮舱6_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "1270.1",
+        "Type": "BIT"
+    },
+    "飞轮舱6_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "1270.2",
+        "Type": "BIT"
+    },
+    "飞轮舱6_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "1270.3",
+        "Type": "BIT"
+    },
+    "飞轮舱6_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "1276.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱6_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "1284.0",
+        "Type": "BIT"
+    },
+    "飞轮舱6_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "1284.2",
+        "Type": "BIT"
+    },
+    "飞轮舱7_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "1348.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱7_H_E_STOP": {
+        "DB": "18",
+        "Start": "1441.2",
+        "Type": "BIT"
+    },
+    "飞轮舱7_S_E_STOP": {
+        "DB": "18",
+        "Start": "1441.3",
+        "Type": "BIT"
+    },
+    "飞轮舱7_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "1444.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱7_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "1450.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱7_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "1452.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱7_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "1454.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱7_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "1456.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱7_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "1460.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱7_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "1462.0",
+        "Type": "BIT"
+    },
+    "飞轮舱7_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "1462.1",
+        "Type": "BIT"
+    },
+    "飞轮舱7_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "1462.2",
+        "Type": "BIT"
+    },
+    "飞轮舱7_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "1462.3",
+        "Type": "BIT"
+    },
+    "飞轮舱7_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "1468.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱7_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "1476.0",
+        "Type": "BIT"
+    },
+    "飞轮舱7_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "1476.2",
+        "Type": "BIT"
+    },
+    "飞轮舱8_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "1540.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱8_H_E_STOP": {
+        "DB": "18",
+        "Start": "1633.2",
+        "Type": "BIT"
+    },
+    "飞轮舱8_S_E_STOP": {
+        "DB": "18",
+        "Start": "1633.3",
+        "Type": "BIT"
+    },
+    "飞轮舱8_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "1636.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱8_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "1642.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱8_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "1644.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱8_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "1646.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱8_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "1648.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱8_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "1652.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱8_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "1654.0",
+        "Type": "BIT"
+    },
+    "飞轮舱8_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "1654.1",
+        "Type": "BIT"
+    },
+    "飞轮舱8_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "1654.2",
+        "Type": "BIT"
+    },
+    "飞轮舱8_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "1654.3",
+        "Type": "BIT"
+    },
+    "飞轮舱8_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "1660.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱8_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "1668.0",
+        "Type": "BIT"
+    },
+    "飞轮舱8_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "1668.2",
+        "Type": "BIT"
+    },
+    "飞轮舱9_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "1732.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱9_H_E_STOP": {
+        "DB": "18",
+        "Start": "1825.2",
+        "Type": "BIT"
+    },
+    "飞轮舱9_S_E_STOP": {
+        "DB": "18",
+        "Start": "1825.3",
+        "Type": "BIT"
+    },
+    "飞轮舱9_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "1828.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱9_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "1834.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱9_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "1836.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱9_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "1838.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱9_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "1840.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱9_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "1844.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱9_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "1846.0",
+        "Type": "BIT"
+    },
+    "飞轮舱9_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "1846.1",
+        "Type": "BIT"
+    },
+    "飞轮舱9_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "1846.2",
+        "Type": "BIT"
+    },
+    "飞轮舱9_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "1846.3",
+        "Type": "BIT"
+    },
+    "飞轮舱9_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "1852.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱9_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "1860.0",
+        "Type": "BIT"
+    },
+    "飞轮舱9_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "1860.2",
+        "Type": "BIT"
+    },
+    "飞轮舱10_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "1924.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱10_H_E_STOP": {
+        "DB": "18",
+        "Start": "2017.2",
+        "Type": "BIT"
+    },
+    "飞轮舱10_S_E_STOP": {
+        "DB": "18",
+        "Start": "2017.3",
+        "Type": "BIT"
+    },
+    "飞轮舱10_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "2020.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱10_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "2025.0",
+        "Type": "BIT"
+    },
+    "飞轮舱10_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "2025.2",
+        "Type": "BIT"
+    },
+    "飞轮舱10_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "2026.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱10_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "2028.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱10_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "2030.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱10_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "2032.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱10_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "2036.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱10_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "2038.0",
+        "Type": "BIT"
+    },
+    "飞轮舱10_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "2038.1",
+        "Type": "BIT"
+    },
+    "飞轮舱10_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "2038.2",
+        "Type": "BIT"
+    },
+    "飞轮舱10_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "2038.3",
+        "Type": "BIT"
+    },
+    "飞轮舱10_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "2044.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱11_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "2116.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱11_H_E_STOP": {
+        "DB": "18",
+        "Start": "2209.2",
+        "Type": "BIT"
+    },
+    "飞轮舱11_S_E_STOP": {
+        "DB": "18",
+        "Start": "2209.3",
+        "Type": "BIT"
+    },
+    "飞轮舱11_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "2212.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱11_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "2218.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱11_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "2220.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱11_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "2222.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱11_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "2224.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱11_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "2228.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱11_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "2230.0",
+        "Type": "BIT"
+    },
+    "飞轮舱11_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "2230.1",
+        "Type": "BIT"
+    },
+    "飞轮舱11_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "2230.2",
+        "Type": "BIT"
+    },
+    "飞轮舱11_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "2230.3",
+        "Type": "BIT"
+    },
+    "飞轮舱11_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "2236.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱11_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "2244.0",
+        "Type": "BIT"
+    },
+    "飞轮舱11_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "2244.2",
+        "Type": "BIT"
+    },
+    "飞轮舱12_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "2308.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱12_H_E_STOP": {
+        "DB": "18",
+        "Start": "2401.2",
+        "Type": "BIT"
+    },
+    "飞轮舱12_S_E_STOP": {
+        "DB": "18",
+        "Start": "2401.3",
+        "Type": "BIT"
+    },
+    "飞轮舱12_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "2404.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱12_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "2410.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱12_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "2412.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱12_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "2414.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱12_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "2416.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱12_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "2420.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱12_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "2422.0",
+        "Type": "BIT"
+    },
+    "飞轮舱12_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "2422.1",
+        "Type": "BIT"
+    },
+    "飞轮舱12_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "2422.2",
+        "Type": "BIT"
+    },
+    "飞轮舱12_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "2422.3",
+        "Type": "BIT"
+    },
+    "飞轮舱12_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "2428.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱12_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "2436.0",
+        "Type": "BIT"
+    },
+    "飞轮舱12_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "2436.2",
+        "Type": "BIT"
+    },
+    "飞轮舱13_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "2500.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱13_H_E_STOP": {
+        "DB": "18",
+        "Start": "2593.2",
+        "Type": "BIT"
+    },
+    "飞轮舱13_S_E_STOP": {
+        "DB": "18",
+        "Start": "2593.3",
+        "Type": "BIT"
+    },
+    "飞轮舱13_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "2596.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱13_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "2602.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱13_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "2604.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱13_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "2606.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱13_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "2608.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱13_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "2612.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱13_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "2614.0",
+        "Type": "BIT"
+    },
+    "飞轮舱13_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "2614.1",
+        "Type": "BIT"
+    },
+    "飞轮舱13_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "2614.2",
+        "Type": "BIT"
+    },
+    "飞轮舱13_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "2614.3",
+        "Type": "BIT"
+    },
+    "飞轮舱13_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "2620.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱13_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "2628.0",
+        "Type": "BIT"
+    },
+    "飞轮舱13_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "2628.2",
+        "Type": "BIT"
+    },
+    "飞轮舱14_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "2692.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱14_H_E_STOP": {
+        "DB": "18",
+        "Start": "2785.2",
+        "Type": "BIT"
+    },
+    "飞轮舱14_S_E_STOP": {
+        "DB": "18",
+        "Start": "2785.3",
+        "Type": "BIT"
+    },
+    "飞轮舱14_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "2788.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱14_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "2794.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱14_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "2796.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱14_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "2798.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱14_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "2800.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱14_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "2804.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱14_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "2806.0",
+        "Type": "BIT"
+    },
+    "飞轮舱14_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "2806.1",
+        "Type": "BIT"
+    },
+    "飞轮舱14_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "2806.2",
+        "Type": "BIT"
+    },
+    "飞轮舱14_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "2806.3",
+        "Type": "BIT"
+    },
+    "飞轮舱14_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "2812.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱14_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "2820.0",
+        "Type": "BIT"
+    },
+    "飞轮舱14_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "2820.2",
+        "Type": "BIT"
+    },
+    "飞轮舱15_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "2884.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱15_H_E_STOP": {
+        "DB": "18",
+        "Start": "2977.2",
+        "Type": "BIT"
+    },
+    "飞轮舱15_S_E_STOP": {
+        "DB": "18",
+        "Start": "2977.3",
+        "Type": "BIT"
+    },
+    "飞轮舱15_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "2980.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱15_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "2986.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱15_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "2988.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱15_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "2990.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱15_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "2992.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱15_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "2996.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱15_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "2998.0",
+        "Type": "BIT"
+    },
+    "飞轮舱15_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "2998.1",
+        "Type": "BIT"
+    },
+    "飞轮舱15_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "2998.2",
+        "Type": "BIT"
+    },
+    "飞轮舱15_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "2998.3",
+        "Type": "BIT"
+    },
+    "飞轮舱15_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "3004.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱15_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "3012.0",
+        "Type": "BIT"
+    },
+    "飞轮舱15_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "3012.2",
+        "Type": "BIT"
+    },
+    "飞轮舱16_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "3076.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱16_H_E_STOP": {
+        "DB": "18",
+        "Start": "3169.2",
+        "Type": "BIT"
+    },
+    "飞轮舱16_S_E_STOP": {
+        "DB": "18",
+        "Start": "3169.3",
+        "Type": "BIT"
+    },
+    "飞轮舱16_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "3172.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱16_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "3178.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱16_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "3180.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱16_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "3182.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱16_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "3184.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱16_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "3188.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱16_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "3190.0",
+        "Type": "BIT"
+    },
+    "飞轮舱16_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "3190.1",
+        "Type": "BIT"
+    },
+    "飞轮舱16_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "3190.2",
+        "Type": "BIT"
+    },
+    "飞轮舱16_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "3190.3",
+        "Type": "BIT"
+    },
+    "飞轮舱16_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "3196.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱16_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "3204.0",
+        "Type": "BIT"
+    },
+    "飞轮舱16_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "3204.2",
+        "Type": "BIT"
+    },
+    "飞轮舱17_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "3268.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱17_H_E_STOP": {
+        "DB": "18",
+        "Start": "3361.2",
+        "Type": "BIT"
+    },
+    "飞轮舱17_S_E_STOP": {
+        "DB": "18",
+        "Start": "3361.3",
+        "Type": "BIT"
+    },
+    "飞轮舱17_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "3364.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱17_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "3370.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱17_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "3372.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱17_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "3374.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱17_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "3376.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱17_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "3380.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱17_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "3382.0",
+        "Type": "BIT"
+    },
+    "飞轮舱17_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "3382.1",
+        "Type": "BIT"
+    },
+    "飞轮舱17_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "3382.2",
+        "Type": "BIT"
+    },
+    "飞轮舱17_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "3382.3",
+        "Type": "BIT"
+    },
+    "飞轮舱17_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "3388.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱17_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "3396.0",
+        "Type": "BIT"
+    },
+    "飞轮舱17_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "3396.2",
+        "Type": "BIT"
+    },
+    "飞轮舱18_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "3460.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱18_H_E_STOP": {
+        "DB": "18",
+        "Start": "3553.2",
+        "Type": "BIT"
+    },
+    "飞轮舱18_S_E_STOP": {
+        "DB": "18",
+        "Start": "3553.3",
+        "Type": "BIT"
+    },
+    "飞轮舱18_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "3556.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱18_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "3562.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱18_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "3564.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱18_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "3566.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱18_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "3568.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱18_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "3572.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱18_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "3574.0",
+        "Type": "BIT"
+    },
+    "飞轮舱18_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "3574.1",
+        "Type": "BIT"
+    },
+    "飞轮舱18_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "3574.2",
+        "Type": "BIT"
+    },
+    "飞轮舱18_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "3574.3",
+        "Type": "BIT"
+    },
+    "飞轮舱18_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "3580.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱18_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "3588.0",
+        "Type": "BIT"
+    },
+    "飞轮舱18_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "3588.2",
+        "Type": "BIT"
+    },
+    "飞轮舱19_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "3652.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱19_H_E_STOP": {
+        "DB": "18",
+        "Start": "3745.2",
+        "Type": "BIT"
+    },
+    "飞轮舱19_S_E_STOP": {
+        "DB": "18",
+        "Start": "3745.3",
+        "Type": "BIT"
+    },
+    "飞轮舱19_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "3748.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱19_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "3754.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱19_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "3756.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱19_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "3758.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱19_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "3760.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱19_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "3764.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱19_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "3766.0",
+        "Type": "BIT"
+    },
+    "飞轮舱19_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "3766.1",
+        "Type": "BIT"
+    },
+    "飞轮舱19_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "3766.2",
+        "Type": "BIT"
+    },
+    "飞轮舱19_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "3766.3",
+        "Type": "BIT"
+    },
+    "飞轮舱19_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "3772.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱19_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "3780.0",
+        "Type": "BIT"
+    },
+    "飞轮舱19_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "3780.2",
+        "Type": "BIT"
+    },
+    "飞轮舱20_POWER_PUT_功率给定": {
+        "DB": "18",
+        "Start": "3844.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱20_H_E_STOP": {
+        "DB": "18",
+        "Start": "3937.2",
+        "Type": "BIT"
+    },
+    "飞轮舱20_S_E_STOP": {
+        "DB": "18",
+        "Start": "3937.3",
+        "Type": "BIT"
+    },
+    "飞轮舱20_SYS_Model_系统模式": {
+        "DB": "18",
+        "Start": "3940.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱20_SYS_AVA_POWER_Cha_最大充电功率": {
+        "DB": "18",
+        "Start": "3946.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱20_SYS_AVA_POWER_DISCha_最大充电功率": {
+        "DB": "18",
+        "Start": "3948.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱20_SYS_RT_Active_POWER_实时有功功率": {
+        "DB": "18",
+        "Start": "3950.0",
+        "Type": "SHORT"
+    },
+    "飞轮舱20_SYS_SOC_系统SOC": {
+        "DB": "18",
+        "Start": "3952.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱20_FW_Ready_NUM_飞轮就绪数量": {
+        "DB": "18",
+        "Start": "3956.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱20_FA_1C_一级报警": {
+        "DB": "18",
+        "Start": "3958.0",
+        "Type": "BIT"
+    },
+    "飞轮舱20_FA_2C_二级报警": {
+        "DB": "18",
+        "Start": "3958.1",
+        "Type": "BIT"
+    },
+    "飞轮舱20_FA_3C_三级报警": {
+        "DB": "18",
+        "Start": "3958.2",
+        "Type": "BIT"
+    },
+    "飞轮舱20_FA_4C_四级报警": {
+        "DB": "18",
+        "Start": "3958.3",
+        "Type": "BIT"
+    },
+    "飞轮舱20_FW_Runing_NUM_飞轮运行数量": {
+        "DB": "18",
+        "Start": "3964.0",
+        "Type": "USHORT"
+    },
+    "飞轮舱20_SYS_Fire_Alarm": {
+        "DB": "18",
+        "Start": "3972.0",
+        "Type": "BIT"
+    },
+    "飞轮舱20_SYS_Fire_Alarm_breaker_trip": {
+        "DB": "18",
+        "Start": "3972.2",
+        "Type": "BIT"
+    }
+}

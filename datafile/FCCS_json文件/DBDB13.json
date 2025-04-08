@@ -1,0 +1,12 @@
+{
+    "FCCS_SOC": {
+        "DB": "13",
+        "Start": "10",
+        "Type": "USHORT"
+    },
+    "FCCS_RT_Action_POWER": {
+        "DB": "13",
+        "Start": "12",
+        "Type": "FLOAT"
+    }
+}
