@@ -19,11 +19,13 @@ from datetime import datetime
 
 import numpy as np
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from snap7.client import Client
 from sortedcontainers import SortedList
 
 from common.celery import app
 from mqttserver.mqtt_CLi import forward_data
+from .Collector_controller import start_collect, stop_collect, reset_collect
 from .models import plc_connection_status
 from showcenter.views import send_to_redis_channel
 from taosPro.utils import get_data, file_data, JsonCache
@@ -265,3 +267,29 @@ async def data_capture_main():
         await run_data_collection(collect_plcs)
     except KeyboardInterrupt:
         print("采集任务已终止")
+
+
+"""
+-------------------------api路由分割线------------------------
+"""
+
+
+@csrf_exempt
+def start_collect_view(request):
+    if request.method == 'POST':
+        start_collect()
+        return JsonResponse({'status': "started!"})
+
+
+@csrf_exempt
+def stop_collect_view(request):
+    if request.method == 'POST':
+        stop_collect()
+        return JsonResponse({'status': "stop!"})
+
+
+@csrf_exempt
+def reset_collect_view(request):
+    if request.method == 'POST':
+        reset_collect()
+        return JsonResponse({'status': "reset!"})
