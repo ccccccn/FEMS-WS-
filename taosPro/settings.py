@@ -77,8 +77,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     # 'mqttserver.views',
-    # "showcenter.apps.ShowcenterConfig",
-    # "taos_capture.apps.TaosCaptureConfig",
+    "showcenter.apps.ShowcenterConfig",
+    "taos_capture.apps.TaosCaptureConfig",
     'channels',
     "corsheaders",
     "data_transport",
@@ -89,12 +89,12 @@ CELERY_BROKER_URL = 'redis://localhost:6379/1'  # Redis 地址
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379/2'  # 存储任务结果的 Redis 地址
-CELERY_RESULT_EXPIRES = 10 # 存储任务结果的过期时间
+CELERY_RESULT_EXPIRES = 10  # 存储任务结果的过期时间
 CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 CELERY_TASK_PUBLISH_RETRY_POLICY = {
     'max_retries': 2,
     'interval_start': 0.01,  # 10ms首次重试
-    'interval_step': 0.03     # 指数退火
+    'interval_step': 0.03  # 指数退火
 }
 CELERY_BEAT_SCHEDULE = {
     'run-every-15-seconds': {
@@ -110,10 +110,24 @@ CELERY_TIMEZONE = 'Asia/Shanghai'
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
+    "formatters": {
+        'standard': {
+            'format': '[{asctime}] [{levelname}] {message}',
+            'style': '{',
+        },
+    },
     "handlers": {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/data_capture.log'),
+            'formatter': 'standard',
+            'encoding': 'utf-8',
+        },
         "console": {
             "level": "INFO",
             "class": "logging.StreamHandler",
+            'formatter': 'standard',
         },
     },
     "loggers": {
@@ -124,6 +138,11 @@ LOGGING = {
         "showcenter": {  # 为你的 app 配置单独的日志记录器
             "handlers": ["console"],
             "level": "INFO",
+        },
+        'data_capture': {
+            "handlers": ['file','console'],
+            "level": "DEBUG",
+            'propagate': False,
         },
     },
 }
