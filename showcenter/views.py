@@ -12,6 +12,12 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import random
 import numpy as np
+from rest_framework import viewsets, status
+from rest_framework.decorators import action
+from rest_framework.parsers import MultiPartParser, JSONParser, FormParser
+from rest_framework.response import Response
+
+from showcenter import apps
 
 CABIN_NUM = 20
 
@@ -26,6 +32,37 @@ p = r.pubsub()
 p.subscribe('show_center')
 
 
+class PieDataViewSet(viewsets.ModelViewSet):
+    authentication_classes = []
+    permission_classes = []
+
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
+
+    def get_queryset(self):
+        PieDistribution = apps.get_model('showcenter', 'PieDistribution')
+        queryset = PieDistribution.objects.all()
+        pie_type = self.request.query_params.get('pie_type')
+        analysis_type = self.request.query_params.get('analysis_type')
+        if pie_type:
+            queryset = queryset.filter(pie_type=pie_type)
+        if analysis_type:
+            queryset = queryset.filter(analysis_type=analysis_type)
+        return queryset.order_by('-analysis_time')
+
+    @action(detail=False, methods=['get'], url_path='latest')
+    def get_latest_record(self, request):
+        queryset = self.get_queryset()
+        instance = queryset.first()
+        if not instance:
+            return Response({'message': '未找到匹配记录'}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = self.get_serializer_class()
+        return Response(serializer.data)
+
+    def get_serializer_class(self):
+        from .serializers import PieSerializer
+        return PieSerializer
+
+
 # def send_to_redis_channel(channel_name, CABIN_NUM=20):
 def send_to_redis_channel(channel_name, CABIN_NUM=20):
     global soc_value, frequency_value, duration_value
@@ -33,13 +70,13 @@ def send_to_redis_channel(channel_name, CABIN_NUM=20):
 
     ## data_hist输出结果为各分区中个数
     def center_data_deal(data_value, data_name, fw_number, partiton):
-        data_value[fw_number] = fw_data[data_name]
+        data_value[fw_number - 1] = fw_data[data_name]
         data_bin = np.linspace(0, 100, partiton)
         data_hist, data_edges = np.histogram(data_value, bins=data_bin)
         return data_hist
 
     for i in range(1, CABIN_NUM + 1):
-        fw_data = fw_redis_data.get(f"飞轮舱{i}")
+        fw_data = json.loads(fw_redis_data.get(f"飞轮舱{i}"))
         soc_hist = center_data_deal(soc_value, f"飞轮舱{i}_EMS_SYS_SOC", i, 5)
         frequency_hist = center_data_deal(soc_value, f"飞轮舱{i}_EMS_SYS_FREQUENCY", i, 5)
         duration_hist = center_data_deal(soc_value, f"飞轮舱{i}_EMS_SYS_DURATION", i, 5)
@@ -71,22 +108,6 @@ def send_to_redis_channel(channel_name, CABIN_NUM=20):
 
 
 ## api轮训数据
-# def get_soc_data(request):
-#     random_idx = random.randint(0, 19)
-#     random_value = random.randint(-100, 100)
-#     soc_value[random_idx] = random_value
-#     hist, bin_edges = np.histogram(soc_value, bins=soc_bins)
-#     hist_json_str = json.dumps((hist / CABIN_NUM).tolist())
-#     hist_json = json.loads(hist_json_str)
-#     data = {
-#         "title": "soc",
-#         "message": {
-#             "value": hist_json
-#         }
-#     }
-#     return JsonResponse(data)
-
-
 def get_rack_data(request):
     data = {
         "title": "rack",

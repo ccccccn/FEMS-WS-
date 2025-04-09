@@ -6,11 +6,17 @@
  @SoftWare: PyCharm
 """
 # urls.py
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+
 from . import views
+from .views import PieDataViewSet
+
+router = routers.DefaultRouter()
+router.register(r'pie_data', PieDataViewSet, basename='pie_data')
 
 urlpatterns = [
-    path('api/frequency/', views.get_frequency_data, name='frequency-data'),
-    path('api/soc/', views.get_soc_data, name='soc-data'),
-    path('api/rack/', views.get_rack_data, name='rack-data'),
+    path('showcenter/', include(router.urls)),
+    # path('api/rack/', views.get_rack_data, name='rack-data'),
+    # path('piedata/<str:pie>', views.get_rack_data, name='showcenter_piedata')
 ]
