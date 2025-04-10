@@ -17,7 +17,7 @@ from rest_framework.decorators import action
 from rest_framework.parsers import MultiPartParser, JSONParser, FormParser
 from rest_framework.response import Response
 
-from showcenter import apps
+from django.apps import apps
 
 CABIN_NUM = 20
 
@@ -47,7 +47,7 @@ class PieDataViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(pie_type=pie_type)
         if analysis_type:
             queryset = queryset.filter(analysis_type=analysis_type)
-        return queryset.order_by('-analysis_time')
+        return queryset.order_by('analysis_time')
 
     @action(detail=False, methods=['get'], url_path='latest')
     def get_latest_record(self, request):
