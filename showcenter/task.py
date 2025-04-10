@@ -5,6 +5,7 @@
  @DateTime: 2025-01-22 8:54
  @SoftWare: PyCharm
 """
+import datetime
 import logging
 
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -26,17 +27,29 @@ app.conf.beat_schedule = {
 }
 
 scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
-scheduler.add_jobstore(DjangoJobStore(),"default")
+scheduler.add_jobstore(DjangoJobStore(), "default")
 
 taos = TaosClass('localhost', 'taos', 'taosdata', 6030)
 taos.connect("fems")
+
+
 @shared_task
 def scheduled_task():
     logger.info("Scheduled task is running")
 
 
-@scheduler.scheduled_job('interval', minutes=15,id='showcenter_piedata_15min_task')
-def statistic_show_center_pie_data_15min():
-    pass
-    taos_select_sql = "select * from "
+
+@scheduler.scheduled_job('interval', minutes=15, id='showcenter_piedata_15min_task')
+def statistic_show_center_pie_data_15min(i):
+    pie_data_sql = (f'select HISTOGRAM("飞轮舱{i}_SYS_SOC",20,0,100),'
+                    f'HISTOGRAM("飞轮舱{i}_SYS_ACTION",2,0,15),'
+                    f'HISTOGRAM("飞轮舱{i}_SYS_FRE",20,0,100) from `飞轮舱{i}` '
+                    f'where ts >= {datetime.time}')
+    """
+        output:
+        [
+                ([(bucket_start, count), ...], [(bucket_start, count), ...], [(bucket_start, count), ...])
+        ]
+        """
+
 
