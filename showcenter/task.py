@@ -22,12 +22,12 @@ app = Celery('showcenter')
 
 logger = logging.getLogger('showcenter')
 
-app.conf.beat_schedule = {
-    'scheduled-task': {
-        'task': 'showcenter.tasks.scheduled_task',
-        'schedule': crontab(minute='*/0.1'),  # 每15分钟执行一次
-    },
-}
+# app.conf.beat_schedule = {
+#     'scheduled-task': {
+#         'task': 'showcenter.tasks.scheduled_task',
+#         'schedule': crontab(minute='*/0.1'),  # 每15分钟执行一次
+#     },
+# }
 
 scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
 scheduler.add_jobstore(DjangoJobStore(), "default")
@@ -36,14 +36,15 @@ taos = TaosClass('localhost', 'taos', 'taosdata', 6030)
 conn = taos.connect("test")
 tcur = conn.cursor()
 pyconn = pymysql.connect(
-        user='root',
-        password='ccn020125.',
-        host='127.0.0.1',
-        database='taospro'
-    )
-    # except Exception as e:
-    #     print(e)
+    user='root',
+    password='ccn020125.',
+    host='127.0.0.1',
+    database='taospro'
+)
+# except Exception as e:
+#     print(e)
 cursor = pyconn.cursor()
+
 
 def generate_time_range(time_type):
     """生成对应时间类型的 SQL 时间范围条件"""
@@ -74,9 +75,6 @@ def process_and_insert_data(cursor, tcur, time_type, analysis_type):
     tcur.execute(sql)
     data = tcur.fetchall()
 
-    if not data:
-        return  # 无数据时跳过
-
     data_np = np.array(data)
 
     # 定义各列的分箱规则 (可配置化)
@@ -102,17 +100,40 @@ def process_and_insert_data(cursor, tcur, time_type, analysis_type):
             analysis_type,
             config['pie_type']
         ]
-        print(tuple(insert_data))
+        # print(tuple(insert_data))
         # 执行插入
+        cursor.execute('select count(*) from taospro.pie_data_distribution')
+        count = cursor.fetchone()[0]
+
+        if count < 9:
+            cursor.execute(
+                '''
+                INSERT INTO taospro.pie_data_distribution
+                (analysis_time, partition1, partition2, partition3, partition4, partition5, analysis_type, pie_type)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                ''',
+                tuple(insert_data)
+            )
+            pyconn.commit()
+            continue
         cursor.execute(
             '''
-            INSERT INTO taospro.pie_data_distribution 
-            (analysis_time, partition1, partition2, partition3, partition4, partition5, analysis_type, pie_type)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+            UPDATE taospro.pie_data_distribution
+            SET
+                analysis_time = %s,
+                partition1 = %s,
+                partition2 = %s,
+                partition3 = %s,
+                partition4 = %s,
+                partition5 = %s
+            WHERE
+                analysis_type = %s
+                AND pie_type = %s
             ''',
             tuple(insert_data)
         )
         pyconn.commit()
+
 
 @shared_task
 def scheduled_task():
@@ -120,10 +141,10 @@ def scheduled_task():
 
 
 @scheduler.scheduled_job('interval', minutes=0.1, id='showcenter_piedata_15min_task')
-def statistic_show_center_pie_data_15min(i):
+def statistic_show_center_pie_data_15min():
     for time_type in ['day', 'month', 'year']:
         process_and_insert_data(cursor, tcur, time_type, analysis_type=time_type)
-    print("插入成功")
+    print(f"插入成功--{datetime.datetime.now()}")
     """
     input_sql:
     (SELECT histogram(sys_soc, 'user_input', '[1,20,40,60,80,100]]', 0) as sys_soc_day
