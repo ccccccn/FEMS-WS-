@@ -10,12 +10,14 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from django.apps import AppConfig
 from snap7 import Client
 
-from taos_capture.views import data_capture_main, plc_is_connect
-from .capture_utils import check_plc_connected_loop
+from mock import AllDataMock
+from .capture_utils import check_plc_connected_loop, data_capture_main
 from .shared_data import FLC_NUM
 from showcenter.apps import logger
+
 # from .views import collect_plcs
 is_connected_data = np.zeros(FLC_NUM)
+
 
 class TaosCaptureConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
@@ -24,21 +26,23 @@ class TaosCaptureConfig(AppConfig):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        print("DataCaptureConfig __init__ called!")  # 添加调试信息
+        logger.info("DataCaptureConfig __init__ called!")  # 添加调试信息
 
     def ready(self):
-        print("预加载本地数据词典")
+        logger.info("预加载本地数据词典")
         # 使用redis预加载缓存
         from . import shared_data
         shared_data.init_data()
         logger.info("DataCaptureConfig ready!")
-        self.initial_threadpool()
-        thread = threading.Thread(target=check_plc_connected_loop)
-        thread.daemon = True
-        thread.start()
-        print("定时轮询，心跳机制启动！")
-
-
+        # AllDataMock.main()
+        mockdata_thread = threading.Thread(target=AllDataMock.main, daemon=True)
+        mockdata_thread.start()
+        logger.info("MoniterDataCapture Start!")
+        # self.initial_threadpool()
+        # thread = threading.Thread(target=check_plc_connected_loop)
+        # thread.daemon = True
+        # thread.start()
+        # logger.info("定时轮询，心跳机制启动！")
 
     def initial_threadpool(self):
         loop = asyncio.get_event_loop()
@@ -48,14 +52,14 @@ class TaosCaptureConfig(AppConfig):
     async def data_capture_main(self):
         try:
             # 假设 data_capture_main 函数已经在 views 文件中实现
-            from .views import data_capture_main as view_data_capture_main
+            from .capture_utils import data_capture_main as view_data_capture_main
             await view_data_capture_main()
 
             await asyncio.sleep(0.01)  # 确保任务完成
         except asyncio.CancelledError as e:
             logger.error(f"用户停止了操作")
         except Exception as e:
-            logger.error(f"数据采集主函数出错：{e}",exc_info=True)
+            logger.error(f"数据采集主函数出错：{e}", exc_info=True)
         # loop = asyncio.get_event_loop()
         # asyncio.set_event_loop(loop)
         # scheduler = AsyncIOScheduler()
@@ -78,4 +82,3 @@ class TaosCaptureConfig(AppConfig):
     """
     定时心跳机制：定时轮询plc连接状态，消耗更少的资源
     """
-

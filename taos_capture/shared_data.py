@@ -14,6 +14,7 @@ import threading
 import numpy as np
 import redis
 
+from common import config
 from taosPro.utils import JsonCache, file_data
 
 cache = JsonCache()
@@ -36,7 +37,7 @@ change_idx = np.zeros(FLC_NUM)
 is_connect = np.random.randint(0, 2, size=FLC_NUM)
 
 MQTT_TOPIC = "test"
-folder_path = "D:\\pycahrm\\taosPro\\datafile\\office_test"
+folder_path = "D:\pycahrm\\taosPro\datafile\FLC_ALL_DATA"
 folder_path_mqtt = "D:\\pycahrm\\taosPro\\datafile\\MQTTTest"
 
 
@@ -84,7 +85,11 @@ def init_data():
         'rack': 0, 'slot': 1,
         'dbs': db, 'starts': start, 'lengths': lengths
     }
-    ip_addresses = ['192.168.100.25']
+    try:
+        ip_addresses = config.plc_ip_match.values()
+    except Exception as e:
+        logging.error(f"plc_ip_match error:{e}")
+        pass
     # ip_addresses = ['192.168.110.{}'.format(i) for i in range(1, FLC_NUM + 1)]  # 示例PLC IP地址
     collect_plcs.extend([{'ip': ip, **base_config} for ip in ip_addresses])
     """

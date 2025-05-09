@@ -13,10 +13,9 @@ from rest_framework.routers import SimpleRouter
 
 router = SimpleRouter()
 
-
 urlpatterns = router.urls
 urlpatterns = [
-    path('/SystemManagement/start_collect', views.start_collect_view),
-    path('/SystemManagement/stop_collect', views.stop_collect_view),
-    path('/SystemManagement/reset_collect', views.reset_collect_view)
+    path('SystemManagement/start_collect', views.start_collect_view),
+    path('SystemManagement/stop_collect', views.stop_collect_view),
+    path('SystemManagement/reset_collect', views.reset_collect_view)
 ]

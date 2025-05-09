@@ -8,7 +8,7 @@
 import asyncio
 import threading
 
-from taos_capture.views import data_capture_main
+from taos_capture.capture_utils import data_capture_main
 
 collect_thread = None
 collect_loop = None
