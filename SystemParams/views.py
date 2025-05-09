@@ -1,4 +1,6 @@
 import json
+import logging
+
 import math
 
 import time
@@ -17,35 +19,22 @@ from common.utils import cost_time
 system_params_redis = redis.StrictRedis('localhost', 6379, db=2,
                                         charset='utf-8', decode_responses=True, encoding='utf-8')
 
-
 # system_params_redis.xadd()
 
 
-@cost_time
-def systemParamsView():
-    while True:
-        try:
-            all_fw_latest_data = json.loads(system_params_redis.get('latest_fw_data'))
-            sys_params_data = {
-                name: {k: data.get(v, None) for k, v in system_params_overview_mapped_keys}
-                for name, data in all_fw_latest_data.items()
-            }
-            # print(sys_params_data['飞轮舱1'])
-            sys_params_data = json.dumps(sys_params_data, ensure_ascii=False)
-            system_params_redis.publish("systemParamsOverview", sys_params_data)
-        except Exception as e:
-            logger.error(f'系统参数总览页面有误：{e}')
-        finally:
-            time.sleep(5)
+logger = logging.getLogger(__name__)
+
+redis_cli = redis.StrictRedis(
+    host='localhost', port=6379, db=2,
+    charset='utf-8', decode_responses=True, encoding='utf-8'
+)
 
 
 def smart_format(template: str, i: int) -> str:
     count = template.count("{}")
     if count == 1:
-        tempstr = template.format(i)
         return template.format(i)
     elif count == 2:
-        tmpstr = template.format(math.ceil(i / 2), 1 if i % 2 == 1 else 2)
         return template.format(math.ceil(i / 2), 1 if i % 2 == 1 else 2)
     elif count == 0:
         return template
@@ -53,35 +42,68 @@ def smart_format(template: str, i: int) -> str:
         raise ValueError(f"模板占位符数量不支持: {template}")
 
 
+# 提前生成 smart_format 映射结果 → 避免循环中格式化消耗
+def generate_fw_key_map(flat_keys):
+    cache = {}
+    for i in range(1, 9):
+        cache[f"F{i}"] = {
+            k: smart_format(tpl, i) for k, tpl in flat_keys
+        }
+    return cache
+
+
+FW_MAPPED_KEYS = generate_fw_key_map(system_params_detail_mapped_keys["FW"])
+print(json.dumps(FW_MAPPED_KEYS,ensure_ascii=False))
+PCS_MAPPED_KEYS = dict(system_params_detail_mapped_keys["PCS"])
+OVERVIEW_KEYS = dict(system_params_overview_mapped_keys)
+
+
+@cost_time
+def systemParamsView():
+    while True:
+        try:
+            raw = redis_cli.get("latest_fw_data")
+            if not raw:
+                time.sleep(5)
+                continue
+
+            all_data = json.loads(raw)
+
+            overview_result = {
+                name: {k: item.get(v) for k, v in OVERVIEW_KEYS.items()}
+                for name, item in all_data.items()
+            }
+
+            redis_cli.publish("systemParamsOverview", json.dumps(overview_result, ensure_ascii=False))
+
+        except Exception as e:
+            logger.exception("systemParamsView 异常", exc_info=True)
+        finally:
+            time.sleep(5)
+
+
 def systemParamsDetailView():
     while True:
         try:
-            latest_data_raw = system_params_redis.get('latest_fw_data')
-            if not latest_data_raw:
-                logger.warning("未获取到最新飞轮数据")
+            raw = redis_cli.get("latest_fw_data")
+            if not raw:
+                time.sleep(5)
                 continue
 
-            all_fw_latest_data = json.loads(latest_data_raw)
-            sys_params_detail = {}
+            all_data = json.loads(raw)
+            result = {}
 
-            for name, fw_data in all_fw_latest_data.items():
-                fw_detail = {}
-                for i in range(1, 9):
-                    fw_detail[f"F{i}"] = {
-                        key: fw_data.get(smart_format(template, i), None)
-                        for key, template in system_params_detail_mapped_keys["FW"]
-                    }
-                fw_detail['PCS'] = {
-                    k: fw_data.get(v, None) for k, v in system_params_detail_mapped_keys["PCS"]
+            for name, flat in all_data.items():
+                flywheels = {
+                    key: {field: flat.get(template) for field, template in mapped.items()}
+                    for key, mapped in FW_MAPPED_KEYS.items()
                 }
-                sys_params_detail[name] = fw_detail
+                flywheels["PCS"] = {k: flat.get(v) for k, v in PCS_MAPPED_KEYS.items()}
+                result[name] = flywheels
 
-            # print(json.dumps(sys_params_detail['飞轮舱1'],ensure_ascii=False))
-            # 此处可将 sys_params_detail 赋值给前端缓存/返回等逻辑
-            system_params_redis.publish("systemParamsDetail",json.dumps(sys_params_detail,ensure_ascii=False))
-            # yield sys_params_detail 或赋值到 Redis 等...
+            redis_cli.publish("systemParamsDetail", json.dumps(result, ensure_ascii=False))
 
         except Exception as e:
-            logger.error(f"系统参数详情处理异常：{e}", exc_info=True)
+            logger.exception("systemParamsDetailView 异常", exc_info=True)
         finally:
             time.sleep(5)
