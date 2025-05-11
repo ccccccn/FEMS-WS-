@@ -8,12 +8,10 @@
 import taos
 from celery import shared_task
 
-from common.TaosClass import TaosClass
-
 
 def HeartBeat():
-    taosConn = TaosClass("localhost", "root", "taosdata", "root")
-    conn = taosConn.connect("FEMS")
+    taosConn = taos.connect("localhost", "root", "taosdata", 6030)
+    conn = taosConn.select_db("FEMS")
     tcur = taosConn.cursor()
     FW_list = []
     for i in range(1,9):
