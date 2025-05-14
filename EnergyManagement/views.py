@@ -51,40 +51,17 @@ CURRENT_RECORD_DATA = {}
 # 初始化上一次的数据
 def init_rank_data():
     global init_data, LAST_RANK_DATA, LAST_RECORD_DATA
-    """
-    data_dict = {
-        'flc_id': {'sys_state': 1, 'soc': 88},
-        'flc_id1': {'sys_state':1', 'soc': 92},
-        'flc_id2': {'sys_state': 1, 'soc': 75},
-        'flc_id3': {'sys_state': 1, 'soc': 90},
-        'flc_id4': {'sys_state': 1, 'soc': 85},
-        'flc_id5': {'sys_state':1, 'soc': 80},
-        'flc_id6': {'sys_state': 1 'soc': 95},
-    }
-    """
-
-    all_data = fw_all_data_redis.get('latest_fw_data')
+    all_data = json.loads(fw_all_data_redis.get('latest_fw_data'))
     for key, value in all_data.items():
         LAST_RECORD_DATA[key] = {
-            "soc": value["EMS_SYS_SOC"],
-            "sys_state": value['EMS_SYS_STATE']
+            "soc": value["PCS_系统SOC"],
+            "sys_state": value['EMS_SYS_State']
         }
-    """
-    data_dict = {
-        'flc_id': {'call_time': 1, 'soc': 88},
-        'flc_id1': {'call_time':1', 'soc': 92},
-        'flc_id2': {'call_time': 1, 'soc': 75},
-        'flc_id3': {'call_time': 1, 'soc': 90},
-        'flc_id4': {'call_time': 1, 'soc': 85},
-        'flc_id5': {'call_time':1, 'soc': 80},
-        'flc_id6': {'call_time': 1 'soc': 95},
-    }
-    """
     init_sql = 'SELECT id,call_time,soc FROM energy_manage_rank'
     with connection.cursor() as cursor:
         cursor.execute(init_sql)
         datas = cursor.fetchall()
-        print(f"data={datas}, {type(datas)}")
+        # print(f"data={datas}, {type(datas)}")
     for data in datas:
         id, call_time, soc = data
         init_data[f"flc_{id}"] = {
@@ -93,24 +70,6 @@ def init_rank_data():
         }
     LAST_RANK_DATA = init_data
 
-
-"""
-{"soc":{
-    "flc_1":'xx',
-    "flc_2":'xx',
-    "flc_4":'xx',
-    "flc_5":'xx',
-    "flc_6":'xx',
-}，
-"call_time":{
-    "flc_1":xx,
-    "flc_2":xx,
-    "flc_3":xx,
-    "flc_4":xx,
-    "flc_5":xx,
-}
-}
-"""
 
 """
 用于心跳机制刷新redis和mysql中的持久化数据，
@@ -123,35 +82,44 @@ def init_rank_data():
 """
 
 
+def get_top5(data, key):
+    top5 = sorted(data, key=itemgetter(key), reverse=True)[:5]
+    return [
+        {
+            "id": item.get("id"),
+            f"{key}": item.get(f"{key}"),
+        } for item in top5
+    ]
+
+
 @action(['get'], False, 'energy_rank', 'energy_rank')
-def get_current_rank_data():
+def get_current_rank_data(request, *args, **kwargs):
     global CURRENT_RANK_DATA, LAST_RANK_DATA, LAST_RECORD_DATA, CURRENT_RECORD_DATA
 
-    def get_top5(data, key):
-        # 按 key 排序并去除 call_time_dt 字段
-        top5 = sorted(data, key=itemgetter(key), reverse=True)[:5]
-        for item in top5:
-            item.pop("call_time_dt", None)
-        return top5
-
     # 初始化时使用 LAST_RANK_DATA
-    if CURRENT_RECORD_DATA is None:
-        top5_call_time = get_top5(LAST_RANK_DATA, "call_time_dt")
-        top5_soc = get_top5(LAST_RANK_DATA, "soc")
-        CURRENT_RANK_DATA = LAST_RANK_DATA
+    if not CURRENT_RECORD_DATA:
+        CURRENT_RECORD_DATA = LAST_RECORD_DATA.copy()
+        CURRENT_RANK_DATA = LAST_RANK_DATA.copy()
+        top5_call_time = get_top5([
+            dict(**v, id=k) for k, v in LAST_RANK_DATA.items()
+        ], "call_time")
+        top5_soc = get_top5([
+            dict(**v, id=k) for k, v in LAST_RANK_DATA.items()
+        ], "soc")
         return JsonResponse({
             "top5_call_time": top5_call_time,
             "top5_soc": top5_soc
         }, safe=False, json_dumps_params={"ensure_ascii": False})
 
     # 否则对 Redis 数据进行处理
-    fw_all_data = fw_all_data_redis.get('latest_fw_data')
+    fw_all_data = json.loads(fw_all_data_redis.get('latest_fw_data'))
 
     # 构造 CURRENT_RECORD_DATA
     CURRENT_RECORD_DATA = {
         key: {
+            "id": key,
             "soc": value.get("EMS_SYS_SOC"),
-            "sys_state": value.get("EMS_SYS_STATE")
+            "sys_state": value.get("EMS_SYS_State")
         }
         for key, value in fw_all_data.items()
     }
@@ -167,20 +135,26 @@ def get_current_rank_data():
             change_keys.append(key)
 
     # 更新 call_time
-    for key in change_keys:
-        if key in CURRENT_RANK_DATA:
-            CURRENT_RANK_DATA[key]["call_time"] += 1
-            CURRENT_RANK_DATA[key]["call_time_dt"] = datetime.now()
-        else:
-            # 如果不存在则初始化
+    for key in CURRENT_RECORD_DATA:
+        current_soc = CURRENT_RECORD_DATA[key]["soc"]
+
+        if key in change_keys:
+            # 更新 soc 和时间
             CURRENT_RANK_DATA[key] = {
-                "call_time": 1,
-                "soc": CURRENT_RECORD_DATA[key]["soc"],
-                "call_time_dt": datetime.now()
+                'id': key,
+                "soc": current_soc,
+                "call_time": CURRENT_RANK_DATA[key]["call_time"]+1,
+            }
+        else:
+            # 如果是新增 key，初始化 call_time，根据变更状态决定初始值
+            CURRENT_RANK_DATA[key] = {
+                'id': key,
+                "soc": current_soc,
+                "call_time": CURRENT_RANK_DATA[key]["call_time"],
             }
 
     # 排序并取前5
-    top5_call_time = get_top5(list(CURRENT_RANK_DATA.values()), "call_time_dt")
+    top5_call_time = get_top5(list(CURRENT_RANK_DATA.values()), "call_time")
     top5_soc = get_top5(list(CURRENT_RANK_DATA.values()), "soc")
 
     # 更新 LAST_RECORD_DATA
