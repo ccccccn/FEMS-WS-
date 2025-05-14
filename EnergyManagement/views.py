@@ -164,3 +164,5 @@ def get_current_rank_data(request, *args, **kwargs):
         "top5_call_time": top5_call_time,
         "top5_soc": top5_soc
     }, safe=False, json_dumps_params={"ensure_ascii": False})
+
+def sava_to_mysql():
