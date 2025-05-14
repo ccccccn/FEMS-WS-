@@ -5,24 +5,28 @@
  @DateTime: 2025-04-28 16:09
  @SoftWare: PyCharm
 """
+import logging
+
+import atexit
 from copy import deepcopy
 
 import redis
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
+from apscheduler.triggers.interval import IntervalTrigger
 from celery import shared_task
+from django.db import connection
+from django_apscheduler.jobstores import DjangoJobStore
 
 from .HeartBeat import HeartBeat
 from confluent_kafka import Consumer
 
+from .models import EnergyManageRank
+
+logger = logging.getLogger(__name__)
+
 fw_all_data_redis = redis.StrictRedis("localhost", 6379, 3,
                                       decode_responses=True, charset='UTF-8', encoding='UTF-8')
-
-conf = {
-    'bootstrap.servers': 'localhost:9092',  # Kafka 服务地址
-    'group.id': 'energy_data',  # 消费组名
-    'auto.offset.reset': 'latest',  # 从最早开始读（可选 latest）
-}
-energy_consumer = Consumer(conf)
-energy_consumer.subscribe(['plc_data_kafka'])
 
 
 @shared_task
@@ -30,25 +34,38 @@ def hearbeat_task():
     isOnlineNum = HeartBeat()
     return isOnlineNum
 
+def start_energy_scheduler():
+    scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
+    scheduler.add_job(
+        reset_rank_table,
+        # trigger=IntervalTrigger(seconds=20),
+        trigger=CronTrigger(hour=0, minute=0, second=0),
+        id='reset_rank_table',
+        replace_existing=True
+    )
+    scheduler.start()
 
-LAST_RANK_DATA = fw_all_data_redis.get('latest_fw_data')
-CURRENT_RANK_DATA = {}
-COUNT_DICT = {}
-
-def get_current_rank_data():
-    global CURRENT_RANK_DATA
-    global LAST_RANK_DATA
-    temp_data = deepcopy(LAST_RANK_DATA)
-    for key, value in LAST_RANK_DATA.items():
-        CURRENT_RANK_DATA[key] = {
-            "SOC": value["EMS_SYS_SOC"],
-            "EMS_SYS_State": value["EMS_SYS_State"]
-        }
-    for last_state, current_state in zip(LAST_RANK_DATA.values(), CURRENT_RANK_DATA.values()):
-        if last_state != current_state:
-            LAST_RANK_DATA = CURRENT_RANK_DATA
-            CURRENT_RANK_DATA = {}
-            break
-        else:
-            continue
-    fw_all_data_redis.set('fw_call_soc_rank', CURRENT_RANK_DATA)
+def reset_rank_table():
+    EnergyManageRank.objects.all().delete()
+    objs = [
+        EnergyManageRank(
+            id=i,
+            call_time=0,
+            call_rank=i,
+            soc=0.00,
+            soc_rank=i
+        ) for i in range(1, 51)  # id 自增不需要指定
+    ]
+    EnergyManageRank.objects.bulk_create(objs)
+    logger.info("Reset rank_table")
+    init_sql = 'select * from energy_manage_rank'
+    init_data = {}
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(init_sql)
+            data = cursor.fetchall()
+            print(f"data={data},{type(data)}")
+    except AttributeError:
+        logger.error("'Cursor' object has no attribute 'excute'")
+    except Exception as e:
+        logger.error(f"other error:{e}")

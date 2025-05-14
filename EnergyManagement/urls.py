@@ -8,10 +8,12 @@
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 from . import views
+
 router = SimpleRouter()
 
 urlpatterns = router.urls
 urlpatterns = [
-    path('/station_basic_info',views.station_basic_info,name='station_basic_info')
+    path('station_basic_info', views.station_basic_info, name='station_basic_info'),
+    path('current_data_rank', views.get_current_rank_data, name='current_data_rank')
 
 ]
