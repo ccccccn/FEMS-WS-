@@ -8,15 +8,13 @@
 import datetime
 import json
 import logging
-
+import taos
 import numpy as np
 import pymysql
 from apscheduler.schedulers.background import BackgroundScheduler
 from celery import Celery, shared_task
 from celery.schedules import crontab
 from django_apscheduler.jobstores import DjangoJobStore
-
-from common.TaosClass import TaosClass
 
 app = Celery('showcenter')
 
@@ -29,11 +27,9 @@ logger = logging.getLogger('showcenter')
 #     },
 # }
 
-scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
-scheduler.add_jobstore(DjangoJobStore(), "default")
 
-taos = TaosClass('localhost', 'taos', 'taosdata', 6030)
-conn = taos.connect("test")
+conn = taos.connect('localhost', 'taos', 'taosdata', 6030)
+conn.select_db('test')
 tcur = conn.cursor()
 pyconn = pymysql.connect(
     user='root',
@@ -69,14 +65,12 @@ def process_and_insert_data(cursor, tcur, time_type, analysis_type):
     time_condition = generate_time_range(time_type)
     sql = f'''
         SELECT sys_soc, sys_fre, `duration` 
-        FROM `fems_flc1`
+        FROM `fems_fccs`
         WHERE {time_condition}
     '''
     tcur.execute(sql)
     data = tcur.fetchall()
-
     data_np = np.array(data)
-
     # 定义各列的分箱规则 (可配置化)
     bins_config = {
         'soc': {'column': 0, 'bins': np.linspace(0, 100, 6), 'pie_type': 'Soc_distribution'},
@@ -88,10 +82,8 @@ def process_and_insert_data(cursor, tcur, time_type, analysis_type):
     for metric, config in bins_config.items():
         col_data = data_np[:, config['column']]
         hist, _ = np.histogram(col_data, bins=config['bins'])
-
         if sum(hist) == 0:
             continue  # 避免除以零
-
         # 构造插入数据
         percentages = (np.round(hist / sum(hist), 4) * 100).tolist()
         insert_data = [
@@ -104,7 +96,6 @@ def process_and_insert_data(cursor, tcur, time_type, analysis_type):
         # 执行插入
         cursor.execute('select count(*) from taospro.pie_data_distribution')
         count = cursor.fetchone()[0]
-
         if count < 9:
             cursor.execute(
                 '''
@@ -140,11 +131,15 @@ def scheduled_task():
     logger.info("Scheduled task is running")
 
 
+scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
+scheduler.add_jobstore(DjangoJobStore(), "default")
+
+
 @scheduler.scheduled_job('interval', minutes=0.1, id='showcenter_piedata_15min_task')
 def statistic_show_center_pie_data_15min():
     for time_type in ['day', 'month', 'year']:
         process_and_insert_data(cursor, tcur, time_type, analysis_type=time_type)
-    print(f"插入成功--{datetime.datetime.now()}")
+    # print(f"插入成功--{datetime.datetime.now()}")
     """
     input_sql:
     (SELECT histogram(sys_soc, 'user_input', '[1,20,40,60,80,100]]', 0) as sys_soc_day
@@ -163,3 +158,7 @@ def statistic_show_center_pie_data_15min():
                 ([(bucket_start, count), ...], [(bucket_start, count), ...], [(bucket_start, count), ...])
         ]
         """
+
+@scheduler.scheduled_job('interval',minutes=1,id='showcenter_running_statistics_data_1min')
+def running_statistics_station_data():
+    pass

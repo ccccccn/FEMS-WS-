@@ -16,7 +16,7 @@ router = routers.DefaultRouter()
 router.register(r'pie_data', PieDataViewSet, basename='pie_data')
 
 urlpatterns = [
-    path('showcenter/', include(router.urls)),
-    # path('api/rack/', views.get_rack_data, name='rack-data'),
-    # path('piedata/<str:pie>', views.get_rack_data, name='showcenter_piedata')
+    path('', include(router.urls)),
+    path('current_data_play', views.current_data_play_by_redis, name='station_data'),
+    path("storage_station_info", views.storage_station_information, name="storage_station_info")
 ]

@@ -16,6 +16,8 @@ from django.apps import AppConfig
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
+from showcenter.views import current_data_play_by_redis
+
 logger = logging.getLogger(__name__)
 
 
@@ -44,8 +46,9 @@ class ShowcenterConfig(AppConfig):
 
         # 创建调度器
         self.scheduler = AsyncIOScheduler()
-        self.scheduler.add_job(self.scheduled_task, 'interval', seconds=1, max_instances=5)
-
+        self.scheduler.add_job(self.scheduled_task, 'interval', seconds=10, max_instances=5)
+        self.scheduler.add_job(
+            current_data_play_by_redis,'interval', seconds=1, max_instances=2)
         # 启动事件循环
         try:
             self.loop.run_until_complete(self.start_scheduler())
@@ -57,14 +60,16 @@ class ShowcenterConfig(AppConfig):
 
     async def start_scheduler(self):
         self.scheduler.start()
+        logger.info("定时任务启动")
         while True:
             await asyncio.sleep(1)
 
     # 方法二使用apscheduler 支持异步操作和停止主线程操作
     async def scheduled_task(self):
-        from .views import CABIN_NUM, send_to_redis_channel
+        from .task import statistic_show_center_pie_data_15min
         try:
-            send_to_redis_channel("show_center")
+            # send_to_redis_channel("show_center")
+            statistic_show_center_pie_data_15min()
             try:
                 await asyncio.sleep(0.001)
             except CancelledError as e:
