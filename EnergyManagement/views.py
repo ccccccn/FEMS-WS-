@@ -28,38 +28,15 @@ redis_fw = redis.StrictRedis('localhost', 6379, 4)
 def station_basic_info(request, *args, **kwargs):
     try:
         OnlineNum = HeartBeat()
-        return JsonResponse(json.dumps(OnlineNum), ensure_ascii=False)
+        OnlineNumDict = {"OnlineNum": OnlineNum}
+        return JsonResponse(OnlineNumDict, safe=True,  json_dumps_params={"ensure_ascii": False})
     except Exception as e:
-        return JsonResponse({'error': f'{e}', 'message': {e.message}}, ensure_ascii=False)
-
-
-def usage_status(request, *args, **kwargs):
-    data = redis_fw.get('fccs')
-    # response_data = [
-    #     "场站SOC":
-    #
-    # ]
-
-
-def get_top5(data, key):
-    top5 = sorted(data, key=itemgetter(key), reverse=True)[:5]
-    return top5
+        return JsonResponse({'message': {e}}, ensure_ascii=False)
 
 
 @action(['get'], False, 'energy_rank', 'energy_rank')
 def get_current_rank_data(request):
     rank_data = state_manage.get_rank_data()
-
-    # def get_top5(data, key):
-    #     return sorted(data, key=lambda x: x[key], reverse=True)[:5]
-    #
-    # top5_call_time = get_top5(list(rank_data.values()), 'call_time')
-    # top5_soc = get_top5(list(rank_data.values()), 'soc')
-
-    # return JsonResponse({
-    #     "top5_call_time": top5_call_time,
-    #     "top5_soc": top5_soc
-    # }, safe=False, json_dumps_params={"ensure_ascii": False})
 
     return JsonResponse({
         "data": list(rank_data.values())

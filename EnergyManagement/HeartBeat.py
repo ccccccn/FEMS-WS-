@@ -5,29 +5,25 @@
  @DateTime: 2025-04-28 15:41
  @SoftWare: PyCharm
 """
+import json
+
+import numpy as np
+import redis
 import taos
 from celery import shared_task
 
+heart_beat_redis = redis.StrictRedis(host='localhost', port=6379, db=2,
+                                     decode_responses=True, charset='utf-8', encoding='utf-8')
+
 
 def HeartBeat():
-    taosConn = taos.connect("localhost", "root", "taosdata", 6030)
-    conn = taosConn.select_db("FEMS")
-    tcur = taosConn.cursor()
-    FW_list = []
-    for i in range(1,9):
-        FW_list.append(f"FW_{i}_通讯状态")
-    FW_string = ",".join(FW_list)
-    heartBeat_sql = f'select first({FW_string}) from FEMS group by `ip_id`'
-    def and_tuple(bits):
-        result = 1
-        for bit in bits:
-            result&= bit
-        return result
-    while True:
-        tcur.execute(heartBeat_sql)
-        result = tcur.fetchall()[0]
-        and_result = [and_tuple(tup) for tup in result]
-
-        total_ones = sum(and_result)
-        return total_ones
-
+    OnlineCount = 0
+    listen_data = json.loads(heart_beat_redis.get('latest_fw_data'))  # 顶层大约21个
+    for key, value in listen_data.items():
+        if key[-1] == 0:
+            continue
+        # 只判断 FW_1 ~ FW_8 通讯状态是否都为 1
+        # all()具有短路机制
+        if all(value.get(f"FW_{i}_通讯状态", 0) == 1 for i in range(1, 9)):
+            OnlineCount += 1
+    return OnlineCount
