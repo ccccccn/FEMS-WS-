@@ -1,0 +1,30 @@
+需设计的接口：
+    1.首页：
+        1.实时电站信息 √ ws://192.168.97.125:10002/ws/?group=station_current_data
+        2.储能电站信息 √ 192.168.97.125:10002/showcenter/storage_station_info
+        3.运行统计数据 × http:
+        4.频率对比分析 √ ws://192.168.97.125:10002/ws/?group=frequency_analysis
+        5.三饼图  √ http://192.168.97.125:10002/showcenter/pie_data/latest/?pie_type=Soc_distribution&analysis_type=day
+    2.能量管理：
+        1.项目基本信息 √ http:192.168.97.125:10002/EnergyManagement/station_basic_info(心跳机制轮训仅发送在线设备数量)
+        2.可用情况  √  ws://192.168.97.125:10002/ws/?group=UsageState
+        3.调用次数和排名 √ http:192.168.97.125:10002/EnergyManagement/current_data_rank
+        4.整列调用 √ ws://192.168.97.125:10002/ws/?group=ArrayCalls
+        5.调用次数统计 × http:192.168.97.125:10002/EnergyManagement/call_statistics
+        6.飞轮电池健康度统计
+        7.总功率及SOC趋势
+        8.能量流动情况
+    3.系统参数
+        1.总舱信息 √ ws://192.168.97.125:10002/ws/?group=systemParamsOverview
+        2.详细预览 √ ws://192.168.97.125:10002/ws/?group=systemParamsDetail
+    4.健康评分：
+        1.系统健康评分
+        2.健康评分趋势
+        3.健康评分分布
+        4.舱级健康评分
+        5.预测性维护决策
+        6.系统寿命预测
+        7.故障诊断和预警
+        8.告警分析
+
+    5.系统监控
