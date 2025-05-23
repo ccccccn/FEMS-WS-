@@ -1,7 +1,7 @@
 需设计的接口：
     1.首页：
         1.实时电站信息 √ ws://192.168.97.125:10002/ws/?group=station_current_data
-        2.储能电站信息 √ 192.168.97.125:10002/showcenter/storage_station_info
+        2.储能电站信息 √ http:192.168.97.125:10002/showcenter/storage_station_info
         3.运行统计数据 × http:
         4.频率对比分析 √ ws://192.168.97.125:10002/ws/?group=frequency_analysis
         5.三饼图  √ http://192.168.97.125:10002/showcenter/pie_data/latest/?pie_type=Soc_distribution&analysis_type=day
@@ -11,9 +11,9 @@
         3.调用次数和排名 √ http:192.168.97.125:10002/EnergyManagement/current_data_rank
         4.整列调用 √ ws://192.168.97.125:10002/ws/?group=ArrayCalls
         5.调用次数统计 × http:192.168.97.125:10002/EnergyManagement/call_statistics
-        6.飞轮电池健康度统计
-        7.总功率及SOC趋势
-        8.能量流动情况
+        6.飞轮电池健康度统计 http:192.168.97.125:10002/EnergyManagement/health_overview  12小时记录一次每日的半点和整点执行一次
+        7.总功率及SOC趋势 √ ws://192.168.97.125:10002/ws/?group=energy_trend_analysis
+        8.能量流动情况 ws
     3.系统参数
         1.总舱信息 √ ws://192.168.97.125:10002/ws/?group=systemParamsOverview
         2.详细预览 √ ws://192.168.97.125:10002/ws/?group=systemParamsDetail
