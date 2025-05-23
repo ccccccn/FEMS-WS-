@@ -8,6 +8,9 @@
 import datetime
 import json
 import logging
+from concurrent.futures import ThreadPoolExecutor
+
+import redis
 import taos
 import numpy as np
 import pymysql
@@ -16,9 +19,15 @@ from celery import Celery, shared_task
 from celery.schedules import crontab
 from django_apscheduler.jobstores import DjangoJobStore
 
-app = Celery('showcenter')
+from showcenter import MapperConfig
+from taosPro.celery import fems_app
 
+# app = Celery('showcenter')
+center_redis_pool = redis.ConnectionPool(host='localhost', port=6379, db=2, decode_responses=True)
+center_redis = redis.Redis(connection_pool=center_redis_pool)
+center_exe = ThreadPoolExecutor(max_workers=10)
 logger = logging.getLogger('showcenter')
+
 
 # app.conf.beat_schedule = {
 #     'scheduled-task': {
@@ -26,20 +35,6 @@ logger = logging.getLogger('showcenter')
 #         'schedule': crontab(minute='*/0.1'),  # 每15分钟执行一次
 #     },
 # }
-
-
-conn = taos.connect('localhost', 'taos', 'taosdata', 6030)
-conn.select_db('test')
-tcur = conn.cursor()
-pyconn = pymysql.connect(
-    user='root',
-    password='ccn020125.',
-    host='127.0.0.1',
-    database='taospro'
-)
-# except Exception as e:
-#     print(e)
-cursor = pyconn.cursor()
 
 
 def generate_time_range(time_type):
@@ -59,7 +54,20 @@ def generate_time_range(time_type):
     return f'ts >= "{start_time}" AND ts <= "{now}"'
 
 
-def process_and_insert_data(cursor, tcur, time_type, analysis_type):
+def process_and_insert_data(time_type, analysis_type):
+    pyconn = pymysql.connect(
+        user='root',
+        password='ccn020125.',
+        host='127.0.0.1',
+        database='taospro'
+    )
+    # except Exception as e:
+    #     print(e)
+    cursor = pyconn.cursor()
+
+    conn = taos.connect(host='127.0.0.1', user='root', password='taosdata', port=6030)
+    conn.select_db('test')
+    tcur = conn.cursor()
     """统一处理数据并插入数据库"""
     # 生成动态 SQL 查询条件
     time_condition = generate_time_range(time_type)
@@ -71,6 +79,12 @@ def process_and_insert_data(cursor, tcur, time_type, analysis_type):
     tcur.execute(sql)
     data = tcur.fetchall()
     data_np = np.array(data)
+    if data_np.size == 0:
+        print("没有查询到数据")
+        return
+    if data_np.ndim == 1:
+        data_np = data_np.reshape(1, -1)
+
     # 定义各列的分箱规则 (可配置化)
     bins_config = {
         'soc': {'column': 0, 'bins': np.linspace(0, 100, 6), 'pie_type': 'Soc_distribution'},
@@ -126,39 +140,49 @@ def process_and_insert_data(cursor, tcur, time_type, analysis_type):
         pyconn.commit()
 
 
-@shared_task
-def scheduled_task():
-    logger.info("Scheduled task is running")
-
-
-scheduler = BackgroundScheduler(timezone='Asia/Shanghai')
-scheduler.add_jobstore(DjangoJobStore(), "default")
-
-
-@scheduler.scheduled_job('interval', minutes=0.1, id='showcenter_piedata_15min_task')
+@fems_app.task(queue='showcenter')
 def statistic_show_center_pie_data_15min():
     for time_type in ['day', 'month', 'year']:
-        process_and_insert_data(cursor, tcur, time_type, analysis_type=time_type)
+        process_and_insert_data(time_type, analysis_type=time_type)
     # print(f"插入成功--{datetime.datetime.now()}")
-    """
-    input_sql:
-    (SELECT histogram(sys_soc, 'user_input', '[1,20,40,60,80,100]]', 0) as sys_soc_day
-         FROM test.`fems_flc1` 
-         WHERE ts >= "2025-04-11 00:00:00.000" AND ts <= "2025-04-11 13:54:11.114180")
-            UNION ALL 
-            (SELECT histogram(sys_soc, 'user_input', '[2,20,40,60,80,102]', 0)  as sys_soc_month
-         FROM test.`fems_flc1` 
-         WHERE ts >= "2025-04-01 00:00:00.000" AND ts <= "2025-04-11 13:54:11.114180")
-        UNION ALL 
-        (SELECT histogram(sys_soc, 'user_input', '[4,20,40,60,80,101]', 0) as sys_soc_year
-         FROM test.`fems_flc1` 
-         WHERE ts >= "2025-01-01 00:00:00.000" AND ts <= "2025-04-11 13:54:11.114180");
-        output:
-        [
-                ([(bucket_start, count), ...], [(bucket_start, count), ...], [(bucket_start, count), ...])
-        ]
-        """
 
-@scheduler.scheduled_job('interval',minutes=1,id='showcenter_running_statistics_data_1min')
+
+@fems_app.task(queue='showcenter')
+def frequency_compare_analysis():
+    try:
+        try:
+            all_data = json.loads(center_redis.get('latest_fw_data'))
+            fccs_data = all_data.get('flc_0')
+            frequency_data = {
+                key: value for key, value in fccs_data.items() if key in MapperConfig.frequency_mapper
+            }
+            center_redis.publish('frequency_analysis', json.dumps(frequency_data, ensure_ascii=False))
+            return {'status': 'success', 'msg': "该信息已发送至channel-frequency_analysis"}
+        except:
+            pass
+        # logger.info(f"data:{frequency_data}")
+    except Exception as e:
+        logger.error(f"频率对比数据有误：{e}")
+
+
+@fems_app.task(queue='showcenter')
+def current_data_play_by_redis():
+    data = json.loads(center_redis.get('latest_fw_data')).get('flc_0')
+    try:
+        play_data = {
+            "实时功率": data['FCCS_RT_Action_POWER'],
+            "电网频率": data['Grid_Frequency'],
+            "电网电压": data['FCCS_SOC'],
+            "环境温度": data['FCCS_SOC'],
+            "设备状态": data['FCCS_SOC'],
+            "通讯状态": data['FCCS_SOC']
+        }
+        center_redis.publish('station_current_data', json.dumps(play_data, ensure_ascii=False))
+        return {'status': 'success', 'msg': "该信息已发送至channel-station_current_data"}
+    except Exception as e:
+        pass
+
+
+@fems_app.task(queue='showcenter')
 def running_statistics_station_data():
-    pass
+    return "ShowCenter"

@@ -1,5 +1,6 @@
 import json
 from asyncio.log import logger
+from datetime import timedelta
 
 import numpy
 import redis
@@ -12,6 +13,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import random
 import numpy as np
+from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
+from django_celery_beat.models import ClockedSchedule, PeriodicTask
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.parsers import MultiPartParser, JSONParser, FormParser
@@ -86,25 +90,14 @@ class RunningDataViewSet(viewsets.ModelViewSet):
         return query_set.order_by()
 
 
+
+
 """
 电站实时功率api
 """
 
 
-def current_data_play_by_redis():
-    data = json.loads(fw_redis_data.get('latest_fw_data')).get('flc_0')
-    try:
-        play_data = {
-            "实时功率": data['FCCS_RT_Action_POWER'],
-            "电网频率": data['Grid_Frequency'],
-            "电网电压": data['FCCS_SOC'],
-            "环境温度": data['FCCS_SOC'],
-            "设备状态": data['FCCS_SOC'],
-            "通讯状态": data['FCCS_SOC']
-        }
-        fw_redis_data.publish('station_current_data', json.dumps(play_data, ensure_ascii=False))
-    except Exception as e:
-        logger.error(f'fccs未连接或出现：{e}')
+
 
     # return JsonResponse(play_data, json_dumps_params={"ensure_ascii": False})
 
@@ -123,42 +116,3 @@ def storage_station_information(request, *args, **kwargs):
     # def send_to_redis_channel(channel_name, CABIN_NUM=20):
 
 
-def send_to_redis_channel(channel_name, CABIN_NUM=20):
-    global soc_value, frequency_value, duration_value
-    soc_hist, frequency_hist, duration_hist = [], [], []
-
-    ## data_hist输出结果为各分区中个数
-    def center_data_deal(data_value, data_name, fw_number, partiton):
-        data_value[fw_number - 1] = fw_data[data_name]
-        data_bin = np.linspace(0, 100, partiton)
-        data_hist, data_edges = np.histogram(data_value, bins=data_bin)
-        return data_hist
-
-    for i in range(1, CABIN_NUM + 1):
-        fw_data = json.loads(fw_redis_data.get(f"飞轮舱{i}"))
-        soc_hist = center_data_deal(soc_value, f"飞轮舱{i}_EMS_SYS_SOC", i, 5)
-        frequency_hist = center_data_deal(soc_value, f"飞轮舱{i}_EMS_SYS_FREQUENCY", i, 5)
-        duration_hist = center_data_deal(soc_value, f"飞轮舱{i}_EMS_SYS_DURATION", i, 5)
-    data = {
-        "title": "pie_info",
-        "message": {
-            "soc": (soc_hist / CABIN_NUM * 100).astype(int).tolist(),
-            "frequency": (frequency_hist / CABIN_NUM * 100).astype(int).tolist(),
-            "duration": (duration_hist / CABIN_NUM * 100).astype(int).tolist(),
-        }
-    }
-    """
-    向 Redis 的指定 channel 发送数据。
-    :param channel_name: Redis channel 的名称
-    :param data: 要发送的数据（通常是字典或字符串）
-    """
-    try:
-        # 如果数据是字典，可以将其转换为 JSON 格式
-        if isinstance(data, dict):
-            data = json.dumps(data)
-        # 发送数据到指定的 channel
-        r.publish(channel_name, data)
-        # print(f"Data sent to channel '{channel_name}': {data}\n", end='')
-        # 设置退出条件
-    except Exception as e:
-        print(f"Error sending data to Redis channel: {e}")
