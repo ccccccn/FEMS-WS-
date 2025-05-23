@@ -10,11 +10,12 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django_apscheduler.jobstores import DjangoJobStore
 from rest_framework.decorators import action
-from .Energy_task import HeartBeat
+from .tasks import HeartBeat
 import redis
-from . import state_manage
+from .state_manage import StateManage
 from .models import EnergyManageRank
 
+state_manager = StateManage()
 logger = logging.getLogger(__name__)
 # Create your views here.
 
@@ -29,15 +30,18 @@ def station_basic_info(request, *args, **kwargs):
     try:
         OnlineNum = HeartBeat()
         OnlineNumDict = {"OnlineNum": OnlineNum}
-        return JsonResponse(OnlineNumDict, safe=True,  json_dumps_params={"ensure_ascii": False})
+        return JsonResponse(OnlineNumDict, safe=True, json_dumps_params={"ensure_ascii": False})
     except Exception as e:
         return JsonResponse({'message': {e}}, ensure_ascii=False)
 
 
 @action(['get'], False, 'energy_rank', 'energy_rank')
 def get_current_rank_data(request):
-    rank_data = state_manage.get_rank_data()
-
+    rank_data = state_manager.get_rank_data()
+    print(f"查询到的rank_data:{rank_data}")
     return JsonResponse({
         "data": list(rank_data.values())
     }, safe=False, json_dumps_params={"ensure_ascii": False})
+
+
+

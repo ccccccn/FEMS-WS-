@@ -11,3 +11,8 @@ usage_state_mapper = [
     'Total_Command_Power',
     'FCCS_RT_Action_POWER'
 ]
+
+energy_trend_analysis_mapper = [
+    'FCCS_SOC',
+    'FCCS_RT_Action_POWER'
+]
