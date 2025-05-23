@@ -10,7 +10,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('/FW_overview', views.systemParamsView)
+    path('FW_overview', views.systemParamsView)
 ]
 """
 系统参数页面实时传输已ws方式转送，连接分别为：

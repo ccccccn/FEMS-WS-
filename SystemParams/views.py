@@ -24,11 +24,6 @@ system_params_redis = redis.StrictRedis('localhost', 6379, db=2,
 
 logger = logging.getLogger(__name__)
 
-redis_cli = redis.StrictRedis(
-    host='localhost', port=6379, db=2,
-    charset='utf-8', decode_responses=True, encoding='utf-8'
-)
-
 
 def smart_format(template: str, i: int) -> str:
     count = template.count("{}")
@@ -53,7 +48,6 @@ def generate_fw_key_map(flat_keys):
 
 
 FW_MAPPED_KEYS = generate_fw_key_map(system_params_detail_mapped_keys["FW"])
-print(json.dumps(FW_MAPPED_KEYS,ensure_ascii=False))
 PCS_MAPPED_KEYS = dict(system_params_detail_mapped_keys["PCS"])
 OVERVIEW_KEYS = dict(system_params_overview_mapped_keys)
 
@@ -62,37 +56,32 @@ OVERVIEW_KEYS = dict(system_params_overview_mapped_keys)
 def systemParamsView():
     while True:
         try:
-            raw = redis_cli.get("latest_fw_data")
+            raw = system_params_redis.get("latest_fw_data")
             if not raw:
                 time.sleep(5)
                 continue
-
             all_data = json.loads(raw)
-
             overview_result = {
                 name: {k: item.get(v) for k, v in OVERVIEW_KEYS.items()}
                 for name, item in all_data.items()
             }
-
-            redis_cli.publish("systemParamsOverview", json.dumps(overview_result, ensure_ascii=False))
+            system_params_redis.publish("systemParamsOverview", json.dumps(overview_result, ensure_ascii=False))
 
         except Exception as e:
             logger.exception("systemParamsView 异常", exc_info=True)
         finally:
-            time.sleep(5)
+            time.sleep(2)
 
 
 def systemParamsDetailView():
     while True:
         try:
-            raw = redis_cli.get("latest_fw_data")
+            raw = system_params_redis.get("latest_fw_data")
             if not raw:
                 time.sleep(5)
                 continue
-
             all_data = json.loads(raw)
             result = {}
-
             for name, flat in all_data.items():
                 flywheels = {
                     key: {field: flat.get(template) for field, template in mapped.items()}
@@ -100,10 +89,8 @@ def systemParamsDetailView():
                 }
                 flywheels["PCS"] = {k: flat.get(v) for k, v in PCS_MAPPED_KEYS.items()}
                 result[name] = flywheels
-
-            redis_cli.publish("systemParamsDetail", json.dumps(result, ensure_ascii=False))
-
+            system_params_redis.publish("systemParamsDetail", json.dumps(result, ensure_ascii=False))
         except Exception as e:
             logger.exception("systemParamsDetailView 异常", exc_info=True)
         finally:
-            time.sleep(5)
+            time.sleep(2)

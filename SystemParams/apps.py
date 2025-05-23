@@ -13,8 +13,8 @@ class SystemparamsConfig(AppConfig):
 
     def ready(self):
         logger.info('System Params Start!')
-        system_thread = threading.Thread(target=systemParamsView,daemon=True)
-        system_thread.start()
-        system_thread = threading.Thread(target=systemParamsDetailView, daemon=True)
-        system_thread.start()
-        logger.info('System Params Start!')
+        # system_thread = threading.Thread(target=systemParamsView,daemon=True)
+        # system_thread.start()
+        # system_thread = threading.Thread(target=systemParamsDetailView, daemon=True)
+        # system_thread.start()
+        # logger.info('System Params Start!')
