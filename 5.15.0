@@ -1,0 +1,7 @@
+Channels:
+ - defaults
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/pro
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+Platform: win-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... failed

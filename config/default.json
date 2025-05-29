@@ -1,0 +1,147 @@
+{
+  "application": {
+    "name": "数据采集系统",
+    "version": "1.0.0"
+  },
+  "protocols": {
+    "S7": {
+      "enabled": true,
+      "default_settings": {
+        "ip": "192.168.0.1",
+        "rack": 0,
+        "slot": 1,
+        "timeout": 5,
+        "pdu_size": 480
+      }
+    },
+    "Modbus": {
+      "enabled": true,
+      "default_settings": {
+        "type": "TCP",
+        "ip": "192.168.0.1",
+        "port": 502,
+        "slave_id": 1,
+        "timeout": 5
+      }
+    },
+    "CAN": {
+      "enabled": true,
+      "default_settings": {
+        "interface": "can0",
+        "bitrate": 500000,
+        "extended": false
+      }
+    },
+    "GOOSE": {
+      "enabled": true,
+      "default_settings": {
+        "interface": "eth0",
+        "appid": "0x1000",
+        "dst_mac": "01:0C:CD:01:00:00"
+      }
+    }
+  },
+  "devices": [
+    {
+      "id": "PLC1",
+      "name": "西门子 S7-1200",
+      "protocol": "S7",
+      "settings": {
+        "ip": "192.168.0.10",
+        "rack": 0,
+        "slot": 1
+      }
+    },
+    {
+      "id": "VFD1",
+      "name": "变频器",
+      "protocol": "Modbus",
+      "settings": {
+        "type": "TCP",
+        "ip": "192.168.0.20",
+        "port": 502,
+        "slave_id": 1
+      }
+    },
+    {
+      "id": "CAN1",
+      "name": "CAN设备",
+      "protocol": "CAN",
+      "settings": {
+        "interface": "can0",
+        "bitrate": 500000
+      }
+    },
+    {
+      "id": "IED1",
+      "name": "GOOSE设备",
+      "protocol": "GOOSE",
+      "settings": {
+        "interface": "eth0",
+        "appid": "0x1000"
+      }
+    }
+  ],
+  "acquisition": {
+    "update_rate": 1.0,
+    "logging_enabled": true,
+    "logging_interval": 60,
+    "storage_location": "data/logs",
+    "storage_format": "json"
+  },
+  "variables": [
+    {
+      "id": "PLC1_TEMP",
+      "name": "温度传感器",
+      "data_type": "REAL",
+      "address": "DB1.0",
+      "protocol_type": "S7",
+      "device_id": "PLC1",
+      "description": "温度传感器读数",
+      "collection_frequency": 1.0,
+      "storage_frequency": 60.0,
+      "storage_enabled": true
+    },
+    {
+      "id": "PLC1_PRESSURE",
+      "name": "压力传感器",
+      "data_type": "REAL",
+      "address": "DB1.4",
+      "protocol_type": "S7",
+      "device_id": "PLC1",
+      "description": "压力传感器读数",
+      "collection_frequency": 0.5,
+      "storage_frequency": 30.0,
+      "storage_enabled": true
+    },
+    {
+      "id": "VFD1_SPEED",
+      "name": "电机转速",
+      "data_type": "WORD",
+      "address": "HR:1000",
+      "protocol_type": "Modbus",
+      "device_id": "VFD1",
+      "description": "变频器电机转速",
+      "collection_frequency": 0.2,
+      "storage_frequency": 10.0,
+      "storage_enabled": true
+    },
+    {
+      "id": "VFD1_CURRENT",
+      "name": "电机电流",
+      "data_type": "REAL",
+      "address": "HR:1002",
+      "protocol_type": "Modbus",
+      "device_id": "VFD1",
+      "description": "变频器电机电流",
+      "collection_frequency": 0.5,
+      "storage_frequency": 30.0,
+      "storage_enabled": true
+    }
+  ],
+  "ui": {
+    "theme": "light",
+    "language": "zh-CN",
+    "default_view": "variables"
+  }
+} 

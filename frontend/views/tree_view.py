@@ -1,0 +1,965 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import logging
+import os
+from PyQt5.QtWidgets import (
+    QTreeWidget, QTreeWidgetItem, QWidget, QVBoxLayout,
+    QMenu, QAction, QMessageBox, QLabel, QHBoxLayout, QPushButton, QLineEdit, QComboBox
+)
+from PyQt5.QtCore import Qt, pyqtSignal
+from PyQt5.QtGui import QIcon, QFont, QColor
+from datetime import datetime
+import re
+
+logger = logging.getLogger(__name__)
+
+class HierarchyTree(QWidget):
+    """Tree widget for displaying projects, devices, and variables in a hierarchical structure."""
+    
+    # Signal emitted when a project, device, or variable is selected
+    project_selected = pyqtSignal(object)  # Project object
+    device_selected = pyqtSignal(object, object)  # Device object, Project object
+    variable_selected = pyqtSignal(object, object, object)  # Variable object, Device object, Project object
+    
+    def __init__(self, project_manager, parent=None):
+        super().__init__(parent)
+        self.project_manager = project_manager
+        self.current_project = None
+        self.current_device = None
+        self.current_variable = None
+        self.main_window = parent  # Store reference to parent window
+        self.init_ui()
+    
+    def init_ui(self):
+        """初始化用户界面。"""
+        layout = QVBoxLayout()
+        layout.setContentsMargins(0, 0, 0, 0)
+        
+        # 添加搜索框
+        search_layout = QHBoxLayout()
+        
+        self.search_label = QLabel("搜索变量:")
+        self.search_edit = QLineEdit()
+        self.search_edit.setPlaceholderText("输入关键词...")
+        self.search_edit.textChanged.connect(self.filter_tree)
+        
+        # 添加搜索范围选择
+        self.search_scope_combo = QComboBox()
+        self.search_scope_combo.addItems(["名称", "名称+描述", "名称+地址", "全部"])
+        self.search_scope_combo.setCurrentIndex(3)  # 默认搜索全部
+        self.search_scope_combo.currentIndexChanged.connect(lambda: self.filter_tree(self.search_edit.text()))
+        
+        self.clear_search_btn = QPushButton("清除")
+        self.clear_search_btn.clicked.connect(self.clear_search)
+        
+        search_layout.addWidget(self.search_label)
+        search_layout.addWidget(self.search_edit, 1)  # 1 是拉伸因子，使搜索框占据更多空间
+        search_layout.addWidget(self.search_scope_combo)
+        search_layout.addWidget(self.clear_search_btn)
+        
+        layout.addLayout(search_layout)
+        
+        # 搜索结果标签
+        self.search_results_label = QLabel("")
+        self.search_results_label.setVisible(False)
+        self.search_results_label.setStyleSheet("color: #00bcd4; font-weight: bold;")
+        layout.addWidget(self.search_results_label)
+        
+        # 树形控件
+        self.tree = QTreeWidget()
+        self.tree.setHeaderHidden(True)
+        self.tree.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.tree.customContextMenuRequested.connect(self.show_context_menu)
+        self.tree.itemSelectionChanged.connect(self.on_selection_changed)
+        self.tree.setExpandsOnDoubleClick(True)
+        self.tree.setAnimated(True)
+        
+        # 设置暗色背景以提高与白色文本的对比度
+        self.tree.setStyleSheet("""
+            QTreeWidget {
+                background-color: #2d2d2d;
+                color: white;
+            }
+            QTreeWidget::item:selected {
+                background-color: #2a82da;
+            }
+            QTreeWidget::item:hover {
+                background-color: #3a3a3a;
+            }
+        """)
+        
+        # 添加工具栏和按钮
+        toolbar_layout = QHBoxLayout()
+        
+        # 展开所有节点按钮
+        self.expand_all_btn = QPushButton("展开全部")
+        self.expand_all_btn.clicked.connect(self.tree.expandAll)
+        toolbar_layout.addWidget(self.expand_all_btn)
+        
+        # 折叠所有节点按钮
+        self.collapse_all_btn = QPushButton("折叠全部")
+        self.collapse_all_btn.clicked.connect(self.tree.collapseAll)
+        toolbar_layout.addWidget(self.collapse_all_btn)
+        
+        # 刷新按钮
+        self.refresh_btn = QPushButton("刷新")
+        self.refresh_btn.clicked.connect(self.refresh_tree)
+        toolbar_layout.addWidget(self.refresh_btn)
+        
+        toolbar_layout.addStretch(1)  # 添加弹性空间
+        
+        # 添加工具栏到布局
+        layout.addLayout(toolbar_layout)
+        
+        # 将树形控件添加到布局
+        layout.addWidget(self.tree)
+        
+        self.setLayout(layout)
+    
+    def refresh_tree(self):
+        """刷新整个树形视图。"""
+        # 保存当前选中的项
+        currently_selected_items = self.tree.selectedItems()
+        currently_selected_id = None
+        currently_selected_type = None
+        
+        if currently_selected_items:
+            currently_selected_id = currently_selected_items[0].data(0, Qt.UserRole)
+            currently_selected_type = currently_selected_items[0].data(0, Qt.UserRole + 1)
+        
+        # 清空树并重新填充
+        self.tree.clear()
+        
+        # 加载所有项目
+        for project in self.project_manager.projects:
+            project_item = self.create_project_item(project)
+            self.tree.addTopLevelItem(project_item)
+            
+            # 加载设备
+            for device in project.devices:
+                device_item = self.create_device_item(device)
+                project_item.addChild(device_item)
+                
+                # 加载变量
+                for variable in device.variables:
+                    variable_item = self.create_variable_item(variable)
+                    device_item.addChild(variable_item)
+            
+            # 自动展开项目节点
+            self.tree.expandItem(project_item)
+            
+            # 如果项目只有一个设备，自动展开该设备节点
+            if len(project.devices) == 1:
+                self.tree.expandItem(project_item.child(0))
+        
+        # 尝试恢复之前的选择
+        if currently_selected_id and currently_selected_type:
+            self.restore_selection(currently_selected_id, currently_selected_type)
+        # 如果有当前项目，则展开它
+        elif self.current_project:
+            for i in range(self.tree.topLevelItemCount()):
+                project_item = self.tree.topLevelItem(i)
+                if project_item.data(0, Qt.UserRole) == self.current_project.project_id:
+                    self.tree.expandItem(project_item)
+                    self.tree.setCurrentItem(project_item)
+                    
+                    # 如果有当前设备，则展开它
+                    if self.current_device:
+                        for j in range(project_item.childCount()):
+                            device_item = project_item.child(j)
+                            if device_item.data(0, Qt.UserRole) == self.current_device.device_id:
+                                self.tree.expandItem(device_item)
+                                self.tree.setCurrentItem(device_item)
+                                
+                                # 如果有当前变量，则选中它
+                                if self.current_variable:
+                                    for k in range(device_item.childCount()):
+                                        variable_item = device_item.child(k)
+                                        if variable_item.data(0, Qt.UserRole) == self.current_variable.variable_id:
+                                            self.tree.setCurrentItem(variable_item)
+                                            break
+                                break
+                    break
+    
+    def restore_selection(self, item_id, item_type):
+        """尝试恢复之前的选择状态"""
+        if item_type == "project":
+            # 查找并选择项目
+            for i in range(self.tree.topLevelItemCount()):
+                project_item = self.tree.topLevelItem(i)
+                if project_item.data(0, Qt.UserRole) == item_id:
+                    self.tree.expandItem(project_item)
+                    self.tree.setCurrentItem(project_item)
+                    return
+        elif item_type == "device":
+            # 查找并选择设备
+            for i in range(self.tree.topLevelItemCount()):
+                project_item = self.tree.topLevelItem(i)
+                for j in range(project_item.childCount()):
+                    device_item = project_item.child(j)
+                    if device_item.data(0, Qt.UserRole) == item_id:
+                        self.tree.expandItem(project_item)
+                        self.tree.expandItem(device_item)
+                        self.tree.setCurrentItem(device_item)
+                        return
+        elif item_type == "variable":
+            # 查找并选择变量
+            for i in range(self.tree.topLevelItemCount()):
+                project_item = self.tree.topLevelItem(i)
+                for j in range(project_item.childCount()):
+                    device_item = project_item.child(j)
+                    for k in range(device_item.childCount()):
+                        variable_item = device_item.child(k)
+                        if variable_item.data(0, Qt.UserRole) == item_id:
+                            self.tree.expandItem(project_item)
+                            self.tree.expandItem(device_item)
+                            self.tree.setCurrentItem(variable_item)
+                            return
+    
+    def create_project_item(self, project):
+        """Create a tree item for a project."""
+        item = QTreeWidgetItem([project.name])
+        item.setData(0, Qt.UserRole, project.project_id)
+        item.setData(0, Qt.UserRole + 1, "project")
+        
+        # Set text color to white for projects
+        item.setForeground(0, QColor(255, 255, 255))  # White text for projects
+        
+        # Get number of devices
+        device_count = len(project.devices)
+        item.setToolTip(0, f"<div>项目: {project.name}</div><div>描述: {project.description}</div><div>设备数量: {device_count}</div>")
+        
+        # Set icon
+        icons_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "resources", "icons")
+        project_icon_path = os.path.join(icons_dir, "project.png")
+        if os.path.exists(project_icon_path):
+            item.setIcon(0, QIcon(project_icon_path))
+        
+        return item
+    
+    def create_device_item(self, device):
+        """Create a tree item for a device."""
+        # Use consistent device naming
+        display_name = f"{device.name} ({device.device_type})"
+        item = QTreeWidgetItem([display_name])
+        item.setData(0, Qt.UserRole, device.device_id)
+        item.setData(0, Qt.UserRole + 1, "device")
+        
+        # Get number of variables
+        variable_count = len(device.variables)
+        connection_status = "已连接" if device.is_connected else "未连接"
+        
+        # Set text color to white for all devices
+        item.setForeground(0, QColor(255, 255, 255))  # White text for all devices
+        
+        # Add a small colored indicator based on connection status
+        if device.is_connected:
+            display_name_with_status = f"● {display_name}"  # Green dot for connected
+            item.setText(0, display_name_with_status)
+            item.setToolTip(0, f"<div style='color:green'>●</div><div>设备: {device.name}</div><div>类型: {device.device_type}</div>"
+                           f"<div>地址: {device.ip_address}:{device.port}</div>"
+                           f"<div>变量数量: {variable_count}</div><div>状态: {connection_status}</div>")
+        else:
+            display_name_with_status = f"● {display_name}"  # Red dot for disconnected
+            item.setText(0, display_name_with_status)
+            item.setToolTip(0, f"<div style='color:red'>●</div><div>设备: {device.name}</div><div>类型: {device.device_type}</div>"
+                           f"<div>地址: {device.ip_address}:{device.port}</div>"
+                           f"<div>变量数量: {variable_count}</div><div>状态: {connection_status}</div>")
+        
+        # Set icon based on device type and status
+        icons_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "resources", "icons")
+        device_type = device.device_type.lower()
+        
+        # Try type-specific icon first, fall back to generic
+        icon_candidates = [
+            f"{device_type}.png",
+            f"{device_type}_{'online' if device.is_connected else 'offline'}.png",
+            "device.png"
+        ]
+        
+        for icon_name in icon_candidates:
+            icon_path = os.path.join(icons_dir, icon_name)
+            if os.path.exists(icon_path):
+                item.setIcon(0, QIcon(icon_path))
+                break
+        
+        return item
+    
+    def create_variable_item(self, variable, search_text=None, match_fields=None):
+        """Create a tree item for a variable.
+        
+        Args:
+            variable (Variable): Variable to create item for
+            search_text (str, optional): Search text to highlight
+            match_fields (list, optional): Fields that matched the search
+        """
+        # Format value and timestamp for display
+        value_str = str(variable.current_value) if variable.current_value is not None else "未知"
+        if hasattr(variable, 'units') and variable.units and variable.current_value is not None:
+            value_str += f" {variable.units}"
+            
+        # Format timestamp
+        if variable.last_updated:
+            try:
+                if isinstance(variable.last_updated, str):
+                    last_updated = variable.last_updated
+                else:
+                    # Convert numeric timestamp to string
+                    dt = datetime.fromtimestamp(variable.last_updated / 1000)
+                    last_updated = dt.strftime("%Y-%m-%d %H:%M:%S")
+            except Exception:
+                last_updated = str(variable.last_updated)
+        else:
+            last_updated = "未知"
+        
+        # Create display name with data type
+        display_name = f"{variable.name} [{variable.data_type}]"
+        
+        # Create tree item
+        item = QTreeWidgetItem([display_name])
+        item.setData(0, Qt.UserRole, variable.variable_id)
+        item.setData(0, Qt.UserRole + 1, "variable")
+        
+        # 如果有搜索文本，高亮显示匹配的文本
+        tooltip_html = ""
+        if search_text and match_fields:
+            # 构建带高亮的工具提示
+            tooltip_html = "<div style='background-color: #333; color: white; padding: 5px;'>"
+            
+            # 高亮名称
+            if "name" in match_fields:
+                highlighted_name = re.sub(
+                    f"({re.escape(search_text)})",
+                    r"<span style='background-color: yellow; color: black; font-weight: bold;'>\1</span>",
+                    variable.name,
+                    flags=re.IGNORECASE
+                )
+                tooltip_html += f"<div><b>变量</b>: {highlighted_name}</div>"
+            else:
+                tooltip_html += f"<div><b>变量</b>: {variable.name}</div>"
+            
+            tooltip_html += f"<div><b>类型</b>: {variable.data_type}</div>"
+            
+            # 高亮地址
+            if "address" in match_fields:
+                highlighted_address = re.sub(
+                    f"({re.escape(search_text)})",
+                    r"<span style='background-color: yellow; color: black; font-weight: bold;'>\1</span>",
+                    variable.address,
+                    flags=re.IGNORECASE
+                )
+                tooltip_html += f"<div><b>地址</b>: {highlighted_address}</div>"
+            else:
+                tooltip_html += f"<div><b>地址</b>: {variable.address}</div>"
+                
+            tooltip_html += f"<div><b>当前值</b>: {value_str}</div>"
+            tooltip_html += f"<div><b>状态</b>: {variable.status}</div>"
+            tooltip_html += f"<div><b>最后更新</b>: {last_updated}</div>"
+            
+            # 高亮描述
+            if hasattr(variable, 'description') and variable.description:
+                if "description" in match_fields:
+                    highlighted_desc = re.sub(
+                        f"({re.escape(search_text)})",
+                        r"<span style='background-color: yellow; color: black; font-weight: bold;'>\1</span>",
+                        variable.description,
+                        flags=re.IGNORECASE
+                    )
+                    tooltip_html += f"<div><b>描述</b>: {highlighted_desc}</div>"
+                else:
+                    tooltip_html += f"<div><b>描述</b>: {variable.description}</div>"
+            
+            tooltip_html += "</div>"
+            
+            # 设置特殊样式以指示这是搜索结果
+            # 使用更明显的颜色，但保持可读性
+            item.setForeground(0, QColor(255, 255, 100))  # 亮黄色文本
+            item.setData(0, Qt.UserRole + 2, "search_result")  # 标记为搜索结果
+            
+            # 在变量名称中添加搜索匹配标记
+            if "name" in match_fields:
+                # 在名称前添加 "[匹配]" 标记
+                item.setText(0, f"[匹配] {item.text(0)}")
+        else:
+            # 正常工具提示
+            tooltip_html = f"<div>变量: {variable.name}</div><div>类型: {variable.data_type}</div>"
+            tooltip_html += f"<div>地址: {variable.address}</div><div>当前值: {value_str}</div>"
+            tooltip_html += f"<div>状态: {variable.status}</div><div>最后更新: {last_updated}</div>"
+            if hasattr(variable, 'description') and variable.description:
+                tooltip_html += f"<div>描述: {variable.description}</div>"
+        
+        # Set text color to white for all variables (unless overridden for search results)
+        if not search_text:
+            item.setForeground(0, QColor(255, 255, 255))  # White text for all variables
+        
+        # Add a small colored indicator based on status
+        if variable.status == "报警":
+            item.setText(0, f"● {item.text(0)}")  # Red dot for alarm
+            item.setToolTip(0, f"<div style='color:red'>●</div>{tooltip_html}")
+        elif variable.status == "警告":
+            item.setText(0, f"● {item.text(0)}")  # Orange dot for warning
+            item.setToolTip(0, f"<div style='color:orange'>●</div>{tooltip_html}")
+        else:
+            item.setText(0, f"● {item.text(0)}")  # Green dot for normal
+            item.setToolTip(0, f"<div style='color:green'>●</div>{tooltip_html}")
+        
+        # Set icon based on data type
+        icons_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "resources", "icons")
+        
+        # Try status-specific icon first, then data type, then generic
+        icon_candidates = [
+            f"var_{variable.status}.png",
+            f"var_{variable.data_type.lower()}.png",
+            "variable.png"
+        ]
+        
+        for icon_name in icon_candidates:
+            icon_path = os.path.join(icons_dir, icon_name)
+            if os.path.exists(icon_path):
+                item.setIcon(0, QIcon(icon_path))
+                break
+        
+        return item
+    
+    def on_selection_changed(self):
+        """处理树形视图中的选择变化。"""
+        selected_items = self.tree.selectedItems()
+        if not selected_items:
+            return
+        
+        item = selected_items[0]
+        item_type = item.data(0, Qt.UserRole + 1)
+        item_id = item.data(0, Qt.UserRole)
+        
+        if item_type == "project":
+            # 选择了项目
+            project = self.project_manager.get_project(item_id)
+            if project:
+                self.current_project = project
+                self.current_device = None
+                self.current_variable = None
+                self.project_selected.emit(project)
+        
+        elif item_type == "device":
+            # 选择了设备
+            # 首先找到父项目
+            parent_item = item.parent()
+            if parent_item:
+                project_id = parent_item.data(0, Qt.UserRole)
+                project = self.project_manager.get_project(project_id)
+                if project:
+                    self.current_project = project
+                    device = project.get_device(item_id)
+                    if device:
+                        self.current_device = device
+                        self.current_variable = None
+                        self.device_selected.emit(device, project)
+        
+        elif item_type == "variable":
+            # 选择了变量
+            # 首先找到父设备和祖父项目
+            parent_item = item.parent()
+            if parent_item:
+                device_id = parent_item.data(0, Qt.UserRole)
+                grandparent_item = parent_item.parent()
+                if grandparent_item:
+                    project_id = grandparent_item.data(0, Qt.UserRole)
+                    project = self.project_manager.get_project(project_id)
+                    if project:
+                        self.current_project = project
+                        device = project.get_device(device_id)
+                        if device:
+                            self.current_device = device
+                            variable = device.get_variable(item_id)
+                            if variable:
+                                self.current_variable = variable
+                                self.variable_selected.emit(variable, device, project)
+    
+    def select_project(self, project):
+        """Select a project in the tree."""
+        if not project:
+            return
+        
+        self.current_project = project
+        self.current_device = None
+        self.current_variable = None
+        
+        # Find and select the project item
+        for i in range(self.tree.topLevelItemCount()):
+            item = self.tree.topLevelItem(i)
+            if item.data(0, Qt.UserRole) == project.project_id:
+                self.tree.setCurrentItem(item)
+                self.tree.expandItem(item)
+                break
+    
+    def select_device(self, device, project=None):
+        """Select a device in the tree view.
+        
+        Args:
+            device (Device): Device to select
+            project (Project, optional): Project containing the device
+            
+        Returns:
+            bool: True if device was found and selected, False otherwise
+        """
+        if not device:
+            logger.warning("select_device: 设备参数为空")
+            return False
+        
+        # 如果提供了项目，更新当前上下文
+        if project:
+            self.current_project = project
+        
+        # 确保有当前项目
+        if not self.current_project:
+            logger.warning("select_device: 未设置当前项目")
+            return False
+            
+        # 查找项目项
+        project_item = None
+        for i in range(self.tree.topLevelItemCount()):
+            item = self.tree.topLevelItem(i)
+            if item.data(0, Qt.UserRole) == self.current_project.project_id:
+                project_item = item
+                break
+                
+        if not project_item:
+            logger.warning(f"select_device: 在树中找不到项目 {self.current_project.name}")
+            return False
+            
+        # 查找设备项
+        device_item = None
+        for i in range(project_item.childCount()):
+            item = project_item.child(i)
+            if item.data(0, Qt.UserRole) == device.device_id:
+                device_item = item
+                break
+                
+        if not device_item:
+            logger.warning(f"select_device: 在树中找不到设备 {device.name}")
+            return False
+            
+        # 展开项目项并选中设备项
+        self.tree.expandItem(project_item)
+        self.tree.setCurrentItem(device_item)
+        self.current_device = device
+        self.current_variable = None
+        
+        logger.info(f"已在树中选中设备: {device.name}")
+        return True
+    
+    def select_variable(self, variable, device=None, project=None):
+        """Select a variable in the tree view.
+        
+        Args:
+            variable (Variable): Variable to select
+            device (Device, optional): Device containing the variable
+            project (Project, optional): Project containing the device
+            
+        Returns:
+            bool: True if variable was found and selected, False otherwise
+        """
+        if not variable:
+            logger.warning("select_variable: 变量参数为空")
+            return False
+        
+        # 如果提供了设备和项目，更新当前上下文
+        if device:
+            self.current_device = device
+        if project:
+            self.current_project = project
+            
+        # 确保有当前设备
+        if not self.current_device:
+            logger.warning("select_variable: 未设置当前设备")
+            return False
+        
+        # 查找项目项
+        project_item = None
+        if self.current_project:
+            for i in range(self.tree.topLevelItemCount()):
+                item = self.tree.topLevelItem(i)
+                if item.data(0, Qt.UserRole) == self.current_project.project_id:
+                    project_item = item
+                    break
+                    
+            if not project_item:
+                logger.warning(f"select_variable: 在树中找不到项目 {self.current_project.name}")
+                return False
+        else:
+            logger.warning("select_variable: 未设置当前项目")
+            return False
+            
+        # 查找设备项
+        device_item = None
+        for i in range(project_item.childCount()):
+            item = project_item.child(i)
+            if item.data(0, Qt.UserRole) == self.current_device.device_id:
+                device_item = item
+                break
+                
+        if not device_item:
+            logger.warning(f"select_variable: 在树中找不到设备 {self.current_device.name}")
+            return False
+            
+        # 查找变量项
+        variable_item = None
+        for i in range(device_item.childCount()):
+            item = device_item.child(i)
+            if item.data(0, Qt.UserRole) == variable.variable_id:
+                variable_item = item
+                break
+                
+        if not variable_item:
+            logger.warning(f"select_variable: 在树中找不到变量 {variable.name}")
+            return False
+            
+        # 展开父项并选中变量项
+        self.tree.expandItem(project_item)
+        self.tree.expandItem(device_item)
+        self.tree.setCurrentItem(variable_item)
+        self.current_variable = variable
+        
+        logger.info(f"已在树中选中变量: {variable.name}")
+        return True
+    
+    def show_context_menu(self, position):
+        """Show context menu for selected item."""
+        item = self.tree.itemAt(position)
+        if not item:
+            return
+        
+        item_type = item.data(0, Qt.UserRole + 1)
+        
+        menu = QMenu()
+        
+        if item_type == "project":
+            # Project context menu
+            add_device_action = QAction("添加设备", self)
+            add_device_action.triggered.connect(self.add_device_to_project)
+            menu.addAction(add_device_action)
+            
+            menu.addSeparator()
+            
+            rename_action = QAction("重命名项目", self)
+            rename_action.triggered.connect(self.rename_project)
+            menu.addAction(rename_action)
+            
+            delete_action = QAction("删除项目", self)
+            delete_action.triggered.connect(self.delete_project)
+            menu.addAction(delete_action)
+        
+        elif item_type == "device":
+            # Device context menu
+            add_variable_action = QAction("添加变量", self)
+            add_variable_action.triggered.connect(self.add_variable_to_device)
+            menu.addAction(add_variable_action)
+            
+            menu.addSeparator()
+            
+            edit_action = QAction("编辑设备", self)
+            edit_action.triggered.connect(self.edit_device)
+            menu.addAction(edit_action)
+            
+            delete_action = QAction("删除设备", self)
+            delete_action.triggered.connect(self.delete_device)
+            menu.addAction(delete_action)
+        
+        elif item_type == "variable":
+            # Variable context menu
+            edit_action = QAction("编辑变量", self)
+            # 使用lambda避免传递布尔值
+            edit_action.triggered.connect(lambda: self.edit_variable())
+            menu.addAction(edit_action)
+            
+            delete_action = QAction("删除变量", self)
+            # 使用lambda避免传递布尔值
+            delete_action.triggered.connect(lambda: self.delete_variable())
+            menu.addAction(delete_action)
+        
+        if menu.actions():
+            menu.exec_(self.tree.viewport().mapToGlobal(position))
+    
+    def add_device_to_project(self):
+        """Add device to the currently selected project."""
+        if not self.current_project:
+            logger.warning("添加设备失败: 未选择项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'add_device_to_project'):
+                try:
+                    logger.info(f"通过树形视图添加设备到项目: {self.current_project.name}")
+                    self.main_window.add_device_to_project()
+                except Exception as e:
+                    logger.error(f"通过树形视图添加设备时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供add_device_to_project方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def rename_project(self):
+        """Rename the currently selected project."""
+        if not self.current_project:
+            logger.warning("重命名项目失败: 未选择项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'rename_project'):
+                try:
+                    logger.info(f"通过树形视图重命名项目: {self.current_project.name}")
+                    self.main_window.rename_project()
+                except Exception as e:
+                    logger.error(f"通过树形视图重命名项目时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供rename_project方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def delete_project(self):
+        """Delete the currently selected project."""
+        if not self.current_project:
+            logger.warning("删除项目失败: 未选择项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'delete_project'):
+                try:
+                    logger.info(f"通过树形视图删除项目: {self.current_project.name}")
+                    self.main_window.delete_project()
+                except Exception as e:
+                    logger.error(f"通过树形视图删除项目时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供delete_project方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def add_variable_to_device(self):
+        """Add variable to the currently selected device."""
+        if not self.current_device or not self.current_project:
+            logger.warning("添加变量失败: 未选择设备或项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'add_variable_to_device'):
+                try:
+                    logger.info(f"通过树形视图添加变量到设备: {self.current_device.name}")
+                    self.main_window.add_variable_to_device(self.current_device)
+                except Exception as e:
+                    logger.error(f"通过树形视图添加变量时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供add_variable_to_device方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def edit_device(self):
+        """Edit the currently selected device."""
+        if not self.current_device or not self.current_project:
+            logger.warning("编辑设备失败: 未选择设备或项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'edit_device'):
+                try:
+                    logger.info(f"通过树形视图编辑设备: {self.current_device.name}")
+                    self.main_window.edit_device()
+                except Exception as e:
+                    logger.error(f"通过树形视图编辑设备时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供edit_device方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def delete_device(self):
+        """Delete the currently selected device."""
+        if not self.current_device or not self.current_project:
+            logger.warning("删除设备失败: 未选择设备或项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'delete_device'):
+                try:
+                    logger.info(f"通过树形视图删除设备: {self.current_device.name}")
+                    self.main_window.delete_device()
+                except Exception as e:
+                    logger.error(f"通过树形视图删除设备时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供delete_device方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def edit_variable(self):
+        """Edit the currently selected variable."""
+        if not self.current_variable or not self.current_device or not self.current_project:
+            logger.warning("编辑变量失败: 未选择变量、设备或项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'edit_variable'):
+                try:
+                    logger.info(f"通过树形视图编辑变量: {self.current_variable.name}")
+                    # 直接调用main_window的edit_variable方法，不通过信号连接
+                    self.main_window.edit_variable()
+                except Exception as e:
+                    logger.error(f"通过树形视图编辑变量时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供edit_variable方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def delete_variable(self):
+        """Delete the currently selected variable."""
+        if not self.current_variable or not self.current_device or not self.current_project:
+            logger.warning("删除变量失败: 未选择变量、设备或项目")
+            return
+            
+        # 尝试使用main_window属性
+        if hasattr(self, 'main_window') and self.main_window is not None:
+            if hasattr(self.main_window, 'delete_variable'):
+                try:
+                    logger.info(f"通过树形视图删除变量: {self.current_variable.name}")
+                    # 直接调用main_window的delete_variable方法，不通过信号连接
+                    self.main_window.delete_variable()
+                except Exception as e:
+                    logger.error(f"通过树形视图删除变量时发生错误: {str(e)}")
+            else:
+                logger.warning("主窗口未提供delete_variable方法")
+        else:
+            logger.warning("树形视图未设置main_window引用")
+    
+    def set_main_window(self, main_window):
+        """Set the main window reference explicitly."""
+        self.main_window = main_window
+        logger.info("HierarchyTree: Main window reference set explicitly") 
+    
+    def clear_search(self):
+        """清除搜索框并重置树形视图。"""
+        self.search_edit.clear()
+        self.search_results_label.setVisible(False)
+        self.refresh_tree()
+    
+    def filter_tree(self, text):
+        """根据搜索文本过滤树形视图中的项目。
+        
+        Args:
+            text (str): 搜索文本
+        """
+        # 隐藏搜索结果标签
+        self.search_results_label.setVisible(False)
+        
+        if not text:
+            # 如果搜索框为空，显示所有项目
+            self.refresh_tree()
+            return
+        
+        # 记录搜索操作
+        logger.info(f"执行搜索: '{text}'")
+        
+        # 保存当前展开状态
+        expanded_items = []
+        for i in range(self.tree.topLevelItemCount()):
+            project_item = self.tree.topLevelItem(i)
+            if project_item.isExpanded():
+                expanded_items.append(project_item.data(0, Qt.UserRole))
+            
+            for j in range(project_item.childCount()):
+                device_item = project_item.child(j)
+                if device_item.isExpanded():
+                    expanded_items.append(device_item.data(0, Qt.UserRole))
+        
+        # 清空树
+        self.tree.clear()
+        
+        # 搜索文本转为小写以进行不区分大小写的比较
+        search_text = text.lower()
+        
+        # 获取搜索范围
+        search_scope = self.search_scope_combo.currentText()
+        logger.info(f"搜索范围: {search_scope}")
+        
+        # 重新加载项目，但只显示匹配的变量
+        found_count = 0
+        for project in self.project_manager.projects:
+            project_item = None
+            
+            for device in project.devices:
+                device_item = None
+                
+                for variable in device.variables:
+                    # 根据搜索范围检查变量是否匹配
+                    match = False
+                    match_fields = []  # 记录所有匹配的字段
+                    
+                    # 检查名称 (始终检查)
+                    if variable.name and search_text in variable.name.lower():
+                        match = True
+                        match_fields.append("name")
+                        logger.debug(f"变量名称匹配: {variable.name}")
+                    
+                    # 检查描述 (根据搜索范围)
+                    if search_scope in ["名称+描述", "全部"]:
+                        if hasattr(variable, 'description') and variable.description and search_text in variable.description.lower():
+                            match = True
+                            match_fields.append("description")
+                            logger.debug(f"变量描述匹配: {variable.description}")
+                    
+                    # 检查地址 (根据搜索范围)
+                    if search_scope in ["名称+地址", "全部"]:
+                        if hasattr(variable, 'address') and variable.address and search_text in variable.address.lower():
+                            match = True
+                            match_fields.append("address")
+                            logger.debug(f"变量地址匹配: {variable.address}")
+                    
+                    # 如果变量匹配，添加到树中
+                    if match:
+                        found_count += 1
+                        logger.debug(f"找到匹配变量: {variable.name}, 匹配字段: {', '.join(match_fields)}")
+                        
+                        # 如果是第一个匹配的变量，创建项目和设备项
+                        if not project_item:
+                            project_item = self.create_project_item(project)
+                            self.tree.addTopLevelItem(project_item)
+                        
+                        if not device_item:
+                            device_item = self.create_device_item(device)
+                            project_item.addChild(device_item)
+                        
+                        # 创建变量项，并高亮匹配的文本
+                        variable_item = self.create_variable_item(variable, search_text, match_fields)
+                        device_item.addChild(variable_item)
+            
+            # 如果项目被添加到树中，检查是否应该展开
+            if project_item:
+                # 强制展开包含匹配变量的项目
+                self.tree.expandItem(project_item)
+                
+                # 展开所有设备项，以便用户可以看到匹配的变量
+                for i in range(project_item.childCount()):
+                    device_item = project_item.child(i)
+                    self.tree.expandItem(device_item)  # 强制展开所有包含匹配变量的设备
+        
+        # 显示搜索结果
+        if found_count == 0:
+            # 如果没有匹配项，显示消息
+            self.tree.setHeaderHidden(False)
+            self.tree.setHeaderLabel(f"没有找到匹配 '{text}' 的变量")
+            self.search_results_label.setText(f"没有找到匹配 '{text}' 的变量")
+            self.search_results_label.setStyleSheet("color: #ff5252; font-weight: bold;")
+            logger.info(f"搜索结果: 没有找到匹配项")
+        else:
+            # 如果有匹配项，显示匹配数量
+            self.tree.setHeaderHidden(True)  # 隐藏树头部，使用单独的标签显示结果
+            self.search_results_label.setText(f"找到 {found_count} 个匹配 '{text}' 的变量")
+            self.search_results_label.setStyleSheet("color: #4caf50; font-weight: bold;")
+            logger.info(f"搜索结果: 找到 {found_count} 个匹配项")
+        
+        # 显示搜索结果标签
+        self.search_results_label.setVisible(True) 
