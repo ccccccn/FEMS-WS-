@@ -4,3 +4,4 @@ projects
 .venv
 .idea
 data
+app.log
