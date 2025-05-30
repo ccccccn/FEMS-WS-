@@ -3,6 +3,8 @@
 
 import logging
 import os
+
+import requests
 from PyQt5.QtWidgets import (
     QMainWindow, QTabWidget, QAction, QMessageBox,
     QFileDialog, QVBoxLayout, QWidget, QStyleFactory,
@@ -385,7 +387,7 @@ class MainWindow(QMainWindow):
 
         history_view_action = QAction(QIcon(
             os.path.join(icons_dir, "history.png") if os.path.exists(os.path.join(icons_dir, "history.png")) else ""),
-                                      "历史查询", self)
+            "历史查询", self)
         history_view_action.setToolTip("查询历史数据（支持变量筛选和时间筛选）")
         history_view_action.triggered.connect(self.goto_history)
         history_menu.addAction(history_view_action)
@@ -861,14 +863,13 @@ class MainWindow(QMainWindow):
             # Return operation result
             return result
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             logger.error(f"添加变量过程中发生异常: {str(e)}")
             QMessageBox.critical(self, "错误", f"添加变量过程中发生异常: {str(e)}")
             return False
 
     def start_monitoring(self):
-
-
-
         """Start monitoring data from devices."""
         if not self.project_manager.current_project:
             QMessageBox.warning(self, "警告", "请先选择一个项目")
@@ -894,6 +895,30 @@ class MainWindow(QMainWindow):
 
         # 切换到监控视图
         self.goto_monitoring()
+
+        url = "http://192.168.97.125:10002/start_monitor/"
+        payload = {
+            "device_type": device.device_type,
+            "ip": device.ip_address,
+            "port": device.port
+        }
+        headers = {
+            "Content-Type": "application/json"
+        }
+        try:
+            response = requests.post(url=url, timeout=5)
+            data = response.json()
+            if data.get("status") == "success":
+                logger.info("成功获取数据，并执行监控")
+            else:
+                import json
+                print(f'ip{payload.get("ip")}连接失败,原因：{json.loads(response.text).get("message")}')
+                QMessageBox.information(self, '提示',
+                                        f'ip{payload.get("ip")}连接失败,原因：{json.loads(response.text).get("message")}')
+                return
+        except Exception as e:
+            logger.error(msg=f'{payload.get("ip")}连接失败：{e}')
+
 
         # 启用自动刷新
         self.monitoring_view.auto_refresh.setChecked(True)

@@ -21,6 +21,9 @@ class Project:
         self.created_at = datetime.now().isoformat()
         self.updated_at = self.created_at
 
+    def get(self, attr):
+        return getattr(self, attr, None)
+
     def add_device(self, device):
         """Add a device to the project."""
         self.devices.append(device)
@@ -117,45 +120,77 @@ class ProjectManager:
         if not os.path.exists(self.projects_dir):
             os.makedirs(self.projects_dir)
 
+        # TODO:定义数据点表缓存位置
         project_path = os.path.join(self.projects_dir, f"{project.project_id}.json")
-        fccs_data_cache_path = os.path.join("...", "fccs")
+        fccs_data_cache_path = os.path.join(self.projects_dir, "fccs")
         if not os.path.exists(fccs_data_cache_path):
             os.makedirs(fccs_data_cache_path)
-        fms_data_cache_path = os.path.join("...", "fms")
+        fms_data_cache_path = os.path.join(self.projects_dir, "fms")
         if not os.path.exists(fms_data_cache_path):
             os.makedirs(fms_data_cache_path)
+
         # 新增点表文件写入（S7）
-        for device in project.get('devices'):
-            if device.get('device_type').startwith("S7"):
-                if project.get('device').get('name') == 'fccs':
-                    s7_cache = os.path.join(fccs_data_cache_path, 'S7_cache')
-                    if not os.path.exists(s7_cache):
-                        os.makedirs(s7_cache)
-                    var_table = []
-                    variable = project.get('device').get('variables')
-                    for var in variable:
-                        var_name = var.get('name')
-                        var_type = var.get('data_type')
-                        var_db = var.get('address').split('.')[2:]
-                        var_offset = '.'.join(var.get('address').split('.')[1:])
-                        var_table.append([var_name, var_type, var_db, var_offset])
-                else:
-                    s7_cache = os.path.join(fms_data_cache_path, 'S7_cache')
-                    if not os.path.exists(s7_cache):
-                        os.makedirs(s7_cache)
-                    var_table = []
-                    variable = project.get('device').get('variables')
-                    for var in variable:
-                        var_name = var.get('name')
-                        var_type = var.get('data_type')
-                        var_db = var.get('address').split('.')[2:]
-                        var_offset = '.'.join(var.get('address').split('.')[1:])
-                        var_table.append([var_name, var_type, var_db, var_offset])
-            pass
+
+
 
         try:
+            project_data = project.to_dict()
             with open(project_path, 'w', encoding='utf-8') as f:
                 json.dump(project.to_dict(), f, ensure_ascii=False, indent=2)
+
+            def groupby_db(file_folder, var_list):
+                import pandas as pd
+                var_dict = dict()
+                for var in var_list:
+                    if var[2] not in var_dict:
+                        var_dict[var[2]] = [["TagName", "Type", "DB", "OffSet"], ]
+                        var_dict[var[2]].append(var)
+                    else:
+                        var_dict[var[2]].append(var)
+                for key, value in var_dict.items():
+                    if len(value) < 2:
+                        continue
+                    header = value[0]
+                    row = value[1:]
+                    # print(header, "_-------", row)
+                    df = pd.DataFrame(row, columns=header)
+                    df.to_csv(os.path.join(file_folder, f"DB{key}.csv"), index=False)
+
+            for device in project.get('devices'):
+                is_fms = True
+                device_type = device.get('device_type')
+                if device.get('device_type').startswith("S7"):
+                    device_cls = device.get('name')
+                    if device.get('name') == 'fccs':
+                        s7_cache = os.path.join(fccs_data_cache_path, 'S7_cache')
+                        if not os.path.exists(s7_cache):
+                            os.makedirs(s7_cache)
+                        var_table = []
+                        variable = device.get('variables')
+                        for var in variable:
+                            var_name = var.get('name').split('_')[-1]
+                            var_type = var.get('data_type')
+                            var_db = var.get('address').split('.')[0][2:]
+                            var_offset = '.'.join(var.get('address').split('.')[1:])
+                            var_table.append([var_name, var_type, var_db, var_offset])
+                        groupby_db(s7_cache, var_table)
+                    elif device.get('name').startswith("飞轮舱") and is_fms:
+                        s7_cache = os.path.join(fms_data_cache_path, 'S7_cache')
+                        if not os.path.exists(s7_cache):
+                            os.makedirs(s7_cache)
+                        var_table = []
+                        variable = device.get('variables')
+                        for var in variable:
+                            var_name = var.get('name').split('_')[-1]
+                            var_type = var.get('data_type')
+                            var_db = var.get('address').split('.')[0][2:]
+                            var_offset = '.'.join(var.get('address').split('.')[1:])
+                            var_table.append([var_name, var_type, var_db, var_offset])
+                        groupby_db(s7_cache, var_table)
+                        is_fms = False
+                    else:
+                        continue
+
             return True
         except Exception as e:
             logger.error(f"Error saving project {project.name}: {str(e)}")
