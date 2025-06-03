@@ -7,8 +7,6 @@
 
 import logging
 import os
-
-import requests
 from PyQt5.QtWidgets import (
     QMainWindow, QTabWidget, QAction, QMessageBox,
     QFileDialog, QVBoxLayout, QWidget, QStyleFactory,
@@ -330,12 +328,12 @@ class MainWindow(QMainWindow):
         self.trend_analysis_view = TrendAnalysisView(self.project_manager, self)
 
         # 添加视图到堆叠窗口
-        self.stacked_widget.addWidget(self.project_view)  # 索引 0
-        self.stacked_widget.addWidget(self.device_view)  # 索引 1
-        self.stacked_widget.addWidget(self.variable_view)  # 索引 2
-        self.stacked_widget.addWidget(self.monitoring_view)  # 索引 3
+        self.stacked_widget.addWidget(self.project_view)      # 索引 0
+        self.stacked_widget.addWidget(self.device_view)
+        self.stacked_widget.addWidget(self.variable_view)     # 索引 2
+        self.stacked_widget.addWidget(self.monitoring_view)   # 索引 3
         self.stacked_widget.addWidget(self.data_forwarding_view)  # 索引 4
-        self.stacked_widget.addWidget(self.history_view)  # 索引 5
+        self.stacked_widget.addWidget(self.history_view)      # 索引 5
         self.stacked_widget.addWidget(self.trend_analysis_view)  # 索引 6
 
         # 显式设置主窗口引用
