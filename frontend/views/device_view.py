@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import json
 import logging
 import csv
 import io
+import os
 
 import requests
 from PyQt5.QtWidgets import (
@@ -821,7 +822,8 @@ class DeviceView(QWidget):
         if reply == QMessageBox.Yes:
             # Delete device from project
             self.project_manager.current_project.remove_device(device.device_id)
-
+            project_name = self.project_manager.current_project.get('name')
+            self.remove_device_from_ip_mapper(project_name, device.get('ip_address'))
             # Save project
             self.project_manager.save_project(self.project_manager.current_project)
 
@@ -843,6 +845,25 @@ class DeviceView(QWidget):
             return True
 
         return False
+
+    def remove_device_from_ip_mapper(self, project_name, device_ip):
+        mapper_path = r'E:\FEMS_Front\VYCON_IO\VYCON_IO\VYCON_IO\projects\ip_mapper.json'
+        if not os.path.exists(mapper_path):
+            return
+
+        try:
+            with open(mapper_path, 'r', encoding='utf-8') as f:
+                ip_dict = json.load(f)
+
+            if project_name in ip_dict.get('ip_mapper', {}):
+                del ip_dict['ip_mapper'][project_name][device_ip]
+
+                with open(mapper_path, 'w', encoding='utf-8') as f:
+                    json.dump(ip_dict, f, indent=4, ensure_ascii=False)
+                logger.info(f"已从 ip_mapper.json 中移除项目: {project_name}")
+
+        except Exception as e:
+            logger.error(f"删除 ip_mapper 项目 {project_name} 失败: {str(e)}")
 
     def select_new_device(self, device):
         """Select a newly added device in the table."""
@@ -951,12 +972,12 @@ class DeviceView(QWidget):
             else:
                 import json
                 print(f'ip{payload.get("ip")}连接失败,原因：{json.loads(response.text).get("message")}')
-                QMessageBox.information(self,'提示',f'ip{payload.get("ip")}连接失败,原因：{json.loads(response.text).get("message")}')
+                QMessageBox.information(self, '提示',
+                                        f'ip{payload.get("ip")}连接失败,原因：{json.loads(response.text).get("message")}')
                 return
         except Exception as e:
             logger.error(msg=f'{payload.get("ip")}连接失败：{e}')
         # Toggle connection statu
-
 
         # Update UI
         self.update_device_details(device)
