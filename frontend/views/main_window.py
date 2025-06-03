@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+主窗口模块
+作者: zhongqi.wang
+"""
 
 import logging
 import os
@@ -8,10 +12,11 @@ import requests
 from PyQt5.QtWidgets import (
     QMainWindow, QTabWidget, QAction, QMessageBox,
     QFileDialog, QVBoxLayout, QWidget, QStyleFactory,
-    QApplication, QStackedWidget, QSplitter, QLabel
+    QApplication, QStackedWidget, QSplitter, QLabel, QHBoxLayout,
+    QToolBar, QPushButton, QMenu
 )
 from PyQt5.QtGui import QIcon, QPalette, QColor, QFont
-from PyQt5.QtCore import Qt, QSize, QTimer
+from PyQt5.QtCore import Qt, QSize, QTimer, QPoint
 
 from frontend.models.project_model import ProjectManager
 from frontend.views.project_view import ProjectView
@@ -27,20 +32,38 @@ logger = logging.getLogger(__name__)
 
 
 class MainWindow(QMainWindow):
-    """Main application window with hierarchical interface for project, device, and variable management."""
-
-    def __init__(self):
+    """
+    应用程序主窗口
+    提供项目、设备和变量管理的分层界面
+    """
+    
+    def __init__(self, project_manager):
+        """
+        初始化主窗口
+        
+        参数:
+            project_manager: 项目管理器实例
+        """
         super().__init__()
-
+        
         # 初始化项目管理器
-        self.project_manager = ProjectManager()
+        self.project_manager = project_manager
         self.project_manager.load_projects()
-
+        
+        # 移除系统窗口装饰
+        self.setWindowFlags(Qt.FramelessWindowHint)
+        
+        # 记录鼠标拖动相关变量
+        self.draggable = True
+        self.dragging = False
+        self.drag_position = None
+        
         self.apply_tech_theme()
         self.init_ui()
 
+        self.menuBar().setVisible(False)
     def apply_tech_theme(self):
-        """Apply a modern tech-inspired dark theme to the application."""
+        """应用现代科技风格的深色主题"""
         # 设置应用程序样式为Fusion（现代外观）
         app_instance = QApplication.instance()
         if app_instance:
@@ -67,154 +90,208 @@ class MainWindow(QMainWindow):
             dark_palette.setColor(QPalette.Disabled, QPalette.Text, disabled_color)
             dark_palette.setColor(QPalette.Button, dark_color)
             dark_palette.setColor(QPalette.ButtonText, text_color)
-            dark_palette.setColor(QPalette.Disabled, QPalette.ButtonText, disabled_color)
             dark_palette.setColor(QPalette.BrightText, Qt.red)
             dark_palette.setColor(QPalette.Link, accent_color)
             dark_palette.setColor(QPalette.Highlight, highlight_color)
             dark_palette.setColor(QPalette.HighlightedText, Qt.black)
-            dark_palette.setColor(QPalette.Disabled, QPalette.HighlightedText, disabled_color)
-
-            # 应用调色板
+            
             app_instance.setPalette(dark_palette)
-
-            # 设置科技感字体
-            tech_font = QFont("Segoe UI", 9)
-            app_instance.setFont(tech_font)
-
-            # 设置样式表，添加更多科技感细节
+            
+            # 添加额外的样式表
             stylesheet = """
-                QMainWindow {
-                    border: none;
-                }
-                QTabWidget::pane {
-                    border: 1px solid #333;
-                    border-radius: 3px;
-                    background-color: #2d2d2d;
-                }
-                QTabBar::tab {
-                    background-color: #222;
-                    color: #aaa;
-                    padding: 8px 16px;
-                    border-top-left-radius: 4px;
-                    border-top-right-radius: 4px;
-                    margin-right: 2px;
-                }
-                QTabBar::tab:selected {
-                    background-color: #2a82da;
-                    color: white;
-                }
-                QPushButton {
-                    background-color: #2a5a8a;
-                    color: white;
-                    border: none;
-                    border-radius: 3px;
-                    padding: 6px 12px;
-                    font-weight: bold;
-                }
-                QPushButton:hover {
-                    background-color: #3a6a9a;
-                }
-                QPushButton:pressed {
-                    background-color: #1a4a7a;
-                }
-                QPushButton:disabled {
-                    background-color: #555;
-                    color: #888;
-                }
-                QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox {
-                    background-color: #333;
-                    color: #ddd;
-                    border: 1px solid #555;
-                    border-radius: 3px;
-                    padding: 4px;
-                }
-                QTableView {
-                    alternate-background-color: #353535;
-                    background-color: #2d2d2d;
-                    gridline-color: #444;
-                    selection-background-color: #2a82da;
-                    selection-color: white;
-                }
-                QHeaderView::section {
-                    background-color: #222;
-                    color: white;
-                    padding: 5px;
-                    border: 1px solid #444;
-                }
-                QStatusBar {
-                    background-color: #1e1e1e;
-                    color: #00bcd4;
-                }
-                QMenuBar {
-                    background-color: #1e1e1e;
-                    color: white;
-                }
-                QMenuBar::item:selected {
-                    background-color: #2a82da;
-                }
-                QMenu {
-                    background-color: #2d2d2d;
-                    color: white;
-                    border: 1px solid #555;
-                }
-                QMenu::item:selected {
-                    background-color: #2a82da;
-                }
-                QGroupBox {
-                    border: 1px solid #555;
-                    border-radius: 3px;
-                    margin-top: 10px;
-                    font-weight: bold;
-                }
-                QGroupBox::title {
-                    subcontrol-origin: margin;
-                    subcontrol-position: top center;
-                    padding: 0 5px;
-                }
-                QSplitter::handle {
-                    background-color: #444;
-                }
-                QSplitter::handle:horizontal {
-                    width: 2px;
-                }
-                QSplitter::handle:vertical {
-                    height: 2px;
-                }
-                QListWidget {
-                    background-color: #2d2d2d;
-                    alternate-background-color: #353535;
-                    color: white;
-                    border: 1px solid #555;
-                    border-radius: 3px;
-                }
-                QListWidget::item:selected {
-                    background-color: #2a82da;
-                }
-                QCheckBox {
-                    color: white;
-                }
-                QCheckBox::indicator {
-                    width: 16px;
-                    height: 16px;
-                }
-                QCheckBox::indicator:unchecked {
-                    background-color: #333;
-                    border: 1px solid #555;
-                    border-radius: 2px;
-                }
-                QCheckBox::indicator:checked {
-                    background-color: #2a82da;
-                    border: 1px solid #555;
-                    border-radius: 2px;
-                }
+            QToolTip { 
+                color: #ffffff; 
+                background-color: #2a82da; 
+                border: 1px solid white; 
+            }
+            
+            QWidget {
+                border-radius: 2px;
+            }
+            
+            QPushButton {
+                background-color: #0097a7;
+                color: white;
+                border: none;
+                padding: 5px 15px;
+                border-radius: 2px;
+            }
+            
+            QPushButton:hover {
+                background-color: #00acc1;
+            }
+            
+            QPushButton:pressed {
+                background-color: #007c91;
+            }
+            
+            QPushButton:disabled {
+                background-color: #555555;
+                color: #888888;
+            }
+            
+            QComboBox {
+                border: 1px solid #555555;
+                border-radius: 2px;
+                padding: 2px 18px 2px 3px;
+                min-width: 6em;
+            }
+            
+            QComboBox:editable {
+                background: #333333;
+            }
+            
+            QComboBox:!editable, QComboBox::drop-down:editable {
+                background: #3a3a3a;
+            }
+            
+            QComboBox:!editable:hover, QComboBox::drop-down:editable:hover {
+                background: #404040;
+            }
+            
+            QLineEdit {
+                border: 1px solid #555555;
+                border-radius: 2px;
+                padding: 2px;
+                background: #333333;
+                selection-background-color: #2a82da;
+            }
+            
+            QTabWidget::pane {
+                border: 1px solid #444;
+                top: -1px;
+            }
+            
+            QTabBar::tab {
+                background: #3a3a3a;
+                border: 1px solid #444;
+                padding: 5px 10px;
+                margin-right: 2px;
+            }
+            
+            QTabBar::tab:selected {
+                background: #0097a7;
+                border-color: #0097a7;
+            }
+            
+            QTabBar::tab:!selected:hover {
+                background: #404040;
+            }
+            
+            QHeaderView::section {
+                background-color: #3a3a3a;
+                padding: 4px;
+                border: 1px solid #444;
+                color: white;
+            }
+            
+            QTableView {
+                gridline-color: #444444;
+                background-color: #2d2d2d;
+                alternate-background-color: #3a3a3a;
+                selection-background-color: #2a82da;
+            }
+            
+            QScrollBar:vertical {
+                border: none;
+                background: #3a3a3a;
+                width: 10px;
+                margin: 0px;
+            }
+            
+            QScrollBar::handle:vertical {
+                background: #555555;
+                min-height: 20px;
+                border-radius: 5px;
+            }
+            
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                border: none;
+                background: none;
+            }
+            
+            QScrollBar:horizontal {
+                border: none;
+                background: #3a3a3a;
+                height: 10px;
+                margin: 0px;
+            }
+            
+            QScrollBar::handle:horizontal {
+                background: #555555;
+                min-width: 20px;
+                border-radius: 5px;
+            }
+            
+            QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+                border: none;
+                background: none;
+            }
+            
+            /* 自定义标题栏样式 */
+            #titleBar {
+                background-color: #1e1e1e;
+                border-bottom: 1px solid #333333;
+            }
+            
+            #titleLabel {
+                color: #00bcd4;
+                font-weight: bold;
+                font-size: 12pt;
+            }
+            
+            #minimizeButton, #maximizeButton, #closeButton {
+                border: none;
+                border-radius: 0px;
+                padding: 8px 12px;
+                background-color: transparent;
+            }
+            
+            #minimizeButton:hover, #maximizeButton:hover {
+                background-color: #333333;
+            }
+            
+            #closeButton:hover {
+                background-color: #e81123;
+            }
+            
+            /* 菜单按钮样式 */
+            #menuBar {
+                background-color: #2a2a2a;
+                border-bottom: 1px solid #333333;
+            }
+            
+            #menuButton {
+                background-color: transparent;
+                color: #e0e0e0;
+                border: none;
+                padding: 5px 15px;
+                font-size: 10pt;
+                font-weight: bold;
+                border-radius: 0px;
+            }
+            
+            #menuButton:hover {
+                background-color: #3a3a3a;
+                color: #00bcd4;
+            }
+            
+            #menuButton:pressed {
+                background-color: #444444;
+            }
             """
             app_instance.setStyleSheet(stylesheet)
-
+    
     def init_ui(self):
         """Initialize the user interface."""
-        self.setWindowTitle("数据采集系统")
-        self.setMinimumSize(1200, 800)
-
+        # 创建主布局
+        main_layout = QVBoxLayout()
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        main_layout.setSpacing(0)
+        
+        # 创建自定义标题栏
+        self.create_title_bar(main_layout)
+        
         # 创建主分割器，用于树形视图和内容区域
         self.main_splitter = QSplitter(Qt.Horizontal)
 
@@ -286,149 +363,239 @@ class MainWindow(QMainWindow):
         # 将树形视图和堆叠窗口添加到主分割器
         self.main_splitter.addWidget(self.hierarchy_tree)
         self.main_splitter.addWidget(self.stacked_widget)
-
-        # 设置分割器初始大小比例
-        self.main_splitter.setSizes([300, 900])
-
-        # 设置主窗口的中央部件
-        self.setCentralWidget(self.main_splitter)
-
-        # 创建菜单栏和工具栏
-        self.create_menu_bar()
-        self.create_tool_bar()
-
+        
+        # 设置分割器初始大小比例 - 调整为更合理的比例
+        self.main_splitter.setSizes([250, 950])  # 减小树形视图宽度，增加内容区域宽度
+        
+        # 添加主分割器到主布局
+        main_layout.addWidget(self.main_splitter)
+        
+        # 创建中央窗口部件
+        central_widget = QWidget()
+        central_widget.setLayout(main_layout)
+        self.setCentralWidget(central_widget)
+        
         # 创建状态栏
         self.statusBar().showMessage("就绪")
-
+        
         # 刷新树形视图
         self.hierarchy_tree.refresh_tree()
-
-        # 使用延时自动展开树节点
-        QTimer.singleShot(500, self.expand_tree_nodes)
-
-        # 记录初始化完成
-        logger.info("主窗口初始化完成，已设置所有视图的main_window引用")
-
-    def expand_tree_nodes(self):
-        """自动展开树节点，使用户可以直接看到所有项目和设备。"""
-        try:
-            # 如果项目数量较少，直接全部展开
-            if len(self.project_manager.projects) <= 3:
-                self.hierarchy_tree.tree.expandAll()
-                logger.info("已自动展开所有树节点")
-            else:
-                # 如果项目较多，只展开项目节点
-                for i in range(self.hierarchy_tree.tree.topLevelItemCount()):
-                    project_item = self.hierarchy_tree.tree.topLevelItem(i)
-                    self.hierarchy_tree.tree.expandItem(project_item)
-
-                    # 如果该项目只有一个设备，也展开它
-                    if project_item.childCount() == 1:
-                        self.hierarchy_tree.tree.expandItem(project_item.child(0))
-
-                logger.info("已自动展开项目节点")
-        except Exception as e:
-            logger.error(f"自动展开树节点时出错: {str(e)}")
-
-    def create_menu_bar(self):
-        """Create the main menu bar."""
-        menubar = self.menuBar()
-
-        # 图标目录
-        icons_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "resources", "icons")
-
-        # 项目菜单
-        project_menu = menubar.addMenu("项目")
-
-        new_project_action = QAction(
-            QIcon(os.path.join(icons_dir, "new.png") if os.path.exists(os.path.join(icons_dir, "new.png")) else ""),
-            "新建项目", self)
-        new_project_action.setShortcut("Ctrl+N")
+    
+    def create_title_bar(self, main_layout):
+        """创建自定义标题栏"""
+        title_bar = QWidget()
+        title_bar.setObjectName("titleBar")
+        title_bar.setFixedHeight(40)
+        
+        title_layout = QHBoxLayout(title_bar)
+        title_layout.setContentsMargins(10, 0, 10, 0)
+        
+        # 应用图标
+        icon_label = QLabel()
+        icon_label.setPixmap(QIcon("resources/icons/app_icon.png").pixmap(24, 24))
+        title_layout.addWidget(icon_label)
+        
+        # 标题
+        title_label = QLabel("数据采集系统")
+        title_label.setObjectName("titleLabel")
+        title_layout.addWidget(title_label)
+        
+        # 弹性空间
+        title_layout.addStretch()
+        
+        # 最小化按钮
+        min_button = QPushButton("—")
+        min_button.setObjectName("minimizeButton")
+        min_button.setFixedSize(40, 40)
+        min_button.clicked.connect(self.showMinimized)
+        title_layout.addWidget(min_button)
+        
+        # 最大化/还原按钮
+        self.max_button = QPushButton("□")
+        self.max_button.setObjectName("maximizeButton")
+        self.max_button.setFixedSize(40, 40)
+        self.max_button.clicked.connect(self.toggle_maximize)
+        title_layout.addWidget(self.max_button)
+        
+        # 关闭按钮
+        close_button = QPushButton("✕")
+        close_button.setObjectName("closeButton")
+        close_button.setFixedSize(40, 40)
+        close_button.clicked.connect(self.close)
+        title_layout.addWidget(close_button)
+        
+        # 添加标题栏到主布局
+        main_layout.addWidget(title_bar)
+        
+        # 创建菜单栏并添加到主布局
+        self.create_menu_buttons(main_layout)
+    
+    def create_menu_buttons(self, main_layout):
+        """创建菜单按钮栏"""
+        menu_bar = QWidget()
+        menu_bar.setObjectName("menuBar")
+        menu_bar.setFixedHeight(40)
+        
+        menu_layout = QHBoxLayout(menu_bar)
+        menu_layout.setContentsMargins(10, 0, 10, 0)
+        menu_layout.setSpacing(10)
+        
+        # 创建菜单按钮
+        project_button = QPushButton("项目")
+        project_button.setObjectName("menuButton")
+        project_button.clicked.connect(self.show_project_menu)
+        menu_layout.addWidget(project_button)
+        
+        monitoring_button = QPushButton("监控")
+        monitoring_button.setObjectName("menuButton")
+        monitoring_button.clicked.connect(self.show_monitoring_menu)
+        menu_layout.addWidget(monitoring_button)
+        
+        data_forwarding_button = QPushButton("数据转发")
+        data_forwarding_button.setObjectName("menuButton")
+        data_forwarding_button.clicked.connect(self.goto_data_forwarding)
+        menu_layout.addWidget(data_forwarding_button)
+        
+        history_button = QPushButton("历史数据")
+        history_button.setObjectName("menuButton")
+        history_button.clicked.connect(self.show_history_menu)
+        menu_layout.addWidget(history_button)
+        
+        trend_button = QPushButton("趋势分析")
+        trend_button.setObjectName("menuButton")
+        trend_button.clicked.connect(self.goto_trend_analysis)
+        menu_layout.addWidget(trend_button)
+        
+        help_button = QPushButton("帮助")
+        help_button.setObjectName("menuButton")
+        help_button.clicked.connect(self.show_about)
+        menu_layout.addWidget(help_button)
+        
+        # 添加弹性空间
+        menu_layout.addStretch()
+        
+        # 添加菜单栏到主布局
+        main_layout.addWidget(menu_bar)
+    
+    def show_project_menu(self):
+        """显示项目菜单"""
+        menu = QMenu(self)
+        
+        new_project_action = QAction("新建项目", self)
         new_project_action.triggered.connect(self.new_project)
-        project_menu.addAction(new_project_action)
-
-        project_menu.addSeparator()
-
+        menu.addAction(new_project_action)
+        
+        menu.addSeparator()
+        
         goto_projects_action = QAction("项目管理", self)
         goto_projects_action.triggered.connect(self.goto_projects)
-        project_menu.addAction(goto_projects_action)
-
-        # 添加设备和变量管理到项目菜单
-        project_menu.addSeparator()
-
+        menu.addAction(goto_projects_action)
+        
+        menu.addSeparator()
+        
         manage_devices_action = QAction("设备管理", self)
         manage_devices_action.triggered.connect(self.goto_devices)
-        project_menu.addAction(manage_devices_action)
-
+        menu.addAction(manage_devices_action)
+        
         manage_variables_action = QAction("变量管理", self)
         manage_variables_action.triggered.connect(self.goto_variables)
-        project_menu.addAction(manage_variables_action)
-
-        # 监控菜单
-        monitoring_menu = menubar.addMenu("监控")
-
-        start_monitoring_action = QAction(
-            QIcon(os.path.join(icons_dir, "start.png") if os.path.exists(os.path.join(icons_dir, "start.png")) else ""),
-            "启动监控", self)
+        menu.addAction(manage_variables_action)
+        
+        # 获取按钮位置
+        button = self.sender()
+        pos = button.mapToGlobal(button.rect().bottomLeft())
+        menu.exec_(pos)
+    
+    def show_monitoring_menu(self):
+        """显示监控菜单"""
+        menu = QMenu(self)
+        
+        start_monitoring_action = QAction("启动监控", self)
         start_monitoring_action.triggered.connect(self.start_monitoring)
-        monitoring_menu.addAction(start_monitoring_action)
-
+        menu.addAction(start_monitoring_action)
+        
         goto_monitoring_action = QAction("实时数据", self)
         goto_monitoring_action.triggered.connect(self.goto_monitoring)
-        monitoring_menu.addAction(goto_monitoring_action)
-
-        # 数据转发菜单项（从监控菜单移到菜单栏）
-        data_forwarding_action = QAction('数据转发', self)
-        data_forwarding_action.triggered.connect(self.goto_data_forwarding)
-        menubar.addAction(data_forwarding_action)
-
-        # 历史数据菜单
-        history_menu = menubar.addMenu("历史数据")
-
-        history_view_action = QAction(QIcon(
-            os.path.join(icons_dir, "history.png") if os.path.exists(os.path.join(icons_dir, "history.png")) else ""),
-            "历史查询", self)
-        history_view_action.setToolTip("查询历史数据（支持变量筛选和时间筛选）")
+        menu.addAction(goto_monitoring_action)
+        
+        # 获取按钮位置
+        button = self.sender()
+        pos = button.mapToGlobal(button.rect().bottomLeft())
+        menu.exec_(pos)
+    
+    def show_history_menu(self):
+        """显示历史数据菜单"""
+        menu = QMenu(self)
+        
+        history_view_action = QAction("历史查询", self)
         history_view_action.triggered.connect(self.goto_history)
-        history_menu.addAction(history_view_action)
-
-        history_menu.addSeparator()
-
+        menu.addAction(history_view_action)
+        
+        menu.addSeparator()
+        
         export_data_action = QAction("数据导出", self)
-        export_data_action.setToolTip("导出历史数据为CSV或Excel格式")
         export_data_action.triggered.connect(self.export_history_data)
-        history_menu.addAction(export_data_action)
-
+        menu.addAction(export_data_action)
+        
         export_chart_action = QAction("曲线导出", self)
-        export_chart_action.setToolTip("导出趋势曲线为图片格式")
         export_chart_action.triggered.connect(self.export_history_chart)
-        history_menu.addAction(export_chart_action)
-
-        # 趋势分析菜单 - 添加到菜单栏
-        trend_menu = menubar.addMenu("趋势分析")
-
-        trend_view_action = QAction("趋势分析", self)
-        trend_view_action.setToolTip("显示历史数据趋势曲线")
-        trend_view_action.triggered.connect(self.goto_trend_analysis)
-        trend_menu.addAction(trend_view_action)
-
-        # 帮助菜单
-        help_menu = menubar.addMenu("帮助")
-
-        about_action = QAction(
-            QIcon(os.path.join(icons_dir, "about.png") if os.path.exists(os.path.join(icons_dir, "about.png")) else ""),
-            "关于", self)
-        about_action.triggered.connect(self.show_about)
-        help_menu.addAction(about_action)
-
-    def create_tool_bar(self):
-        """Create the main toolbar."""
-        # Add an empty toolbar to maintain the UI structure
-        toolbar = self.addToolBar("主工具栏")
-        toolbar.setMovable(False)
-        # Hide the empty toolbar
-        toolbar.setVisible(False)
-
+        menu.addAction(export_chart_action)
+        
+        # 获取按钮位置
+        button = self.sender()
+        pos = button.mapToGlobal(button.rect().bottomLeft())
+        menu.exec_(pos)
+    
+    def toggle_maximize(self):
+        """切换窗口最大化/还原状态"""
+        if self.isMaximized():
+            self.showNormal()
+            self.max_button.setText("□")
+        else:
+            self.showMaximized()
+            self.max_button.setText("❐")
+    
+    def mousePressEvent(self, event):
+        """处理鼠标按下事件，用于拖动窗口"""
+        if event.button() == Qt.LeftButton and self.draggable:
+            # 检查是否点击在标题栏区域
+            if event.pos().y() <= 40:
+                self.dragging = True
+                self.drag_position = event.globalPos() - self.frameGeometry().topLeft()
+                event.accept()
+    
+    def mouseMoveEvent(self, event):
+        """处理鼠标移动事件，用于拖动窗口"""
+        if event.buttons() == Qt.LeftButton and self.dragging:
+            if self.isMaximized():
+                # 如果窗口最大化，先还原再拖动
+                self.showNormal()
+                self.max_button.setText("□")
+                # 调整拖动位置，使鼠标保持在点击位置
+                ratio = event.pos().x() / self.width()
+                new_width = self.width()
+                new_pos = event.globalPos() - QPoint(int(new_width * ratio), event.pos().y())
+                self.move(new_pos)
+                self.drag_position = event.globalPos() - self.frameGeometry().topLeft()
+            else:
+                # 正常拖动
+                self.move(event.globalPos() - self.drag_position)
+            event.accept()
+    
+    def mouseReleaseEvent(self, event):
+        """处理鼠标释放事件"""
+        if event.button() == Qt.LeftButton:
+            self.dragging = False
+            event.accept()
+    
+    def mouseDoubleClickEvent(self, event):
+        """处理鼠标双击事件，双击标题栏最大化/还原窗口"""
+        if event.button() == Qt.LeftButton:
+            # 检查是否双击在标题栏区域
+            if event.pos().y() <= 40:
+                self.toggle_maximize()
+                event.accept()
+    
     # Tree view event handlers
     def on_tree_project_selected(self, project):
         """Handle project selection from tree."""
@@ -1043,7 +1210,7 @@ class MainWindow(QMainWindow):
             "<p>支持多种工业协议的现代数据采集软件</p>"
             "<p>支持协议：S7、Modbus、CAN、GOOSE</p>"
             "<p>支持分层管理：项目 → 设备 → 变量</p>"
-            "<p>© 2023 数据采集系统</p>"
+            "<p>© 2025 数据采集系统</p>"
         )
 
     def closeEvent(self, event):
@@ -1069,8 +1236,8 @@ class MainWindow(QMainWindow):
         if not self.hierarchy_tree.isVisible():
             self.hierarchy_tree.setVisible(True)
             # 重新设置分割器的大小比例
-            self.main_splitter.setSizes([300, 900])
-
+            self.main_splitter.setSizes([250, 950]) 
+    
     def goto_data_forwarding(self):
         """Switch to data forwarding view."""
         if not self.project_manager.current_project:
