@@ -503,9 +503,18 @@ class HistoryView(QWidget):
         self.export_btn.setEnabled(True)
     
     def generate_sample_data(self, start_time, end_time):
-        """生成样本数据（实际应用中应替换为真实数据查询）"""
-        import random
-        from datetime import datetime, timedelta
+        """从API获取历史数据
+        
+        参数:
+            start_time: 开始时间
+            end_time: 结束时间
+            
+        返回:
+            从API获取的历史数据列表
+        """
+        import requests
+        import json
+        from datetime import datetime
         
         # 将字符串转换为datetime对象
         start_dt = datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S")
