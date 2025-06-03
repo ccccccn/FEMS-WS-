@@ -95,8 +95,7 @@ class ProtocolFactory:
             return instance
             
         except Exception as e:
-            # TODO:logger.error(f"Error creating protocol instance: {str(e)}")
-            # logger.error(f"Error creating protocol instance: {str(e)}")
+            logger.error(f"Error creating protocol instance: {str(e)}")
             return None
     
     def connect_all(self):

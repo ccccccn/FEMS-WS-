@@ -5,7 +5,7 @@ import logging
 import time
 import snap7
 from snap7.util import get_bool, get_int, get_real, get_string
-from mock.snap7.snap7types import S7WLBit, S7WLByte, S7WLWord, S7WLDWord, S7WLReal, S7WLString
+from snap7.snap7types import S7WLBit, S7WLByte, S7WLWord, S7WLDWord, S7WLReal, S7WLString
 
 logger = logging.getLogger(__name__)
 

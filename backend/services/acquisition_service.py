@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+数据采集服务模块
+作者: zhongqi.wang
+"""
 
 import logging
 import time
@@ -8,17 +12,18 @@ import queue
 from datetime import datetime
 import json
 import os
+from typing import Dict, Any, Optional, List, Tuple
 
-from backend.protocols import protocol_factory
+from backend.protocols import protocol_factory, connect_all, disconnect_all, get_protocol
 from backend.models.variable import Variable, VariableManager
 
 logger = logging.getLogger(__name__)
 
 class AcquisitionService:
-    """Service for managing data acquisition."""
+    """数据采集服务类，负责管理数据采集和存储"""
     
     def __init__(self):
-        """Initialize the acquisition service."""
+        """初始化数据采集服务"""
         self.variable_manager = VariableManager()
         self.running = False
         self.acquisition_thread = None
@@ -26,26 +31,40 @@ class AcquisitionService:
         self.results_queue = queue.Queue()
         
         # Settings
-        self.update_rate = 1.0  # seconds - default global update rate
-        self.logging_enabled = False
-        self.logging_interval = 60  # seconds - default global logging interval
+        self.update_rate = 1.0  # 秒 - 默认全局更新率
+        self.logging_enabled = True
+        self.logging_interval = 60  # 秒 - 默认全局日志记录间隔
         self.last_log_time = 0
         
         # Storage settings
-        self.storage_location = "logs"  # Default storage location
-        self.storage_format = "json"    # Default storage format (json, csv, etc.)
+        self.storage_location = "logs"  # 默认存储位置
+        self.storage_format = "json"    # 默认存储格式（json、csv等）
+        
+        # 内部状态
+        self.last_update = 0
+        self.variables = {}
+        self.request_queue = queue.Queue()
+        self.result_queues = {}
+        
+        # Connect all protocols
+        try:
+            connect_all()
+        except Exception as e:
+            logger.error(f"连接协议时出错: {str(e)}")
+            # 继续执行，部分协议可能正常工作
+        
+        # Start acquisition thread
+        self.start()
+    
+    def __del__(self):
+        """清理资源"""
+        self.stop()
     
     def start(self):
-        """Start the acquisition service."""
+        """启动数据采集服务"""
         if self.running:
             logger.warning("Acquisition service is already running")
             return False
-        
-        # Connect to all protocols
-        result = protocol_factory.connect_all()
-        if not all(result.values()):
-            logger.error("Failed to connect to some protocols")
-            # Continue anyway, some protocols might work
         
         # Start acquisition thread
         self.running = True
@@ -57,7 +76,7 @@ class AcquisitionService:
         return True
     
     def stop(self):
-        """Stop the acquisition service."""
+        """停止数据采集服务"""
         if not self.running:
             logger.warning("Acquisition service is not running")
             return False
@@ -70,7 +89,10 @@ class AcquisitionService:
                 logger.warning("Acquisition thread did not terminate gracefully")
         
         # Disconnect from all protocols
-        protocol_factory.disconnect_all()
+        try:
+            disconnect_all()
+        except Exception as e:
+            logger.error(f"断开协议连接时出错: {str(e)}")
         
         logger.info("Acquisition service stopped")
         return True
@@ -272,71 +294,90 @@ class AcquisitionService:
             return False
     
     def _acquisition_loop(self):
-        """Main acquisition loop."""
-        logger.info("Acquisition thread started")
+        """数据采集主循环"""
+        logger.info("数据采集线程已启动")
         
-        last_update_time = 0
-        current_time = time.time() * 1000  # Current time in milliseconds
+        # 创建存储目录（如果不存在）
+        if self.logging_enabled:
+            os.makedirs(self.storage_location, exist_ok=True)
+        
+        last_error_time = 0
+        error_count = 0
         
         while self.running:
             try:
-                # Process any pending requests
+                current_time = time.time() * 1000  # 当前时间（毫秒）
+                
+                # 处理任何待处理的请求
                 self._process_requests()
                 
-                # Check if it's time for the next update cycle
-                current_time = time.time() * 1000
-                if current_time - last_update_time >= self.update_rate * 1000:
-                    # Update variables
-                    self._update_all_variables(current_time)
-                    last_update_time = current_time
+                # 检查是否到达下一个更新周期
+                if current_time - self.last_update >= self.update_rate * 1000:
+                    # 更新变量
+                    self._update_variables(current_time)
+                    self.last_update = current_time
                 
-                # Check if it's time to log data
+                # 检查是否需要记录数据
                 if self.logging_enabled and current_time - self.last_log_time >= self.logging_interval * 1000:
                     self._log_data(current_time)
                     self.last_log_time = current_time
                 
-                # Sleep briefly to avoid consuming too much CPU
+                # 短暂休眠以避免占用过多CPU
                 time.sleep(0.01)
                 
+                # 重置错误计数
+                if error_count > 0 and time.time() - last_error_time > 60:
+                    error_count = 0
+                
             except Exception as e:
-                logger.error(f"Error in acquisition loop: {str(e)}", exc_info=True)
-                time.sleep(1)  # Sleep longer on error
+                error_count += 1
+                last_error_time = time.time()
+                logger.error(f"采集循环出错: {str(e)}")
+                time.sleep(1)  # 出错时休眠较长时间
+                
+                if error_count >= 10:
+                    logger.critical("采集循环连续出错10次，正在重新启动服务...")
+                    self.stop()
+                    self.start()
+                    break
     
     def _process_requests(self):
-        """Process pending requests."""
-        # Process up to 10 requests at a time to avoid blocking
-        for _ in range(10):
-            try:
-                # Get request with a short timeout
-                request = self.acquisition_queue.get(block=True, timeout=0.01)
+        """处理请求队列中的请求"""
+        try:
+            # 每次最多处理10个请求，避免阻塞
+            for _ in range(10):
+                try:
+                    # 获取请求，设置短超时
+                    request = self.acquisition_queue.get(block=True, timeout=0.01)
+                    
+                    # Process request based on type
+                    if request[0] == "read":
+                        self._read_variable(request[1])
+                    elif request[0] == "write":
+                        self._write_variable(request[1], request[2])
+                    else:
+                        logger.warning(f"Unknown request type: {request[0]}")
+                    
+                    # Mark request as done
+                    self.acquisition_queue.task_done()
+                    
+                except queue.Empty:
+                    # No more requests
+                    break
                 
-                # Process request based on type
-                if request[0] == "read":
-                    self._read_variable(request[1])
-                elif request[0] == "write":
-                    self._write_variable(request[1], request[2])
-                else:
-                    logger.warning(f"Unknown request type: {request[0]}")
-                
-                # Mark request as done
-                self.acquisition_queue.task_done()
-                
-            except queue.Empty:
-                # No more requests
-                break
-            except Exception as e:
-                logger.error(f"Error processing request: {str(e)}", exc_info=True)
+        except Exception as e:
+            logger.error(f"处理请求时出错: {str(e)}")
     
-    def _update_all_variables(self, current_time):
-        """Update all variables based on their collection frequency."""
+    def _update_variables(self, current_time):
+        """更新所有变量的值"""
         for variable in self.variable_manager.get_all_variables():
             try:
-                # Check if it's time to update this variable based on its collection frequency
+                # 根据变量的采集频率检查是否需要更新
                 if current_time - variable.last_collection_time >= variable.collection_frequency * 1000:
                     self._read_variable(variable)
                     variable.last_collection_time = current_time
             except Exception as e:
-                logger.error(f"Error updating variable {variable.name}: {str(e)}")
+                logger.error(f"更新变量 {variable.name} 时出错: {str(e)}")
     
     def _read_variable(self, variable):
         """Read a variable's value.
@@ -348,7 +389,7 @@ class AcquisitionService:
             # Get protocol for variable
             protocol = self._get_protocol_for_variable(variable)
             if not protocol:
-                # logger.error(f"No protocol available for variable {variable.name}")
+                logger.error(f"No protocol available for variable {variable.name}")
                 self.results_queue.put((variable.id, None, "Bad", None, "错误"))
                 return
             
@@ -408,7 +449,7 @@ class AcquisitionService:
             self.results_queue.put((variable.id, value, quality, variable.timestamp, status))
             
         except Exception as e:
-            logger.error(f"Error reading variable {variable.name}: {str(e)}")
+            logger.error(f"读取变量 {variable.name} 时出错: {str(e)}")
             self.results_queue.put((variable.id, None, "Bad", None, "错误"))
     
     def _write_variable(self, variable, value):
@@ -422,8 +463,7 @@ class AcquisitionService:
             # Get protocol for variable
             protocol = self._get_protocol_for_variable(variable)
             if not protocol:
-                # TODO:No protocol available for variable
-                # logger.error(f"No protocol available for variable {variable.name}")
+                logger.error(f"No protocol available for variable {variable.name}")
                 self.results_queue.put((variable.id, False))
                 return
             
@@ -485,7 +525,7 @@ class AcquisitionService:
             self.results_queue.put((variable.id, success))
             
         except Exception as e:
-            logger.error(f"Error writing variable {variable.name}: {str(e)}")
+            logger.error(f"写入变量 {variable.name} 时出错: {str(e)}")
             self.results_queue.put((variable.id, False))
     
     def _get_protocol_for_variable(self, variable):
@@ -550,11 +590,7 @@ class AcquisitionService:
             return {}
     
     def _log_data(self, current_time):
-        """Log current variable values based on their storage settings.
-        
-        Args:
-            current_time (float): Current time in milliseconds
-        """
+        """记录数据到文件"""
         if not self.logging_enabled:
             return
         
@@ -612,10 +648,10 @@ class AcquisitionService:
                         f.write(f"{var_data['id']},{var_data['name']},{var_data['value']},"
                                 f"{var_data['quality']},{var_data['timestamp']},{var_data['status']}\n")
             
-            # logger.info(f"Data logged to {log_file} for {len(variables_to_log)} variables")
+            logger.info(f"Data logged to {log_file} for {len(variables_to_log)} variables")
             
         except Exception as e:
-            logger.error(f"Error logging data: {str(e)}", exc_info=True)
+            logger.error(f"记录数据时出错: {str(e)}")
     
     def save_configuration(self, filename):
         """Save the current configuration to a file.
