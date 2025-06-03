@@ -24,94 +24,89 @@ from datetime import datetime
 logger = logging.getLogger(__name__)
 
 class VariableTableModel(QAbstractTableModel):
-    """Table model for displaying variables."""
+    """变量表格数据模型，用于显示变量列表"""
     
     def __init__(self, parent=None):
         super().__init__(parent)
         self.variables = []
-        self.headers = ["变量ID", "变量名", "数据类型", "地址", "状态", "当前值", "描述"]
+        self.headers = ["ID", "名称", "数据类型", "地址", "值", "单位", "状态"]
     
-    def rowCount(self, parent=QModelIndex()):
+    def rowCount(self, parent=None):
         return len(self.variables)
     
-    def columnCount(self, parent=QModelIndex()):
+    def columnCount(self, parent=None):
         return len(self.headers)
     
     def data(self, index, role=Qt.DisplayRole):
-        if not index.isValid() or not (0 <= index.row() < len(self.variables)):
-            return QVariant()
-        
+        if not index.isValid():
+            return None
+            
         variable = self.variables[index.row()]
-        column = index.column()
+        col = index.column()
         
         if role == Qt.DisplayRole:
-            if column == 0:
-                return variable.variable_id[:8] + "..."  # Truncate long ID
-            elif column == 1:
+            if col == 0:
+                # 截断过长的ID
+                return variable.variable_id[:8] + "..."
+            elif col == 1:
                 return variable.name
-            elif column == 2:
+            elif col == 2:
                 return variable.data_type
-            elif column == 3:
+            elif col == 3:
                 return variable.address
-            elif column == 4:
+            elif col == 4:
+                # 直接返回当前值，不显示单位
+                return str(variable.current_value)
+            elif col == 5:
+                return variable.units
+            elif col == 6:
                 return variable.status
-            elif column == 5:
-                # Display value with units if available
-                if variable.current_value is None:
-                    return "未知"
-                value_str = str(variable.current_value)
-                if variable.units:
-                    value_str += f" {variable.units}"
-                return value_str
-            elif column == 6:
-                return variable.description
         
         elif role == Qt.BackgroundRole:
-            # Color based on status
-            if column == 4:
-                if variable.status == "报警":
-                    return QColor(255, 100, 100, 150)  # Red for alarm
-                elif variable.status == "警告":
-                    return QColor(255, 200, 50, 150)  # Yellow for warning
-                else:
-                    return QColor(100, 255, 100, 100)  # Green for normal
+            # 根据状态设置颜色
+            if variable.status == "报警":
+                return QColor(255, 100, 100, 150)  # 报警状态显示红色
+            elif variable.status == "警告":
+                return QColor(255, 200, 50, 150)  # 警告状态显示黄色
+            elif variable.status == "正常":
+                return QColor(100, 255, 100, 100)  # 正常状态显示绿色
             
-            # Alternate row colors for better readability
-            if index.row() % 2 == 0:
-                return QColor(240, 240, 240, 40)
+            # 交替行颜色以提高可读性
+            if index.row() % 2:
+                return QColor(240, 240, 240, 50)
         
-        return QVariant()
+        return None
     
     def headerData(self, section, orientation, role=Qt.DisplayRole):
         if role == Qt.DisplayRole and orientation == Qt.Horizontal:
             return self.headers[section]
-        return QVariant()
+        return None
     
-    def set_variables(self, variables):
-        """Set the variables to display."""
+    def setVariables(self, variables):
+        """设置要显示的变量列表"""
         self.beginResetModel()
         self.variables = variables
         self.endResetModel()
     
-    def get_variable(self, row):
-        """Get the variable at the specified row."""
+    def getVariable(self, row):
+        """获取指定行的变量"""
         if 0 <= row < len(self.variables):
             return self.variables[row]
         return None
     
-    def update_variable(self, variable):
-        """Update a variable in the model."""
+    def updateVariable(self, variable):
+        """更新变量数据"""
         for i, var in enumerate(self.variables):
             if var.variable_id == variable.variable_id:
                 self.variables[i] = variable
                 self.dataChanged.emit(
                     self.index(i, 0),
-                    self.index(i, self.columnCount() - 1)
+                    self.index(i, self.columnCount()-1)
                 )
                 break
 
 class AddVariableDialog(QDialog):
-    """Dialog for adding a new variable."""
+    """添加新变量的对话框"""
     
     def __init__(self, device_type, parent=None):
         super().__init__(parent)
@@ -307,124 +302,124 @@ class AddVariableDialog(QDialog):
         
         return variable
 
-class BatchImportVariableDialog(QDialog):
-    """Dialog for batch importing variables."""
+class BatchImportDialog(QDialog):
+    """变量批量导入对话框"""
     
     def __init__(self, device_type, parent=None):
         super().__init__(parent)
         self.device_type = device_type
-        self.setWindowTitle("批量导入变量")
-        self.setMinimumSize(800, 600)
         self.variables = []
-        self.init_ui()
+        self.setWindowTitle("批量导入变量")
+        self.setMinimumWidth(800)
+        self.setup_ui()
     
-    def init_ui(self):
-        """Initialize the dialog UI."""
+    def setup_ui(self):
+        """初始化对话框界面"""
         layout = QVBoxLayout()
         
-        # Instructions
-        instructions = QLabel("您可以通过以下两种方式批量导入变量：")
+        # 说明文字
+        instructions = QLabel(
+            "您可以通过以下两种方式批量导入变量：\n"
+            "1. 导入CSV文件\n"
+            "2. 直接粘贴CSV格式文本\n\n"
+            "CSV文件格式要求：\n"
+            "- 第一行为标题行\n"
+            "- 必需列：变量名,数据类型,地址\n"
+            "- 可选列：描述,单位,警告下限,警告上限,报警下限,报警上限"
+        )
         instructions.setWordWrap(True)
         layout.addWidget(instructions)
         
-        # File import section
+        # 文件导入部分
         file_group = QGroupBox("从CSV文件导入")
-        file_layout = QVBoxLayout()
+        file_layout = QHBoxLayout()
         
-        file_help = QLabel("CSV文件应包含以下列：name,data_type,address,description,units")
-        file_help.setWordWrap(True)
-        file_layout.addWidget(file_help)
-        
-        # Add template download button
-        template_layout = QHBoxLayout()
-        template_label = QLabel("不确定格式？下载模板文件：")
-        self.download_template_btn = QPushButton("下载模板")
-        self.download_template_btn.clicked.connect(self.download_template)
-        template_layout.addWidget(template_label)
-        template_layout.addWidget(self.download_template_btn)
-        template_layout.addStretch(1)
-        file_layout.addLayout(template_layout)
-        
-        file_btn_layout = QHBoxLayout()
-        self.file_path_edit = QLineEdit()
-        self.file_path_edit.setReadOnly(True)
-        self.file_path_edit.setPlaceholderText("选择CSV文件...")
-        
+        self.file_path = QLineEdit()
+        self.file_path.setPlaceholderText("选择CSV文件...")
         self.browse_btn = QPushButton("浏览...")
         self.browse_btn.clicked.connect(self.browse_file)
         
-        file_btn_layout.addWidget(self.file_path_edit)
-        file_btn_layout.addWidget(self.browse_btn)
+        # 添加模板下载按钮
+        self.template_btn = QPushButton("下载模板")
+        self.template_btn.clicked.connect(self.download_template)
         
-        file_layout.addLayout(file_btn_layout)
+        file_layout.addWidget(self.file_path)
+        file_layout.addWidget(self.browse_btn)
+        file_layout.addWidget(self.template_btn)
+        
         file_group.setLayout(file_layout)
         layout.addWidget(file_group)
         
-        # Text import section
+        # 文本导入部分
         text_group = QGroupBox("从文本导入")
         text_layout = QVBoxLayout()
         
-        text_help = QLabel("请输入CSV格式的文本，每行一个变量，列应为：name,data_type,address,description,units")
-        text_help.setWordWrap(True)
-        text_layout.addWidget(text_help)
+        self.text_edit = QPlainTextEdit()
+        self.text_edit.setPlaceholderText(
+            "在此粘贴CSV格式文本...\n"
+            "例如：\n"
+            "变量名,数据类型,地址,描述,单位\n"
+            "温度,REAL,40001,温度传感器,℃\n"
+            "压力,REAL,40002,压力传感器,MPa"
+        )
+        text_layout.addWidget(self.text_edit)
         
-        protocol_help = QLabel(f"当前设备类型: {self.device_type}")
-        protocol_help.setStyleSheet("font-weight: bold; color: #2a82da;")
-        text_layout.addWidget(protocol_help)
-        
-        # Add protocol-specific address format help
-        if self.device_type == "S7":
-            address_help = "地址格式: DB1.DBX0.0 或 DB1.DBW2 或 M10.0"
-        elif self.device_type == "Modbus":
-            address_help = "地址格式: 40001 (保持寄存器) 或 10001 (输入状态)"
-        elif self.device_type == "CAN":
-            address_help = "地址格式: 信号名称或ID.起始位.位长度"
-        elif self.device_type == "GOOSE":
-            address_help = "地址格式: 数据集.成员索引"
-        else:
-            address_help = ""
-        
-        address_help_label = QLabel(address_help)
-        address_help_label.setStyleSheet("color: #666; font-style: italic;")
-        text_layout.addWidget(address_help_label)
-        
-        self.csv_text_edit = QPlainTextEdit()
-        self.csv_text_edit.setPlaceholderText("例如：\n温度,REAL,DB1.DBD0,温度传感器,°C\n压力,REAL,DB1.DBD4,压力传感器,MPa")
-        text_layout.addWidget(self.csv_text_edit)
+        # 添加协议特定的地址格式帮助
+        address_help = QLabel()
+        if self.device_type == "Modbus":
+            address_help.setText(
+                "Modbus地址格式：\n"
+                "- 线圈状态: 0xxxx\n"
+                "- 离散输入: 1xxxx\n"
+                "- 输入寄存器: 3xxxx\n"
+                "- 保持寄存器: 4xxxx"
+            )
+        elif self.device_type == "S7":
+            address_help.setText(
+                "S7地址格式：\n"
+                "- DB块: DB1.DBX0.0\n"
+                "- 输入: I0.0 或 E0.0\n"
+                "- 输出: Q0.0 或 A0.0\n"
+                "- 内存: M0.0 或 MB1 或 MW2 或 MD4"
+            )
+        elif self.device_type == "OPC UA":
+            address_help.setText(
+                "OPC UA地址格式：\n"
+                "- 命名空间索引和标识符: ns=2;s=Channel1.Device1.Tag1\n"
+                "- 节点ID: i=85"
+            )
+        address_help.setWordWrap(True)
+        text_layout.addWidget(address_help)
         
         text_group.setLayout(text_layout)
         layout.addWidget(text_group)
         
-        # Options
-        options_layout = QHBoxLayout()
+        # 选项部分
+        options_group = QGroupBox("导入选项")
+        options_layout = QVBoxLayout()
         
-        self.has_header_checkbox = QCheckBox("CSV包含表头")
-        self.has_header_checkbox.setChecked(True)
-        options_layout.addWidget(self.has_header_checkbox)
+        self.has_header = QCheckBox("第一行是标题行")
+        self.has_header.setChecked(True)
+        options_layout.addWidget(self.has_header)
         
-        self.enable_thresholds_checkbox = QCheckBox("启用阈值")
-        options_layout.addWidget(self.enable_thresholds_checkbox)
+        options_group.setLayout(options_layout)
+        layout.addWidget(options_group)
         
-        options_layout.addStretch(1)
-        
-        self.preview_btn = QPushButton("预览")
-        self.preview_btn.clicked.connect(self.preview_import)
-        options_layout.addWidget(self.preview_btn)
-        
-        layout.addLayout(options_layout)
-        
-        # Preview section
+        # 预览部分
         preview_group = QGroupBox("预览")
         preview_layout = QVBoxLayout()
         
-        self.preview_label = QLabel("导入预览将显示在这里")
-        preview_layout.addWidget(self.preview_label)
+        self.preview_text = QPlainTextEdit()
+        self.preview_text.setReadOnly(True)
+        preview_layout.addWidget(self.preview_text)
         
         preview_group.setLayout(preview_layout)
         layout.addWidget(preview_group)
         
-        # Button box
-        button_box = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        # 按钮部分
+        button_box = QDialogButtonBox(
+            QDialogButtonBox.Ok | QDialogButtonBox.Cancel
+        )
         button_box.accepted.connect(self.accept)
         button_box.rejected.connect(self.reject)
         layout.addWidget(button_box)
@@ -432,241 +427,260 @@ class BatchImportVariableDialog(QDialog):
         self.setLayout(layout)
     
     def browse_file(self):
-        """Browse for a CSV file."""
-        file_path, _ = QFileDialog.getOpenFileName(self, "选择CSV文件", "", "CSV文件 (*.csv);;所有文件 (*)")
+        """浏览并选择CSV文件"""
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            "选择CSV文件",
+            "",
+            "CSV文件 (*.csv);;所有文件 (*.*)"
+        )
+        
         if file_path:
-            self.file_path_edit.setText(file_path)
-            # Load file content into text edit
+            self.file_path.setText(file_path)
+            
+            # 加载文件内容到文本编辑器
             try:
-                # Try different encodings in order of likelihood
-                encodings = ['utf-8-sig', 'utf-8', 'gbk', 'gb2312', 'iso-8859-1']
+                # 尝试不同的编码方式
+                encodings = ['utf-8', 'gbk', 'gb2312', 'utf-16']
                 content = None
                 
                 for encoding in encodings:
                     try:
                         with open(file_path, 'r', encoding=encoding) as f:
                             content = f.read()
-                        break  # If successful, exit the loop
+                        break  # 如果成功，退出循环
                     except UnicodeDecodeError:
-                        continue  # Try next encoding
+                        continue  # 尝试下一种编码
                 
-                if content is not None:
-                    self.csv_text_edit.setPlainText(content)
+                if content:
+                    self.text_edit.setPlainText(content)
+                    self.preview_import()
                 else:
-                    raise ValueError("无法以任何已知编码读取文件")
-                    
+                    QMessageBox.warning(
+                        self,
+                        "警告",
+                        "无法读取文件内容，请确保文件编码正确"
+                    )
             except Exception as e:
-                QMessageBox.critical(self, "错误", f"无法读取文件: {str(e)}")
-                logger.error(f"读取CSV文件失败: {str(e)}")
+                QMessageBox.critical(
+                    self,
+                    "错误",
+                    f"读取文件失败：{str(e)}"
+                )
     
     def preview_import(self):
-        """Preview the variables to be imported."""
+        """预览要导入的变量"""
+        # 获取CSV内容
+        content = self.text_edit.toPlainText().strip()
+        if not content:
+            self.preview_text.setPlainText("没有要导入的内容")
+            return
+            
         try:
-            # Get CSV content
-            csv_content = self.csv_text_edit.toPlainText()
-            if not csv_content.strip():
-                self.preview_label.setText("没有数据可预览")
-                return
+            # 解析CSV
+            self.variables = self.parse_csv(content)
             
-            # Parse CSV
-            self.variables = self.parse_csv(csv_content)
-            
-            if not self.variables:
-                self.preview_label.setText("没有找到有效的变量数据")
-                return
-            
-            # Generate preview text
-            preview_text = f"找到 {len(self.variables)} 个变量：\n\n"
-            for i, variable in enumerate(self.variables[:5]):  # Show first 5 variables
-                preview_text += f"{i+1}. {variable.name} ({variable.data_type}) - 地址: {variable.address}\n"
+            # 生成预览文本
+            preview = "将导入以下变量：\n\n"
+            for i, variable in enumerate(self.variables[:5]):  # 只显示前5个变量
+                preview += f"{i+1}. {variable.name} ({variable.data_type})\n"
+                preview += f"   地址: {variable.address}\n"
+                if variable.description:
+                    preview += f"   描述: {variable.description}\n"
+                if variable.units:
+                    preview += f"   单位: {variable.units}\n"
+                preview += "\n"
             
             if len(self.variables) > 5:
-                preview_text += f"...以及 {len(self.variables) - 5} 个更多变量"
+                preview += f"... 共 {len(self.variables)} 个变量"
             
-            self.preview_label.setText(preview_text)
+            self.preview_text.setPlainText(preview)
+            
         except Exception as e:
-            QMessageBox.critical(self, "预览错误", f"预览数据时出错: {str(e)}")
-            self.preview_label.setText(f"预览失败: {str(e)}")
+            self.preview_text.setPlainText(f"解析失败：{str(e)}")
+            self.variables = []
     
-    def parse_csv(self, csv_content):
-        """Parse CSV content and return a list of Variable objects."""
+    def parse_csv(self, content):
+        """解析CSV内容并返回变量对象列表"""
+        # 解析CSV
         variables = []
         
-        # Parse CSV
-        csv_file = io.StringIO(csv_content)
-        has_header = self.has_header_checkbox.isChecked()
-        
         try:
-            # Use csv.reader with proper dialect detection
-            dialect = csv.Sniffer().sniff(csv_content[:1024]) if len(csv_content) > 0 else csv.excel
-            reader = csv.reader(csv_file, dialect)
+            # 使用csv.reader并自动检测方言
+            lines = content.splitlines()
+            reader = csv.reader(lines)
             
-            # Skip header if needed
-            if has_header:
-                try:
-                    header = next(reader, None)
-                    # Validate header
-                    required_fields = ["name", "data_type", "address"]
-                    
-                    # Check if header contains required fields (case-insensitive)
-                    if header and len(header) >= 3:
-                        header_lower = [h.lower() for h in header]
-                        missing_fields = [f for f in required_fields if f.lower() not in header_lower]
-                        
-                        if missing_fields:
-                            raise ValueError(f"CSV头部缺少必要字段: {', '.join(missing_fields)}")
-                    else:
-                        raise ValueError(f"CSV头部缺少必要字段。需要: {', '.join(required_fields)}")
-                except StopIteration:
-                    raise ValueError("CSV文件为空或格式错误")
+            # 如果有标题行则跳过
+            if self.has_header.isChecked():
+                header = next(reader)
+            else:
+                header = ["变量名", "数据类型", "地址", "描述", "单位",
+                         "警告下限", "警告上限", "报警下限", "报警上限"]
             
-            # Process rows
+            # 验证标题
+            required_fields = ["变量名", "数据类型", "地址"]
+            header_lower = [h.lower() for h in header]
+            
+            # 检查是否包含必需字段（不区分大小写）
+            for field in required_fields:
+                if field.lower() not in header_lower:
+                    raise ValueError(f"缺少必需的列：{field}")
+            
+            # 获取列索引
+            name_idx = header_lower.index("变量名".lower())
+            type_idx = header_lower.index("数据类型".lower())
+            addr_idx = header_lower.index("地址".lower())
+            desc_idx = header_lower.index("描述".lower()) if "描述".lower() in header_lower else None
+            unit_idx = header_lower.index("单位".lower()) if "单位".lower() in header_lower else None
+            warn_low_idx = header_lower.index("警告下限".lower()) if "警告下限".lower() in header_lower else None
+            warn_high_idx = header_lower.index("警告上限".lower()) if "警告上限".lower() in header_lower else None
+            alarm_low_idx = header_lower.index("报警下限".lower()) if "报警下限".lower() in header_lower else None
+            alarm_high_idx = header_lower.index("报警上限".lower()) if "报警上限".lower() in header_lower else None
+            
+            # 处理每一行
             for row in reader:
-                if not row or len(row) < 3:  # Need at least name, data_type, address
+                # 跳过空行或数据不完整的行
+                if not row or len(row) < 3:  # 至少需要变量名、数据类型和地址
                     continue
                 
+                # 创建变量
+                variable = Variable(
+                    name=row[name_idx].strip(),
+                    data_type=row[type_idx].strip(),
+                    address=row[addr_idx].strip()
+                )
+                
+                # 设置可选字段
+                if desc_idx is not None and len(row) > desc_idx:
+                    variable.description = row[desc_idx].strip()
+                
+                # 设置单位（如果有）
+                if unit_idx is not None and len(row) > unit_idx:
+                    variable.units = row[unit_idx].strip()
+                
+                # 设置阈值（如果启用并提供了值）
                 try:
-                    # Create variable
-                    variable = Variable(
-                        name=row[0].strip(),
-                        data_type=row[1].strip(),
-                        address=row[2].strip(),
-                        description=row[3].strip() if len(row) > 3 else ""
-                    )
-                    
-                    # Set units if available
-                    if len(row) > 4:
-                        variable.units = row[4].strip()
-                    
-                    # Set threshold values if enabled and provided
-                    if self.enable_thresholds_checkbox.isChecked() and len(row) > 5:
-                        try:
-                            warning_low = float(row[5]) if row[5].strip() else None
-                            warning_high = float(row[6]) if len(row) > 6 and row[6].strip() else None
-                            alarm_low = float(row[7]) if len(row) > 7 and row[7].strip() else None
-                            alarm_high = float(row[8]) if len(row) > 8 and row[8].strip() else None
-                            
-                            variable.set_threshold(
-                                enabled=True,
-                                warning_low=warning_low,
-                                warning_high=warning_high,
-                                alarm_low=alarm_low,
-                                alarm_high=alarm_high
-                            )
-                        except (ValueError, IndexError):
-                            # If threshold values are invalid, just use default values
-                            logger.warning(f"变量 {variable.name} 的阈值数据无效，使用默认值")
-                    
-                    variables.append(variable)
-                except (ValueError, IndexError) as e:
-                    logger.warning(f"跳过无效行: {row}. 错误: {str(e)}")
-                    continue
+                    if warn_low_idx is not None and len(row) > warn_low_idx and row[warn_low_idx].strip():
+                        variable.warning_low = float(row[warn_low_idx])
+                    if warn_high_idx is not None and len(row) > warn_high_idx and row[warn_high_idx].strip():
+                        variable.warning_high = float(row[warn_high_idx])
+                    if alarm_low_idx is not None and len(row) > alarm_low_idx and row[alarm_low_idx].strip():
+                        variable.alarm_low = float(row[alarm_low_idx])
+                    if alarm_high_idx is not None and len(row) > alarm_high_idx and row[alarm_high_idx].strip():
+                        variable.alarm_high = float(row[alarm_high_idx])
+                except ValueError:
+                    # 如果阈值无效，使用默认值
+                    logger.warning(f"变量 {variable.name} 的阈值无效，将使用默认值")
                 
+                variables.append(variable)
+            
+            return variables
+            
         except Exception as e:
-            raise ValueError(f"解析CSV时出错: {str(e)}")
-        
-        return variables
+            raise ValueError(f"解析CSV失败：{str(e)}")
     
     def get_variables(self):
-        """Get the parsed variables."""
+        """获取解析后的变量列表"""
         return self.variables
-
+    
     def download_template(self):
-        """Generate and download a template CSV file for variable import."""
+        """生成并下载变量导入模板CSV文件"""
+        # 询问用户保存模板的位置
+        file_path, _ = QFileDialog.getSaveFileName(
+            self,
+            "保存模板文件",
+            "变量导入模板.csv",
+            "CSV文件 (*.csv)"
+        )
+        
+        if not file_path:
+            return  # 用户取消了操作
+        
+        # 确保文件有.csv扩展名
+        if not file_path.lower().endswith('.csv'):
+            file_path += '.csv'
+        
         try:
-            # Ask user where to save the template
-            file_path, _ = QFileDialog.getSaveFileName(
-                self,
-                "保存变量导入模板",
-                f"{self.device_type}变量导入模板.csv",
-                "CSV文件 (*.csv);;所有文件 (*)"
-            )
-            
-            if not file_path:
-                return  # User cancelled
-            
-            # Ensure file has .csv extension
-            if not file_path.lower().endswith('.csv'):
-                file_path += '.csv'
-            
-            # Create template content based on device type
-            template_content = [
-                # Header row
-                ["name", "data_type", "address", "description", "units", "warning_low", "warning_high", "alarm_low", "alarm_high"]
-            ]
-            
-            # Add device type specific examples
-            if self.device_type == "S7":
-                template_content.extend([
-                    ["温度", "REAL", "DB1.DBD0", "温度传感器", "°C", "10", "50", "5", "60"],
-                    ["压力", "REAL", "DB1.DBD4", "压力传感器", "MPa", "0.2", "0.8", "0.1", "1.0"],
-                    ["开关状态", "BOOL", "DB1.DBX8.0", "设备开关状态", "", "", "", "", ""],
-                    ["计数器", "INT", "DB1.DBW10", "产品计数器", "个", "0", "1000", "", ""],
-                    ["液位", "REAL", "DB1.DBD12", "储罐液位", "m", "1.0", "8.0", "0.5", "9.0"]
-                ])
-            elif self.device_type == "Modbus":
-                template_content.extend([
-                    ["温度", "REAL", "40001", "温度传感器", "°C", "10", "50", "5", "60"],
-                    ["压力", "REAL", "40003", "压力传感器", "MPa", "0.2", "0.8", "0.1", "1.0"],
-                    ["开关状态", "BOOL", "10001", "设备开关状态", "", "", "", "", ""],
-                    ["计数器", "INT", "40005", "产品计数器", "个", "0", "1000", "", ""],
-                    ["液位", "REAL", "40007", "储罐液位", "m", "1.0", "8.0", "0.5", "9.0"]
-                ])
-            elif self.device_type == "CAN":
-                template_content.extend([
-                    ["发动机温度", "REAL", "0x100.0.16", "发动机温度传感器", "°C", "60", "90", "50", "110"],
-                    ["转速", "INT", "0x100.16.16", "发动机转速", "rpm", "800", "6000", "500", "7000"],
-                    ["油门位置", "REAL", "0x101.0.8", "油门踏板位置", "%", "0", "100", "", ""],
-                    ["车速", "REAL", "0x102.0.16", "车辆速度", "km/h", "0", "120", "", "150"],
-                    ["燃油量", "REAL", "0x103.0.8", "燃油剩余量", "L", "10", "", "5", ""]
-                ])
-            elif self.device_type == "GOOSE":
-                template_content.extend([
-                    ["断路器状态", "BOOL", "DataSet1.0", "断路器开关状态", "", "", "", "", ""],
-                    ["电流", "REAL", "DataSet1.1", "线路电流", "A", "0", "100", "", "120"],
-                    ["电压", "REAL", "DataSet1.2", "线路电压", "V", "220", "240", "210", "250"],
-                    ["功率", "REAL", "DataSet1.3", "有功功率", "kW", "0", "50", "", "60"],
-                    ["频率", "REAL", "DataSet1.4", "系统频率", "Hz", "49.5", "50.5", "49.0", "51.0"]
-                ])
+            # 根据设备类型创建模板内容
+            if self.device_type == "Modbus":
+                # 标题行
+                header = "变量名,数据类型,地址,描述,单位,警告下限,警告上限,报警下限,报警上限\n"
+                
+                # 添加设备类型特定的示例
+                examples = [
+                    "温度传感器1,REAL,40001,1号温度传感器,℃,10,50,0,60\n",
+                    "压力传感器1,REAL,40002,1号压力传感器,MPa,0.5,8,0,10\n",
+                    "流量计1,REAL,40003,1号流量计,m³/h,10,1000,0,1200\n",
+                    "阀门状态1,BOOL,00001,1号阀门状态,,,,,"
+                ]
+                
+            elif self.device_type == "S7":
+                header = "变量名,数据类型,地址,描述,单位,警告下限,警告上限,报警下限,报警上限\n"
+                examples = [
+                    "温度传感器1,REAL,DB1.DBD0,1号温度传感器,℃,10,50,0,60\n",
+                    "压力传感器1,REAL,DB1.DBD4,1号压力传感器,MPa,0.5,8,0,10\n",
+                    "流量计1,REAL,DB1.DBD8,1号流量计,m³/h,10,1000,0,1200\n",
+                    "阀门状态1,BOOL,DB1.DBX12.0,1号阀门状态,,,,,"
+                ]
+                
+            elif self.device_type == "OPC UA":
+                header = "变量名,数据类型,地址,描述,单位,警告下限,警告上限,报警下限,报警上限\n"
+                examples = [
+                    "温度传感器1,REAL,ns=2;s=Device1.Temperature1,1号温度传感器,℃,10,50,0,60\n",
+                    "压力传感器1,REAL,ns=2;s=Device1.Pressure1,1号压力传感器,MPa,0.5,8,0,10\n",
+                    "流量计1,REAL,ns=2;s=Device1.Flow1,1号流量计,m³/h,10,1000,0,1200\n",
+                    "阀门状态1,BOOL,ns=2;s=Device1.Valve1,1号阀门状态,,,,,"
+                ]
+                
             else:
-                # Generic template for other device types
-                template_content.extend([
-                    ["变量1", "REAL", "地址1", "变量1描述", "单位1", "10", "100", "0", "120"],
-                    ["变量2", "INT", "地址2", "变量2描述", "单位2", "0", "1000", "", ""],
-                    ["变量3", "BOOL", "地址3", "变量3描述", "", "", "", "", ""],
-                    ["变量4", "DINT", "地址4", "变量4描述", "单位4", "100", "10000", "50", "12000"],
-                    ["变量5", "STRING", "地址5", "变量5描述", "", "", "", "", ""]
-                ])
+                # 通用模板
+                header = "变量名,数据类型,地址,描述,单位,警告下限,警告上限,报警下限,报警上限\n"
+                examples = [
+                    "变量1,REAL,地址1,变量1描述,单位1,10,50,0,60\n",
+                    "变量2,INT,地址2,变量2描述,单位2,-100,100,-200,200\n",
+                    "变量3,BOOL,地址3,变量3描述,,,,,"
+                ]
             
-            # Write to CSV file with UTF-8-BOM encoding for better Excel compatibility
-            with open(file_path, 'w', newline='', encoding='utf-8-sig') as f:
-                writer = csv.writer(f)
-                writer.writerows(template_content)
+            # 写入CSV文件（使用UTF-8-BOM编码以便Excel正确显示中文）
+            with open(file_path, 'w', encoding='utf-8-sig', newline='') as f:
+                f.write(header)
+                for example in examples:
+                    f.write(example)
             
-            # Show success message with device-specific notes
-            message = f"变量导入模板已保存到：\n{file_path}\n\n请按照模板格式填写您的变量信息。"
+            # 显示成功消息并添加设备特定说明
+            message = "模板文件已保存。\n\n"
             
-            # Add device-specific notes
-            if self.device_type == "S7":
-                message += "\n\n注意：S7地址格式示例：\n- DB1.DBX0.0 (位)\n- DB1.DBW2 (字)\n- DB1.DBD4 (双字)\n- M10.0 (内存位)"
-            elif self.device_type == "Modbus":
-                message += "\n\n注意：Modbus地址格式示例：\n- 40001-49999 (保持寄存器)\n- 30001-39999 (输入寄存器)\n- 10001-19999 (输入状态)\n- 00001-09999 (线圈)"
-            elif self.device_type == "CAN":
-                message += "\n\n注意：CAN地址格式示例：\n- ID.起始位.位长度 (如 0x100.0.16)"
-            elif self.device_type == "GOOSE":
-                message += "\n\n注意：GOOSE地址格式示例：\n- 数据集.成员索引 (如 DataSet1.0)"
+            # 添加设备特定说明
+            if self.device_type == "Modbus":
+                message += (
+                    "Modbus地址格式说明：\n"
+                    "- 线圈状态: 0xxxx (如00001)\n"
+                    "- 离散输入: 1xxxx (如10001)\n"
+                    "- 输入寄存器: 3xxxx (如30001)\n"
+                    "- 保持寄存器: 4xxxx (如40001)"
+                )
+            elif self.device_type == "S7":
+                message += (
+                    "S7地址格式说明：\n"
+                    "- DB块: DB1.DBX0.0 (位), DB1.DBB1 (字节), DB1.DBW2 (字), DB1.DBD4 (双字)\n"
+                    "- 输入: I0.0 或 E0.0\n"
+                    "- 输出: Q0.0 或 A0.0\n"
+                    "- 内存: M0.0 或 MB1 或 MW2 或 MD4"
+                )
+            elif self.device_type == "OPC UA":
+                message += (
+                    "OPC UA地址格式说明：\n"
+                    "- 命名空间索引和标识符: ns=2;s=Channel1.Device1.Tag1\n"
+                    "- 节点ID: i=85"
+                )
             
-            QMessageBox.information(
-                self,
-                "模板已保存",
-                message
-            )
+            QMessageBox.information(self, "成功", message)
             
         except Exception as e:
             QMessageBox.critical(
                 self,
-                "保存模板失败",
-                f"保存模板时出错：{str(e)}"
+                "错误",
+                f"保存模板失败：{str(e)}"
             )
 
 class DataForwardingWidget(QWidget):
@@ -1007,32 +1021,47 @@ class VariableView(QWidget):
         self.variable_table.setSelectionMode(QAbstractItemView.SingleSelection)
         self.variable_table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.variable_table.selectionModel().selectionChanged.connect(self.on_variable_selection_changed)
+        self.variable_table.setMinimumHeight(200)  # 设置表格最小高度
+        self.variable_table.setMaximumHeight(300)  # 设置表格最大高度，防止占用过多空间
         variables_layout.addWidget(self.variable_table)
         
         # Variable details
         details_group = QGroupBox("变量详情")
         details_layout = QFormLayout()
+        details_layout.setVerticalSpacing(8)  # 增加表单项垂直间距
+        details_layout.setContentsMargins(10, 15, 10, 15)  # 增加内边距
         
         self.variable_id_label = QLabel("未选择")
+        self.variable_id_label.setWordWrap(True)
         details_layout.addRow("变量ID:", self.variable_id_label)
         
         self.variable_name_label = QLabel("未选择")
+        self.variable_name_label.setWordWrap(True)
         details_layout.addRow("变量名:", self.variable_name_label)
         
         self.variable_type_label = QLabel("未选择")
+        self.variable_type_label.setWordWrap(True)
         details_layout.addRow("数据类型:", self.variable_type_label)
         
         self.variable_address_label = QLabel("未选择")
+        self.variable_address_label.setWordWrap(True)
         details_layout.addRow("地址:", self.variable_address_label)
         
         self.variable_value_label = QLabel("未知")
+        self.variable_value_label.setWordWrap(True)
         details_layout.addRow("当前值:", self.variable_value_label)
         
         self.variable_status_label = QLabel("未知")
+        self.variable_status_label.setWordWrap(True)
         details_layout.addRow("状态:", self.variable_status_label)
         
         self.variable_timestamp_label = QLabel("未知")
+        self.variable_timestamp_label.setWordWrap(True)
         details_layout.addRow("时间戳:", self.variable_timestamp_label)
+        
+        # 添加一些垂直空间
+        spacer_label = QLabel("")
+        details_layout.addRow("", spacer_label)
         
         details_group.setLayout(details_layout)
         variables_layout.addWidget(details_group)
@@ -1067,7 +1096,7 @@ class VariableView(QWidget):
             self.device_info.setText(f"当前设备: {device.name}")
             
             # 更新变量表格
-            self.variable_model.set_variables(device.variables)
+            self.variable_model.setVariables(device.variables)
             
             # 启用添加变量和批量导入按钮
             self.add_variable_btn.setEnabled(True)
@@ -1097,7 +1126,7 @@ class VariableView(QWidget):
             self.device_info.setText("当前设备: 未选择")
             
             # 清空变量表格
-            self.variable_model.set_variables([])
+            self.variable_model.setVariables([])
             
             # 禁用所有按钮
             self.add_variable_btn.setEnabled(False)
@@ -1129,7 +1158,7 @@ class VariableView(QWidget):
                 self.project_manager.save_project(self.project_manager.current_project)
                 
                 # Update variable table
-                self.variable_model.set_variables(self.current_device.variables)
+                self.variable_model.setVariables(self.current_device.variables)
                 
                 # Select the new variable
                 self.select_variable(variable)
@@ -1156,7 +1185,7 @@ class VariableView(QWidget):
         
         if selected_indexes:
             row = selected_indexes[0].row()
-            variable = self.variable_model.get_variable(row)
+            variable = self.variable_model.getVariable(row)
             
             if variable:
                 self.edit_variable(variable)
@@ -1167,7 +1196,7 @@ class VariableView(QWidget):
         
         if selected_indexes:
             row = selected_indexes[0].row()
-            variable = self.variable_model.get_variable(row)
+            variable = self.variable_model.getVariable(row)
             
             if variable:
                 self.delete_variable(variable)
@@ -1233,7 +1262,7 @@ class VariableView(QWidget):
             self.project_manager.save_project(self.project_manager.current_project)
             
             # 更新表格
-            self.variable_model.set_variables(self.current_device.variables)
+            self.variable_model.setVariables(self.current_device.variables)
             
             # 选择更新后的变量
             self.select_variable(updated_variable)
@@ -1286,7 +1315,7 @@ class VariableView(QWidget):
                 self.project_manager.save_project(self.project_manager.current_project)
                 
                 # 更新表格
-                self.variable_model.set_variables(self.current_device.variables)
+                self.variable_model.setVariables(self.current_device.variables)
                 
                 # 清除变量详情
                 self.update_variable_details(None)
@@ -1326,12 +1355,12 @@ class VariableView(QWidget):
         # 确保变量表格已经加载了当前设备的变量
         if len(self.variable_model.variables) != len(self.current_device.variables):
             logger.info("变量表格数据与当前设备不匹配，正在重新加载...")
-            self.variable_model.set_variables(self.current_device.variables)
+            self.variable_model.setVariables(self.current_device.variables)
             
         # 查找变量在表格中的行
         found = False
         for row in range(self.variable_model.rowCount()):
-            var = self.variable_model.get_variable(row)
+            var = self.variable_model.getVariable(row)
             if var and var.variable_id == variable.variable_id:
                 # 选中该行
                 self.variable_table.selectRow(row)
@@ -1352,7 +1381,7 @@ class VariableView(QWidget):
         if not found:
             # 尝试通过名称匹配
             for row in range(self.variable_model.rowCount()):
-                var = self.variable_model.get_variable(row)
+                var = self.variable_model.getVariable(row)
                 if var and var.name == variable.name:
                     # 选中该行
                     self.variable_table.selectRow(row)
@@ -1436,7 +1465,7 @@ class VariableView(QWidget):
         
         if selected_indexes:
             row = selected_indexes[0].row()
-            variable = self.variable_model.get_variable(row)
+            variable = self.variable_model.getVariable(row)
             
             if variable:
                 # Update variable details
@@ -1469,10 +1498,7 @@ class VariableView(QWidget):
             self.variable_address_label.setText(variable.address)
             
             if variable.current_value is not None:
-                value_str = str(variable.current_value)
-                if hasattr(variable, 'units') and variable.units:
-                    value_str += f" {variable.units}"
-                self.variable_value_label.setText(value_str)
+                self.variable_value_label.setText(str(variable.current_value))
             else:
                 self.variable_value_label.setText("未知")
             
@@ -1512,7 +1538,7 @@ class VariableView(QWidget):
             QMessageBox.warning(self, "警告", "请先选择一个设备")
             return False
         
-        dialog = BatchImportVariableDialog(self.current_device.device_type, self)
+        dialog = BatchImportDialog(self.current_device.device_type, self)
         if dialog.exec_() == QDialog.Accepted:
             variables = dialog.get_variables()
             
@@ -1552,7 +1578,7 @@ class VariableView(QWidget):
                 self.project_manager.save_project(self.project_manager.current_project)
                 
                 # Update variable table
-                self.variable_model.set_variables(self.current_device.variables)
+                self.variable_model.setVariables(self.current_device.variables)
                 
                 # Refresh tree view
                 QTimer.singleShot(200, lambda: self.refresh_hierarchy_tree())
