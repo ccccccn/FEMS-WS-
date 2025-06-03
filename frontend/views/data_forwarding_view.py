@@ -371,7 +371,7 @@ class DataForwardingView(QWidget):
         self.load_saved_configs()
 
     def apply_tech_theme(self):
-        """Apply modern tech theme styling to the view"""
+        """应用现代科技风格的主题样式"""
         # 设置科技感字体
         tech_font = QFont("Segoe UI", 9)
         self.setFont(tech_font)

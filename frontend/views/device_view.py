@@ -321,8 +321,7 @@ class BatchImportDeviceDialog(QDialog):
         text_layout.addWidget(text_help)
 
         self.csv_text_edit = QPlainTextEdit()
-        self.csv_text_edit.setPlaceholderText(
-            "例如：\nPLC1,S7,192.168.1.10,102,西区PLC控制器\nPLC2,Modbus,192.168.1.11,502,东区PLC控制器")
+        self.csv_text_edit.setPlaceholderText("例如：\nPLC1,S7,192.168.1.10,102,西区PLC控制器\nPLC2,Modbus,192.168.1.11,502,东区PLC控制器")
         text_layout.addWidget(self.csv_text_edit)
 
         text_group.setLayout(text_layout)
@@ -408,7 +407,7 @@ class BatchImportDeviceDialog(QDialog):
             # Generate preview text
             preview_text = f"找到 {len(self.devices)} 个设备：\n\n"
             for i, device in enumerate(self.devices[:5]):  # Show first 5 devices
-                preview_text += f"{i + 1}. {device['name']} ({device['device_type']}) - {device['ip_address']}:{device['port']}\n"
+                preview_text += f"{i+1}. {device['name']} ({device['device_type']}) - {device['ip_address']}:{device['port']}\n"
 
             if len(self.devices) > 5:
                 preview_text += f"...以及 {len(self.devices) - 5} 个更多设备"
@@ -515,18 +514,15 @@ class BatchImportDeviceDialog(QDialog):
             # Create template content
             template_content = [
                 # Header row
-                ["name", "device_type", "ip_address", "port", "description", "rack", "slot", "modbus_type", "unit_id",
-                 "interface", "bitrate", "appid", "mac"],
+                ["name", "device_type", "ip_address", "port", "description", "rack", "slot", "modbus_type", "unit_id", "interface", "bitrate", "appid", "mac"],
                 # Example S7 device
                 ["PLC1", "S7", "192.168.1.10", "102", "西区S7 PLC控制器", "0", "1", "", "", "", "", "", ""],
                 # Example Modbus device
-                ["ModbusDevice1", "Modbus", "192.168.1.11", "502", "东区Modbus设备", "", "", "TCP", "1", "", "", "",
-                 ""],
+                ["ModbusDevice1", "Modbus", "192.168.1.11", "502", "东区Modbus设备", "", "", "TCP", "1", "", "", "", ""],
                 # Example CAN device
                 ["CANDevice1", "CAN", "192.168.1.12", "0", "CAN总线设备", "", "", "", "", "can0", "500000", "", ""],
                 # Example GOOSE device
-                ["GOOSEDevice1", "GOOSE", "192.168.1.13", "0", "GOOSE设备", "", "", "", "", "eth0", "", "1000",
-                 "01:0C:CD:01:00:01"]
+                ["GOOSEDevice1", "GOOSE", "192.168.1.13", "0", "GOOSE设备", "", "", "", "", "eth0", "", "1000", "01:0C:CD:01:00:01"]
             ]
 
             # Write to CSV file with UTF-8-BOM encoding for better Excel compatibility
@@ -619,26 +615,36 @@ class DeviceView(QWidget):
         # Device details section
         self.device_details = QGroupBox("设备详情")
         details_layout = QVBoxLayout()
-
+        details_layout.setContentsMargins(10, 15, 10, 15)  # 增加内边距
+        details_layout.setSpacing(10)  # 增加控件间距
+        
         # General details
         general_info = QFormLayout()
+        general_info.setVerticalSpacing(8)  # 增加表单项垂直间距
         self.device_id_label = QLabel("设备ID: ")
         self.device_name_label = QLabel("设备名称: ")
         self.device_type_label = QLabel("设备类型: ")
         self.ip_address_label = QLabel("IP地址: ")
         self.port_label = QLabel("端口: ")
         self.variable_count_label = QLabel("变量数量: 0")
-
+        
+        # 设置标签自动换行
+        self.device_id_label.setWordWrap(True)
+        self.device_name_label.setWordWrap(True)
+        self.device_type_label.setWordWrap(True)
+        self.ip_address_label.setWordWrap(True)
+        
         general_info.addRow("设备ID:", self.device_id_label)
         general_info.addRow("设备名称:", self.device_name_label)
         general_info.addRow("设备类型:", self.device_type_label)
         general_info.addRow("IP地址:", self.ip_address_label)
         general_info.addRow("端口:", self.port_label)
         general_info.addRow("变量数量:", self.variable_count_label)
-
+        
         # Actions
         action_layout = QHBoxLayout()
-
+        action_layout.setContentsMargins(0, 10, 0, 0)  # 增加顶部边距
+        
         self.connect_device_btn = QPushButton("连接设备")
         self.connect_device_btn.clicked.connect(self.connect_device)
         self.connect_device_btn.setEnabled(False)
@@ -668,8 +674,8 @@ class DeviceView(QWidget):
         splitter.addWidget(self.device_details)
 
         # Set initial sizes
-        splitter.setSizes([400, 200])
-
+        splitter.setSizes([350, 250])  # 增加详情区域的高度比例
+        
         # Add all widgets to main layout
         layout.addLayout(title_layout)
         layout.addWidget(splitter)
