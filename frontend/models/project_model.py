@@ -120,6 +120,35 @@ class ProjectManager:
         if not os.path.exists(self.projects_dir):
             os.makedirs(self.projects_dir)
 
+        # 文件路径
+        mapper_path = r'E:\FEMS_Front\VYCON_IO\VYCON_IO\VYCON_IO\projects\ip_mapper.json'
+        os.makedirs(os.path.dirname(mapper_path), exist_ok=True)
+        # 如果文件不存在或为空，初始化内容
+        if not os.path.exists(mapper_path) or os.path.getsize(mapper_path) == 0:
+            with open(mapper_path, 'w', encoding='utf-8') as f:
+                json.dump({'ip_mapper': {}}, f, indent=4)
+        # 再读取
+        with open(mapper_path, 'r', encoding='utf-8') as f:
+            ip_dict = json.load(f)
+        device_group = project.get('devices')
+        project_name = project.name
+        # 确保当前 project 键存在
+        if project_name not in ip_dict['ip_mapper']:
+            ip_dict['ip_mapper'][project_name] = {}
+        if device_group:
+            # 获取最新设备的 IP 和名称
+            device = device_group[-1]
+            ip = device.get('ip_address')
+            device_name = device.get('name')
+            ip_dict['ip_mapper'][project_name][ip] = device_name
+        else:
+            ip_dict['ip_mapper'][project_name] = {}
+        # 写回更新后的字典
+        with open(mapper_path, 'w', encoding='utf-8') as f:
+            json.dump(ip_dict, f, indent=4, ensure_ascii=False)
+        logger.info("更新ip映射表成功")
+
+
         # TODO:定义数据点表缓存位置
         project_path = os.path.join(self.projects_dir, f"{project.project_id}.json")
         fccs_data_cache_path = os.path.join(self.projects_dir, "fccs")
@@ -130,9 +159,6 @@ class ProjectManager:
             os.makedirs(fms_data_cache_path)
 
         # 新增点表文件写入（S7）
-
-
-
         try:
             project_data = project.to_dict()
             with open(project_path, 'w', encoding='utf-8') as f:

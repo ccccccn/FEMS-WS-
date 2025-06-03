@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
+import json
 import logging
+import os
+
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, 
     QLabel, QListWidget, QListWidgetItem, QDialog,
@@ -226,6 +228,7 @@ class ProjectView(QWidget):
             success = self.project_manager.delete_project(project_id)
             
             if success:
+                self.remove_project_from_ip_mapper(project.name)
                 # Reload project list
                 self.load_projects()
                 
@@ -244,7 +247,26 @@ class ProjectView(QWidget):
                 return True
         
         return False
-    
+
+    def remove_project_from_ip_mapper(self, project_name):
+        mapper_path = r'E:\FEMS_Front\VYCON_IO\VYCON_IO\VYCON_IO\projects\ip_mapper.json'
+        if not os.path.exists(mapper_path):
+            return
+
+        try:
+            with open(mapper_path, 'r', encoding='utf-8') as f:
+                ip_dict = json.load(f)
+
+            if project_name in ip_dict.get('ip_mapper', {}):
+                del ip_dict['ip_mapper'][project_name]
+
+                with open(mapper_path, 'w', encoding='utf-8') as f:
+                    json.dump(ip_dict, f, indent=4, ensure_ascii=False)
+                logger.info(f"已从 ip_mapper.json 中移除项目: {project_name}")
+
+        except Exception as e:
+            logger.error(f"删除 ip_mapper 项目 {project_name} 失败: {str(e)}")
+
     def on_project_selection_changed(self):
         """Handle project selection change."""
         selected_items = self.project_list.selectedItems()
