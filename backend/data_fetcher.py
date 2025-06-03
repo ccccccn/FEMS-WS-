@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+数据获取器模块
+作者: zhongqi.wang
+"""
 
 import logging
 import json
@@ -8,23 +12,309 @@ import time
 from datetime import datetime
 from threading import Thread, Event
 import requests
-from PyQt5.QtCore import QObject, pyqtSignal
+from typing import Dict, Any, Optional
+from PyQt5.QtCore import QObject, pyqtSignal, QTimer
 
 logger = logging.getLogger(__name__)
 
 class DataFetcher(QObject):
-    """Class for fetching real-time data from backend APIs."""
+    """
+    数据获取器类
+    负责从各种数据源获取数据并进行处理
+    """
     
-    # Signal emitted when new data is available
-    data_updated = pyqtSignal(object, object)  # variable_id, new_value
-    
+    # 信号定义
+    data_updated = pyqtSignal(str, dict)  # 数据源ID, 数据
+    error_occurred = pyqtSignal(str, str)  # 数据源ID, 错误信息
+    connection_status_changed = pyqtSignal(str, bool)  # 数据源ID, 连接状态
+
     def __init__(self, parent=None):
+        """初始化数据获取器"""
         super().__init__(parent)
+        self.data_sources = {}  # 数据源配置字典
+        self.active_sources = set()  # 活动数据源集合
+        self.update_timers = {}  # 更新定时器字典
+        self.last_values = {}  # 最后一次获取的值
+        self.connection_status = {}  # 连接状态字典
         self.variables = {}  # Dictionary of variables by ID
         self.stop_event = Event()
         self.fetch_thread = None
         self.mock_mode = False  # Set to True to generate mock data instead of API calls
     
+    def add_data_source(self, source_id: str, config: Dict[str, Any]) -> bool:
+        """
+        添加数据源
+        
+        参数:
+            source_id: 数据源ID
+            config: 数据源配置
+            
+        返回:
+            bool: 是否添加成功
+        """
+        try:
+            if source_id in self.data_sources:
+                logger.warning(f"数据源 {source_id} 已存在，将被更新")
+            
+            # 验证配置
+            self._validate_source_config(config)
+            
+            # 存储配置
+            self.data_sources[source_id] = config
+            self.connection_status[source_id] = False
+            
+            # 如果数据源处于活动状态，则启动数据获取
+            if source_id in self.active_sources:
+                self._start_fetching(source_id)
+            
+            logger.info(f"数据源 {source_id} 添加成功")
+            return True
+            
+        except Exception as e:
+            logger.error(f"添加数据源 {source_id} 失败: {str(e)}")
+            return False
+
+    def remove_data_source(self, source_id: str) -> bool:
+        """
+        移除数据源
+        
+        参数:
+            source_id: 数据源ID
+            
+        返回:
+            bool: 是否移除成功
+        """
+        try:
+            if source_id not in self.data_sources:
+                logger.warning(f"数据源 {source_id} 不存在")
+                return False
+            
+            # 停止数据获取
+            self._stop_fetching(source_id)
+            
+            # 移除配置和状态
+            del self.data_sources[source_id]
+            del self.connection_status[source_id]
+            if source_id in self.last_values:
+                del self.last_values[source_id]
+            
+            self.active_sources.discard(source_id)
+            
+            logger.info(f"数据源 {source_id} 移除成功")
+            return True
+            
+        except Exception as e:
+            logger.error(f"移除数据源 {source_id} 失败: {str(e)}")
+            return False
+
+    def start_source(self, source_id: str) -> bool:
+        """
+        启动数据源
+        
+        参数:
+            source_id: 数据源ID
+            
+        返回:
+            bool: 是否启动成功
+        """
+        try:
+            if source_id not in self.data_sources:
+                logger.error(f"数据源 {source_id} 不存在")
+                return False
+            
+            if source_id in self.active_sources:
+                logger.warning(f"数据源 {source_id} 已经处于活动状态")
+                return True
+            
+            self.active_sources.add(source_id)
+            self._start_fetching(source_id)
+            
+            logger.info(f"数据源 {source_id} 启动成功")
+            return True
+            
+        except Exception as e:
+            logger.error(f"启动数据源 {source_id} 失败: {str(e)}")
+            return False
+
+    def stop_source(self, source_id: str) -> bool:
+        """
+        停止数据源
+        
+        参数:
+            source_id: 数据源ID
+            
+        返回:
+            bool: 是否停止成功
+        """
+        try:
+            if source_id not in self.data_sources:
+                logger.error(f"数据源 {source_id} 不存在")
+                return False
+            
+            if source_id not in self.active_sources:
+                logger.warning(f"数据源 {source_id} 已经处于停止状态")
+                return True
+            
+            self._stop_fetching(source_id)
+            self.active_sources.discard(source_id)
+            
+            logger.info(f"数据源 {source_id} 停止成功")
+            return True
+            
+        except Exception as e:
+            logger.error(f"停止数据源 {source_id} 失败: {str(e)}")
+            return False
+
+    def get_last_value(self, source_id: str) -> Optional[Dict[str, Any]]:
+        """
+        获取数据源的最后一次值
+        
+        参数:
+            source_id: 数据源ID
+            
+        返回:
+            Optional[Dict[str, Any]]: 最后一次获取的值，如果不存在则返回None
+        """
+        return self.last_values.get(source_id)
+
+    def _validate_source_config(self, config: Dict[str, Any]) -> bool:
+        """
+        验证数据源配置
+        
+        参数:
+            config: 数据源配置
+            
+        返回:
+            bool: 配置是否有效
+            
+        异常:
+            ValueError: 当配置无效时抛出
+        """
+        required_fields = ['type', 'update_interval']
+        
+        for field in required_fields:
+            if field not in config:
+                raise ValueError(f"缺少必需的配置字段: {field}")
+        
+        if not isinstance(config['update_interval'], (int, float)) or config['update_interval'] <= 0:
+            raise ValueError("更新间隔必须是正数")
+        
+        return True
+
+    def _start_fetching(self, source_id: str):
+        """
+        启动数据获取定时器
+        
+        参数:
+            source_id: 数据源ID
+        """
+        if source_id in self.update_timers:
+            self.update_timers[source_id].stop()
+        
+        timer = QTimer(self)
+        interval = int(self.data_sources[source_id]['update_interval'] * 1000)  # 转换为毫秒
+        timer.setInterval(interval)
+        timer.timeout.connect(lambda: self._fetch_data(source_id))
+        timer.start()
+        
+        self.update_timers[source_id] = timer
+        
+        # 立即获取一次数据
+        self._fetch_data(source_id)
+
+    def _stop_fetching(self, source_id: str):
+        """
+        停止数据获取定时器
+        
+        参数:
+            source_id: 数据源ID
+        """
+        if source_id in self.update_timers:
+            self.update_timers[source_id].stop()
+            del self.update_timers[source_id]
+
+    def _fetch_data(self, source_id: str):
+        """
+        获取数据源数据
+        
+        参数:
+            source_id: 数据源ID
+        """
+        try:
+            config = self.data_sources[source_id]
+            source_type = config['type']
+            
+            # 根据数据源类型获取数据
+            if source_type == 'api':
+                data = self._fetch_api_data(config)
+            elif source_type == 'modbus':
+                data = self._fetch_modbus_data(config)
+            elif source_type == 'opcua':
+                data = self._fetch_opcua_data(config)
+            else:
+                raise ValueError(f"不支持的数据源类型: {source_type}")
+            
+            # 更新最后一次获取的值
+            self.last_values[source_id] = data
+            
+            # 发送数据更新信号
+            self.data_updated.emit(source_id, data)
+            
+            # 更新连接状态
+            if not self.connection_status.get(source_id, False):
+                self.connection_status[source_id] = True
+                self.connection_status_changed.emit(source_id, True)
+            
+        except Exception as e:
+            logger.error(f"获取数据源 {source_id} 数据失败: {str(e)}")
+            
+            # 更新连接状态
+            if self.connection_status.get(source_id, True):
+                self.connection_status[source_id] = False
+                self.connection_status_changed.emit(source_id, False)
+            
+            # 发送错误信号
+            self.error_occurred.emit(source_id, str(e))
+
+    def _fetch_api_data(self, config: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        从API获取数据
+        
+        参数:
+            config: API配置
+            
+        返回:
+            Dict[str, Any]: 获取的数据
+        """
+        # 实现API数据获取逻辑
+        pass
+
+    def _fetch_modbus_data(self, config: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        从Modbus获取数据
+        
+        参数:
+            config: Modbus配置
+            
+        返回:
+            Dict[str, Any]: 获取的数据
+        """
+        # 实现Modbus数据获取逻辑
+        pass
+
+    def _fetch_opcua_data(self, config: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        从OPC UA获取数据
+        
+        参数:
+            config: OPC UA配置
+            
+        返回:
+            Dict[str, Any]: 获取的数据
+        """
+        # 实现OPC UA数据获取逻辑
+        pass
+
     def register_variable(self, variable):
         """Register a variable for data fetching."""
         if variable.variable_id in self.variables:

@@ -1,14 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+配置服务模块
+作者: zhongqi.wang
+"""
 
 import os
 import json
 import logging
+from typing import Dict, Any, List, Optional
 
 logger = logging.getLogger(__name__)
 
 class ConfigService:
-    """Service for managing application configuration."""
+    """配置服务类，负责管理应用程序配置"""
     
     def __init__(self, config_dir="config"):
         """Initialize the configuration service.
@@ -24,405 +29,366 @@ class ConfigService:
         self.load_default_config()
     
     def load_default_config(self):
-        """Load the default configuration."""
-        default_config_file = os.path.join(self.config_dir, "default.json")
-        if os.path.exists(default_config_file):
-            self.load_config(default_config_file)
-        else:
-            logger.warning(f"Default configuration file not found: {default_config_file}")
-            self.config = {}
+        """加载默认配置"""
+        self.config = {
+            "version": "1.0",
+            "settings": {
+                "theme": "dark",
+                "language": "zh_CN",
+                "update_rate": 1000,
+                "logging_enabled": True,
+                "logging_interval": 60000
+            },
+            "devices": [],
+            "variables": [],
+            "forwarding": []
+        }
     
-    def load_config(self, config_file):
-        """Load configuration from a file.
+    def load_config(self, file_path: Optional[str] = None) -> bool:
+        """
+        从文件加载配置
         
-        Args:
-            config_file (str): Configuration file path
-        
-        Returns:
-            bool: True if successful
+        参数:
+            file_path: 配置文件路径，如果为None则使用默认路径
+            
+        返回:
+            bool: 加载是否成功
         """
         try:
-            # Check if file exists
-            if not os.path.exists(config_file):
-                logger.error(f"Configuration file not found: {config_file}")
+            # 检查文件是否存在
+            if not os.path.exists(file_path):
+                logger.warning(f"配置文件不存在: {file_path}")
                 return False
             
-            # Load configuration
-            with open(config_file, 'r', encoding='utf-8') as f:
+            # 加载配置
+            with open(file_path, 'r', encoding='utf-8') as f:
                 self.config = json.load(f)
-            
-            self.config_file = config_file
-            logger.info(f"Configuration loaded from {config_file}")
-            return True
-            
+                self.config_file = file_path
+                logger.info(f"已加载配置文件: {file_path}")
+                return True
+                
         except Exception as e:
-            logger.error(f"Error loading configuration: {str(e)}")
+            logger.error(f"加载配置文件失败: {str(e)}")
             return False
     
-    def save_config(self, config_file=None):
-        """Save configuration to a file.
+    def save_config(self, file_path: Optional[str] = None) -> bool:
+        """
+        保存配置到文件
         
-        Args:
-            config_file (str, optional): Configuration file path.
-                If None, use the last loaded or saved file.
-        
-        Returns:
-            bool: True if successful
+        参数:
+            file_path: 配置文件路径，如果为None则使用上次加载或保存的路径
+            
+        返回:
+            bool: 保存是否成功
         """
         try:
-            # Use provided file or last loaded/saved file
-            save_file = config_file or self.config_file
+            # 使用提供的文件路径或上次加载/保存的路径
+            save_path = file_path or self.config_file
             
-            # If no file specified, use default
-            if not save_file:
-                save_file = os.path.join(self.config_dir, "user.json")
+            # 如果未指定路径，使用默认路径
+            if not save_path:
+                save_path = os.path.join("config", "config.json")
             
-            # Create directory if it doesn't exist
-            save_dir = os.path.dirname(save_file)
-            if save_dir and not os.path.exists(save_dir):
-                os.makedirs(save_dir)
+            # 如果目录不存在则创建
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
             
-            # Save configuration
-            with open(save_file, 'w', encoding='utf-8') as f:
-                json.dump(self.config, f, indent=2, ensure_ascii=False)
-            
-            self.config_file = save_file
-            logger.info(f"Configuration saved to {save_file}")
-            return True
-            
+            # 保存配置
+            with open(save_path, 'w', encoding='utf-8') as f:
+                json.dump(self.config, f, indent=4, ensure_ascii=False)
+                self.config_file = save_path
+                logger.info(f"已保存配置到: {save_path}")
+                return True
+                
         except Exception as e:
-            logger.error(f"Error saving configuration: {str(e)}")
+            logger.error(f"保存配置失败: {str(e)}")
             return False
     
-    def get(self, key, default=None):
-        """Get a configuration value.
+    def get_config(self, key: str, default: Any = None) -> Any:
+        """
+        获取配置值
         
-        Args:
-            key (str): Configuration key in dot notation (e.g., "protocols.S7.enabled")
-            default: Default value if key not found
-        
-        Returns:
-            Configuration value or default
+        参数:
+            key: 配置键，使用点号分隔层级，如'settings.theme'
+            default: 如果键不存在时返回的默认值
+            
+        返回:
+            Any: 配置值或默认值
         """
         try:
-            # Split key into parts
+            # 将键拆分为各部分
             parts = key.split('.')
-            
-            # Navigate through config
             value = self.config
+            
+            # 遍历配置层级
             for part in parts:
-                if isinstance(value, dict) and part in value:
-                    value = value[part]
-                else:
-                    return default
-            
+                value = value[part]
             return value
-            
-        except Exception as e:
-            logger.error(f"Error getting configuration value for {key}: {str(e)}")
+        except (KeyError, TypeError):
             return default
     
-    def set(self, key, value):
-        """Set a configuration value.
+    def set_config(self, key: str, value: Any) -> bool:
+        """
+        设置配置值
         
-        Args:
-            key (str): Configuration key in dot notation (e.g., "protocols.S7.enabled")
-            value: Value to set
-        
-        Returns:
-            bool: True if successful
+        参数:
+            key: 配置键，使用点号分隔层级，如'settings.theme'
+            value: 要设置的值
+            
+        返回:
+            bool: 设置是否成功
         """
         try:
-            # Split key into parts
+            # 将键拆分为各部分
             parts = key.split('.')
             
-            # Navigate through config
+            # 遍历配置层级
             config = self.config
+            
+            # 如果不存在则创建嵌套字典
             for i, part in enumerate(parts[:-1]):
-                # Create nested dictionaries if they don't exist
                 if part not in config:
                     config[part] = {}
-                
-                # Move to next level
+                    
+                # 移动到下一层
                 config = config[part]
-            
-            # Set value
+                
+            # 设置值
             config[parts[-1]] = value
             return True
             
         except Exception as e:
-            logger.error(f"Error setting configuration value for {key}: {str(e)}")
+            logger.error(f"设置配置失败: {str(e)}")
             return False
     
-    def get_protocol_settings(self, protocol_type):
-        """Get default settings for a protocol.
-        
-        Args:
-            protocol_type (str): Protocol type (S7, Modbus, CAN, GOOSE)
-        
-        Returns:
-            dict: Protocol settings or empty dict if not found
+    def update_device(self, device_id: str, device_data: Dict[str, Any]) -> bool:
         """
-        return self.get(f"protocols.{protocol_type}.default_settings", {})
-    
-    def get_device_settings(self, device_id):
-        """Get settings for a device.
+        更新或添加设备配置
         
-        Args:
-            device_id (str): Device ID
-        
-        Returns:
-            dict: Device settings or None if not found
-        """
-        # Find device in the devices list
-        devices = self.get("devices", [])
-        for device in devices:
-            if device.get("id") == device_id:
-                return device
-        
-        return None
-    
-    def get_all_devices(self):
-        """Get all configured devices.
-        
-        Returns:
-            list: List of device configurations
-        """
-        return self.get("devices", [])
-    
-    def add_device(self, device_config):
-        """Add or update a device configuration.
-        
-        Args:
-            device_config (dict): Device configuration
-        
-        Returns:
-            bool: True if successful
+        参数:
+            device_id: 设备ID
+            device_data: 设备数据字典
+            
+        返回:
+            bool: 更新是否成功
         """
         try:
-            # Get devices list
-            devices = self.get("devices", [])
+            # 在设备列表中查找设备
+            devices = self.config.get('devices', [])
+            device_found = False
             
-            # Check if device already exists
-            for i, device in enumerate(devices):
-                if device.get("id") == device_config.get("id"):
-                    # Update existing device
-                    devices[i] = device_config
-                    self.set("devices", devices)
-                    return True
+            # 获取设备列表
+            if 'devices' not in self.config:
+                self.config['devices'] = []
             
-            # Add new device
-            devices.append(device_config)
-            self.set("devices", devices)
+            # 检查设备是否已存在
+            for i, device in enumerate(self.config['devices']):
+                if device.get('device_id') == device_id:
+                    # 更新现有设备
+                    self.config['devices'][i] = device_data
+                    device_found = True
+                    break
+            
+            # 添加新设备
+            if not device_found:
+                self.config['devices'].append(device_data)
+            
             return True
             
         except Exception as e:
-            logger.error(f"Error adding device: {str(e)}")
+            logger.error(f"更新设备配置失败: {str(e)}")
             return False
     
-    def remove_device(self, device_id):
-        """Remove a device configuration.
+    def remove_device(self, device_id: str) -> bool:
+        """
+        删除设备配置
         
-        Args:
-            device_id (str): Device ID
-        
-        Returns:
-            bool: True if successful
+        参数:
+            device_id: 设备ID
+            
+        返回:
+            bool: 删除是否成功
         """
         try:
-            # Get devices list
-            devices = self.get("devices", [])
+            # 获取设备列表
+            if 'devices' not in self.config:
+                return False
             
-            # Find and remove device
-            for i, device in enumerate(devices):
-                if device.get("id") == device_id:
-                    devices.pop(i)
-                    self.set("devices", devices)
+            # 查找并删除设备
+            for i, device in enumerate(self.config['devices']):
+                if device.get('device_id') == device_id:
+                    del self.config['devices'][i]
                     return True
             
             return False
             
         except Exception as e:
-            logger.error(f"Error removing device: {str(e)}")
+            logger.error(f"删除设备配置失败: {str(e)}")
             return False
     
-    def get_acquisition_settings(self):
-        """Get global acquisition settings.
-        
-        Returns:
-            dict: Acquisition settings
+    def get_device(self, device_id: str) -> Optional[Dict[str, Any]]:
         """
-        return self.get("acquisition", {
-            "update_rate": 1.0,
-            "logging_enabled": False,
-            "logging_interval": 60,
-            "storage_location": "logs",
-            "storage_format": "json"
-        })
-    
-    def set_acquisition_settings(self, settings):
-        """Set global acquisition settings.
+        获取设备配置
         
-        Args:
-            settings (dict): Acquisition settings
-        
-        Returns:
-            bool: True if successful
-        """
-        return self.set("acquisition", settings)
-    
-    def get_all_variables(self):
-        """Get all configured variables.
-        
-        Returns:
-            list: List of variable configurations
-        """
-        return self.get("variables", [])
-    
-    def get_variable_settings(self, variable_id):
-        """Get settings for a specific variable.
-        
-        Args:
-            variable_id (str): Variable ID
-        
-        Returns:
-            dict: Variable settings or None if not found
-        """
-        variables = self.get("variables", [])
-        for variable in variables:
-            if variable.get("id") == variable_id:
-                return variable
-        
-        return None
-    
-    def add_variable(self, variable_config):
-        """Add or update a variable configuration.
-        
-        Args:
-            variable_config (dict): Variable configuration
-        
-        Returns:
-            bool: True if successful
+        参数:
+            device_id: 设备ID
+            
+        返回:
+            Optional[Dict[str, Any]]: 设备配置字典，如果不存在则返回None
         """
         try:
-            # Get variables list
-            variables = self.get("variables", [])
+            for device in self.config.get('devices', []):
+                if device.get('device_id') == device_id:
+                    return device
+            return None
             
-            # Check if variable already exists
-            for i, variable in enumerate(variables):
-                if variable.get("id") == variable_config.get("id"):
-                    # Update existing variable
-                    variables[i] = variable_config
-                    self.set("variables", variables)
+        except Exception as e:
+            logger.error(f"获取设备配置失败: {str(e)}")
+            return None
+    
+    def get_devices(self) -> List[Dict[str, Any]]:
+        """
+        获取所有设备配置
+        
+        返回:
+            List[Dict[str, Any]]: 设备配置列表
+        """
+        return self.config.get('devices', [])
+    
+    def update_variable(self, variable_id: str, variable_data: Dict[str, Any]) -> bool:
+        """
+        更新或添加变量配置
+        
+        参数:
+            variable_id: 变量ID
+            variable_data: 变量数据字典
+            
+        返回:
+            bool: 更新是否成功
+        """
+        try:
+            # 获取变量列表
+            if 'variables' not in self.config:
+                self.config['variables'] = []
+            
+            # 检查变量是否已存在
+            for i, variable in enumerate(self.config['variables']):
+                if variable.get('variable_id') == variable_id:
+                    # 更新现有变量
+                    self.config['variables'][i] = variable_data
                     return True
             
-            # Add new variable
-            variables.append(variable_config)
-            self.set("variables", variables)
+            # 添加新变量
+            self.config['variables'].append(variable_data)
             return True
             
         except Exception as e:
-            logger.error(f"Error adding variable: {str(e)}")
+            logger.error(f"更新变量配置失败: {str(e)}")
             return False
     
-    def remove_variable(self, variable_id):
-        """Remove a variable configuration.
+    def remove_variable(self, variable_id: str) -> bool:
+        """
+        删除变量配置
         
-        Args:
-            variable_id (str): Variable ID
-        
-        Returns:
-            bool: True if successful
+        参数:
+            variable_id: 变量ID
+            
+        返回:
+            bool: 删除是否成功
         """
         try:
-            # Get variables list
-            variables = self.get("variables", [])
+            # 获取变量列表
+            if 'variables' not in self.config:
+                return False
             
-            # Find and remove variable
-            for i, variable in enumerate(variables):
-                if variable.get("id") == variable_id:
-                    variables.pop(i)
-                    self.set("variables", variables)
+            # 查找并删除变量
+            for i, variable in enumerate(self.config['variables']):
+                if variable.get('variable_id') == variable_id:
+                    del self.config['variables'][i]
                     return True
             
             return False
             
         except Exception as e:
-            logger.error(f"Error removing variable: {str(e)}")
+            logger.error(f"删除变量配置失败: {str(e)}")
             return False
     
-    def update_variable_acquisition_settings(self, variable_id, collection_frequency=None, 
-                                           storage_frequency=None, storage_enabled=None):
-        """Update acquisition settings for a specific variable.
-        
-        Args:
-            variable_id (str): Variable ID
-            collection_frequency (float, optional): Collection frequency in seconds
-            storage_frequency (float, optional): Storage frequency in seconds
-            storage_enabled (bool, optional): Whether to store this variable's data
-        
-        Returns:
-            bool: True if successful
+    def get_variable(self, variable_id: str) -> Optional[Dict[str, Any]]:
         """
-        variables = self.get("variables", [])
-        updated = False
+        获取变量配置
         
-        for i, variable in enumerate(variables):
-            if variable.get("id") == variable_id:
-                # Update settings
-                if collection_frequency is not None:
-                    variable["collection_frequency"] = float(collection_frequency)
-                
-                if storage_frequency is not None:
-                    variable["storage_frequency"] = float(storage_frequency)
-                
-                if storage_enabled is not None:
-                    variable["storage_enabled"] = bool(storage_enabled)
-                
-                # Update variable in list
-                variables[i] = variable
-                updated = True
-                break
+        参数:
+            variable_id: 变量ID
+            
+        返回:
+            Optional[Dict[str, Any]]: 变量配置字典，如果不存在则返回None
+        """
+        try:
+            for variable in self.config.get('variables', []):
+                if variable.get('variable_id') == variable_id:
+                    return variable
+            return None
+            
+        except Exception as e:
+            logger.error(f"获取变量配置失败: {str(e)}")
+            return None
+    
+    def get_variables(self) -> List[Dict[str, Any]]:
+        """
+        获取所有变量配置
         
-        if updated:
-            # Save updated variables
-            self.set("variables", variables)
-            logger.info(f"Updated acquisition settings for variable {variable_id}")
+        返回:
+            List[Dict[str, Any]]: 变量配置列表
+        """
+        return self.config.get('variables', [])
+    
+    def update_variable_settings(self, variable_id: str, settings: Dict[str, Any]) -> bool:
+        """
+        更新变量设置
+        
+        参数:
+            variable_id: 变量ID
+            settings: 设置字典
+            
+        返回:
+            bool: 更新是否成功
+        """
+        try:
+            # 更新设置
+            variables = self.config.get('variables', [])
+            
+            # 更新变量列表中的变量
+            for variable in variables:
+                if variable.get('variable_id') == variable_id:
+                    variable.update(settings)
+                    break
+            
+            # 保存更新后的变量
+            self.config['variables'] = variables
             return True
-        else:
-            logger.warning(f"Variable with ID {variable_id} not found")
+            
+        except Exception as e:
+            logger.error(f"更新变量设置失败: {str(e)}")
             return False
     
-    def get_storage_settings(self):
-        """Get global storage settings.
-        
-        Returns:
-            dict: Storage settings
+    def get_variable_settings(self, variable_id: str) -> Optional[Dict[str, Any]]:
         """
-        return self.get("storage", {
-            "location": "logs",
-            "format": "json"
-        })
-    
-    def set_storage_settings(self, location=None, format_type=None):
-        """Set global storage settings.
+        获取变量设置
         
-        Args:
-            location (str, optional): Storage location
-            format_type (str, optional): Storage format (json, csv)
-        
-        Returns:
-            bool: True if successful
+        参数:
+            variable_id: 变量ID
+            
+        返回:
+            Optional[Dict[str, Any]]: 变量设置字典，如果不存在则返回None
         """
-        storage_settings = self.get_storage_settings()
-        
-        if location is not None:
-            storage_settings["location"] = location
-        
-        if format_type is not None:
-            storage_settings["format"] = format_type
-        
-        return self.set("storage", storage_settings)
+        try:
+            for variable in self.config.get('variables', []):
+                if variable.get('variable_id') == variable_id:
+                    return variable
+            return None
+            
+        except Exception as e:
+            logger.error(f"获取变量设置失败: {str(e)}")
+            return None
 
-# Create a singleton instance
+# 创建单例实例
 config_service = ConfigService() 
